@@ -1,3 +1,5 @@
-;; Last updated: <2013/04/01 16:12:13 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 18:57:24 algernon@madhouse-project.org>
 
 (packages-maybe-install '(refheap))
+(if (file-exists-p "~/.refheap-pass.el")
+    (load "~/.refheap-pass.el"))
