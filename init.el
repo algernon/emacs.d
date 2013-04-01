@@ -1,4 +1,55 @@
-;; Last updated: <2013/04/01 12:56:51 algernon@madhouse-project.org>
+;;; ~/.emacs.d/ -- algernon's Emacs configuration
+
+;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
+;;               2012, 2013
+;; Gergely Nagy <algernon@bonehunter.rulez.org>
+
+;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
+;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
+;; Created: 2000-08-03
+;; Keywords: local
+;; Last updated: <2013/04/01 15:19:45 algernon@madhouse-project.org>
+
+;; This file is NOT part of GNU Emacs.
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License as
+;; published by the Free Software Foundation; either version 3, or (at
+;; your option) any later version.
+
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; This is my .emacs file. There are many like it but this one is
+;; mine. My .emacs file is my best friend. It is my life. I must
+;; master it as I must master my life. Without me, my .emacs file is
+;; useless. Without my .emacs file I am useless. I must code my .emacs
+;; file true. I must code faster than my enemy, who is trying to
+;; kill(1) me. I must kill(1) him before he kill(1)s me. I will.
+;; Before God I swear this creed: my .emacs file and myself are
+;; defenders of my country, we are the masters of my enemy, we are the
+;; saviours of my life. So be it, until there is no enemy, but peace.
+;;
+;; Amen.
+;; (by Edward O'Connor <ted@oconnor.cx>)
+
+;;; History:
+
+;; Ancient history is in CVS, somewhere - but that's not
+;; interesting. This whole thing has been rewritten around the time I
+;; imported it into git. Then it was developed as part of my private
+;; $HOME repository, and then extracted out into its own repo.
+;;
+;; From that point onward, see the git log.
+
+;;; Code:
 
 (require 'package)
 
