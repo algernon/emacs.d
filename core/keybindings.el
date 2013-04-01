@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 23:43:45 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:02:58 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
 (defun goto-line-with-feedback ()
@@ -6,8 +6,8 @@
   (interactive)
   (unwind-protect
       (progn
-	(linum-mode 1)
-	(goto-line (read-number "Goto line: ")))
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
     (linum-mode -1)
     (git-gutter)))
 
@@ -20,9 +20,9 @@
 ;; Killing, copying and yanking
 (global-unset-key "\C-xk")
 (global-set-key "\C-xkk" '(lambda ()
-			    "Kill the current buffer."
-			    (interactive)
-			    (kill-buffer (buffer-name))))
+                            "Kill the current buffer."
+                            (interactive)
+                            (kill-buffer (buffer-name))))
 (global-set-key "\C-xka" 'kill-buffer)
 (global-unset-key "\C-w")
 (global-unset-key "\C-y")
@@ -38,11 +38,11 @@
 (define-key global-map (kbd "C-<kp-subtract>") 'text-scale-decrease)
 
 (global-set-key (vector (list 'control mouse-wheel-up-event))
-		'(lambda () (interactive) (text-scale-decrease 1)))
+                '(lambda () (interactive) (text-scale-decrease 1)))
 (global-set-key (vector (list 'control mouse-wheel-down-event))
-		'(lambda () (interactive) (text-scale-increase 1)))
+                '(lambda () (interactive) (text-scale-increase 1)))
 (global-set-key (kbd "C-<down-mouse-2>")
-		'(lambda () (interactive) (text-scale-adjust 0)))
+                '(lambda () (interactive) (text-scale-adjust 0)))
 
 ;; Searching
 (setq lazy-highlight-cleanup nil)
@@ -66,9 +66,9 @@
 (global-set-key (kbd "C-S-<up>") 'windmove-up)
 (global-set-key (kbd "C-S-<down>") 'windmove-down)
 (global-set-key (kbd "C-x O")
-		(lambda () (interactive) (other-window -1))) ;; back one
+                (lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x C-o")
-		(lambda () (interactive) (other-window 2))) ;; forward two
+                (lambda () (interactive) (other-window 2))) ;; forward two
 
 ;; Editing commands
 (global-set-key (kbd "C-c q") 'join-line)

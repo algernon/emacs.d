@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2013/04/01 17:26:35 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:02:32 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -54,7 +54,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -79,11 +79,11 @@
 ;; ~/.emacs.d/hosts/$HOSTNAME.el, then ~/.emacs.d/users/$USER.el, and
 ;; then ~/.emacs.d/users/$USER/*
 (setq aec-system-config (concat user-emacs-directory "hosts/"
-				system-name ".el")
+                                system-name ".el")
       aec-user-config (concat user-emacs-directory "users/"
-			      user-login-name ".el")
+                              user-login-name ".el")
       aec-user-dir (concat user-emacs-directory "users/"
-			   user-login-name)
+                           user-login-name)
       aec-core-dir (concat user-emacs-directory "core"))
 (add-to-list 'load-path aec-core-dir)
 (add-to-list 'load-path aec-user-dir)

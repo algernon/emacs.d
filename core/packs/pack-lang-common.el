@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 18:24:56 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:04:03 algernon@madhouse-project.org>
 
 (packages-maybe-install '(idle-highlight-mode))
 
@@ -10,8 +10,8 @@
 (defun aec-add-watchwords ()
   (font-lock-add-keywords
    nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
-	  1 font-lock-warning-face t))))
+          1 font-lock-warning-face t))))
 
 (add-hook 'prog-mode-hook 'aec-add-watchwords)
 (add-hook 'prog-mode-hook (lambda ()
-			    (idle-highlight-mode t)))
+                            (idle-highlight-mode t)))

@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 23:45:01 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:03:23 algernon@madhouse-project.org>
 
 (packages-maybe-install '(magit git-commit-mode magithub git-gutter))
 
@@ -7,9 +7,9 @@
 (setq magit-commit-signoff t)
 
 (add-hook 'magit-log-edit-mode-hook
-	  (lambda ()
-	    (set-fill-column 72)
-	    (auto-fill-mode)))
+          (lambda ()
+            (set-fill-column 72)
+            (auto-fill-mode)))
 
 (defadvice magit-status (around magit-fullscreen activate)
   (window-configuration-to-register :magit-fullscreen)

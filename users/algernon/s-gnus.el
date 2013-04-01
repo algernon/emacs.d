@@ -1,25 +1,25 @@
-;; Last updated: <2013/04/01 17:33:07 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:01:56 algernon@madhouse-project.org>
 
 (defun aec-mail-hdr (key headers)
   (let ((val (or (cdr (assq
-		       key headers))"")))
+                       key headers))"")))
     val))
 
 (defun gnus-user-format-function-p (header)
   (let ((xdpr
-	 (aec-mail-hdr 'X-Debian-PR-Package (mail-header-extra
-					     header)))
-	(rcc
-	 (aec-mail-hdr 'Resent-CC (mail-header-extra header))))
+         (aec-mail-hdr 'X-Debian-PR-Package (mail-header-extra
+                                             header)))
+        (rcc
+         (aec-mail-hdr 'Resent-CC (mail-header-extra header))))
     (if (and
-	 (string-match "\\(unknown.package\\)" rcc)
-	 (not (string-match "src:" xdpr)))
-	(concat "[" (format "%-15s" "UNKNOWN") "] ")
+         (string-match "\\(unknown.package\\)" rcc)
+         (not (string-match "src:" xdpr)))
+        (concat "[" (format "%-15s" "UNKNOWN") "] ")
       (if (> (length xdpr) 0)
-	  (if (> (length xdpr) 15)
-	      (concat "[" (substring xdpr 0 12) "...] ")
-	    (concat "[" (format "%-15s" xdpr) "] "))
-	""))))
+          (if (> (length xdpr) 15)
+              (concat "[" (substring xdpr 0 12) "...] ")
+            (concat "[" (format "%-15s" xdpr) "] "))
+        ""))))
 
 (setq message-default-headers
       (concat
@@ -34,5 +34,5 @@
 
 (setq gnus-extra-headers
       '(To Cc Keywords Gcc Newsgroups X-Debian-PR-Package Resent-CC
-	Mail-Followup-To))
+        Mail-Followup-To))
 (setq nnmail-extra-headers gnus-extra-headers)

@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 20:16:52 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:03:15 algernon@madhouse-project.org>
 
 (require 'dired nil t)
 (require 'dired-x nil t)
@@ -13,4 +13,4 @@
 (global-set-key "\C-xf" 'find-file)
 
 (add-hook 'dired-load-hook (function (lambda ()
-				       (load "dired-x"))))
+                                       (load "dired-x"))))

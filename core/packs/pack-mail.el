@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 15:05:27 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:05:13 algernon@madhouse-project.org>
 
 (add-to-list 'load-path (concat user-emacs-directory "packages/"))
 
@@ -19,15 +19,15 @@
  gnus-agent nil
  gnus-agent-cache nil
  gnus-article-sort-functions (quote ((not
-				      gnus-article-sort-by-number)))
+                                      gnus-article-sort-by-number)))
  gnus-visible-headers (quote ("^From:" "^Newsgroups:" "^Subject:"
-			      "^Date:" "^Followup-To:" "^Reply-To:"
-			      "^Organization:" "^Summary:"
-			      "^Keywords:" "^To:" "^[BGF]?Cc:"
-			      "^Posted-To:" "^Mail-Copies-To:"
-			      "^Mail-Followup-To:" "^Apparently-To:"
-			      "^Gnus-Warning:" "^Resent-From:"
-			      "^X-Debian-PR-Package:"))
+                              "^Date:" "^Followup-To:" "^Reply-To:"
+                              "^Organization:" "^Summary:"
+                              "^Keywords:" "^To:" "^[BGF]?Cc:"
+                              "^Posted-To:" "^Mail-Copies-To:"
+                              "^Mail-Followup-To:" "^Apparently-To:"
+                              "^Gnus-Warning:" "^Resent-From:"
+                              "^X-Debian-PR-Package:"))
  gnus-subscribe-newsgroup-method 'gnus-subscribe-interactively
  gnus-subscribe-hierarchical-interactive t
  gnus-level-unsubscribed 5
@@ -52,8 +52,8 @@
   (gnus-group-get-new-news 5))
 
 (add-hook 'gnus-group-mode-hook '(lambda ()
-				   (local-set-key (kbd "g")
-						  'aec-gnus-get-new-news)))
+                                   (local-set-key (kbd "g")
+                                                  'aec-gnus-get-new-news)))
 
 (defun aec-setup-hl-line ()
   (hl-line-mode 1))
@@ -66,8 +66,8 @@
 
 (defun gnus-user-format-function-topic-line (dummy)
   (let ((topic-face (if (zerop total-number-of-articles)
-			'font-lock-comment-face
-		      'font-lock-keyword-face)))
+                        'font-lock-comment-face
+                      'font-lock-keyword-face)))
     (propertize
      (format "%s %d" name total-number-of-articles)
      'face topic-face)))
@@ -75,18 +75,18 @@
 (gnus-add-configuration
  '(article
    (horizontal 1.0
-	       (vertical 25
-			 (group 1.0))
-	       (vertical 1.0
-			 (summary 0.25 point)
-			 (article 1.0)))))
+               (vertical 25
+                         (group 1.0))
+               (vertical 1.0
+                         (summary 0.25 point)
+                         (article 1.0)))))
 (gnus-add-configuration
  '(summary
    (horizontal 1.0
-	       (vertical 25
-			 (group 1.0))
-	       (vertical 1.0
-			 (summary 1.0 point)))))
+               (vertical 25
+                         (group 1.0))
+               (vertical 1.0
+                         (summary 1.0 point)))))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 

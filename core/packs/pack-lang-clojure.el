@@ -1,32 +1,32 @@
-;; Last updated: <2013/04/01 18:30:42 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:03:56 algernon@madhouse-project.org>
 
 (packages-maybe-install '(clojure-mode clojure-test-mode))
 
 (add-to-list* 'auto-mode-alist
-	      '("\.cljs$" . clojure-mode))
+              '("\.cljs$" . clojure-mode))
 
 (add-hook 'clojure-mode-hook '(lambda ()
-				(turn-on-auto-fill)
-				(paredit-mode)
-				(clojure-test-mode)))
+                                (turn-on-auto-fill)
+                                (paredit-mode)
+                                (clojure-test-mode)))
 
 (eval-after-load 'clojure-mode
   '(font-lock-add-keywords
     'clojure-mode `(("(\\(fn\\)[\[[:space:]]"
-		     (0 (progn (compose-region (match-beginning 1)
-					       (match-end 1) "λ")
-			       nil))))))
+                     (0 (progn (compose-region (match-beginning 1)
+                                               (match-end 1) "λ")
+                               nil))))))
 
 (eval-after-load 'clojure-mode
   '(font-lock-add-keywords
     'clojure-mode `(("\\(#\\)("
-		     (0 (progn (compose-region (match-beginning 1)
-					       (match-end 1) "ƒ")
-			       nil))))))
+                     (0 (progn (compose-region (match-beginning 1)
+                                               (match-end 1) "ƒ")
+                               nil))))))
 
 (eval-after-load 'clojure-mode
   '(font-lock-add-keywords
     'clojure-mode `(("\\(#\\){"
-		     (0 (progn (compose-region (match-beginning 1)
-					       (match-end 1) "∈")
-			       nil))))))
+                     (0 (progn (compose-region (match-beginning 1)
+                                               (match-end 1) "∈")
+                               nil))))))

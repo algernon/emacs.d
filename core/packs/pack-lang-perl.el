@@ -1,11 +1,11 @@
-;; Last updated: <2013/04/01 12:57:28 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:04:46 algernon@madhouse-project.org>
 
 (defalias 'perl-mode 'cperl-mode)
 
 (autoload 'perl-mode "cperl-mode" "Major mode for editing Perl scripts.")
 
 (add-to-list* 'auto-mode-alist
-	      '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
+              '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
 
 (defun algernon-cperl-style ()
   "Algernon's Perl Coding Style."
@@ -28,5 +28,5 @@
       cperl-info-on-command-no-prompt t)
 
 (add-hook 'cperl-mode-hook '(lambda ()
-			      (algernon-cperl-style)
-			      (auto-fill-mode)))
+                              (algernon-cperl-style)
+                              (auto-fill-mode)))
