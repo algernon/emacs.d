@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 14:00:24 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 18:30:42 algernon@madhouse-project.org>
 
 (packages-maybe-install '(clojure-mode clojure-test-mode))
 
@@ -10,12 +10,23 @@
 				(paredit-mode)
 				(clojure-test-mode)))
 
-(defun aec-pretty-fn ()
-  (font-lock-add-keywords nil `(("(\\(\\<fn\\>\\)"
-				 (0 (progn (compose-region
-					    (match-beginning 1)
-					    (match-end 1)
-					    "\u0192"
-					    'decompose-region)))))))
-(add-hook 'clojure-mode-hook 'aec-pretty-fn)
-(add-hook 'clojurescript-mode-hook 'aec-pretty-fn)
+(eval-after-load 'clojure-mode
+  '(font-lock-add-keywords
+    'clojure-mode `(("(\\(fn\\)[\[[:space:]]"
+		     (0 (progn (compose-region (match-beginning 1)
+					       (match-end 1) "λ")
+			       nil))))))
+
+(eval-after-load 'clojure-mode
+  '(font-lock-add-keywords
+    'clojure-mode `(("\\(#\\)("
+		     (0 (progn (compose-region (match-beginning 1)
+					       (match-end 1) "ƒ")
+			       nil))))))
+
+(eval-after-load 'clojure-mode
+  '(font-lock-add-keywords
+    'clojure-mode `(("\\(#\\){"
+		     (0 (progn (compose-region (match-beginning 1)
+					       (match-end 1) "∈")
+			       nil))))))
