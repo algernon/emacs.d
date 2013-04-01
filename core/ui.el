@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 22:42:50 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 23:11:53 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
@@ -104,3 +104,23 @@
 
    ;; fill the rest with spaces
    mode-line-end-spaces))
+
+;; Diminish minor modes, and lookalikes
+(diminish 'eldoc-mode "Ed")
+(eval-after-load "paredit"
+  '(diminish 'paredit-mode "PE"))
+(eval-after-load "undo-tree"
+  '(diminish 'undo-tree-mode))
+(eval-after-load "volatile-highlights"
+  '(diminish 'volatile-highlights-mode))
+(eval-after-load "git-gutter"
+  '(diminish 'git-gutter-mode))
+(eval-after-load "auto-complete"
+  '(diminish 'auto-complete-mode))
+
+; Develock needs some more hackery...
+(make-face 'develock-mode)
+(setq-default develock-mode-strings
+	      '(" DL" " FL"))
+(add-minor-mode 'font-lock-mode
+		(cons 'develock-mode develock-mode-strings))
