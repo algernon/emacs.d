@@ -1,9 +1,9 @@
-;;; bombadil.mhp.el -- bombadil.mhp extras
+;;; bombadil.el -- bombadil extras
 
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/04/01 14:44:29 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 17:29:52 algernon@madhouse-project.org>
 
 (require 'gnus)
 

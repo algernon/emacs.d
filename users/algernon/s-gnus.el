@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 15:05:22 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 17:33:07 algernon@madhouse-project.org>
 
 (defun aec-mail-hdr (key headers)
   (let ((val (or (cdr (assq
