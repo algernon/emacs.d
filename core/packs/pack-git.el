@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 19:02:28 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 20:42:16 algernon@madhouse-project.org>
 
 (packages-maybe-install '(magit git-commit-mode magithub git-gutter))
 
@@ -27,4 +27,4 @@
 (setq git-gutter:modified-sign "~ ")
 (setq git-gutter:added-sign "+ ")
 (setq git-gutter:deleted-sign "- ")
-(setq git-gutter:unchanged-sign "  ")
+(setq git-gutter:unchanged-sign nil)
