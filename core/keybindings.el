@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 14:30:19 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 15:26:21 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
 (global-set-key "\C-cg" 'goto-line)
@@ -49,7 +49,10 @@
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 
 ;; Window switching. (C-x o goes to the next window)
-(windmove-default-keybindings) ;; Shift+direction
+(global-set-key (kbd "C-S-<left>") 'windmove-left)
+(global-set-key (kbd "C-S-<right>") 'windmove-right)
+(global-set-key (kbd "C-S-<up>") 'windmove-up)
+(global-set-key (kbd "C-S-<down>") 'windmove-down)
 (global-set-key (kbd "C-x O")
 		(lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x C-o")
