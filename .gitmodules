@@ -1,3 +1,6 @@
 [submodule "packages/color-theme-tangotango"]
 	path = packages/color-theme-tangotango
 	url = git@github.com:juba/color-theme-tangotango.git
+[submodule "packages/naquadah-theme"]
+	path = packages/naquadah-theme
+	url = git://git.naquadah.org/naquadah-theme.git

@@ -1,9 +1,11 @@
-;; Last updated: <2013/04/01 14:33:39 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 17:04:23 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory
 					     "packages/color-theme-tangotango"))
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory
+					     "packages/naquadah-theme"))
 
 (setq custom-safe-themes t
       inhibit-startup-message t
@@ -35,6 +37,6 @@
 (if (and (eq window-system 'x))
     (progn
       (when (>= emacs-major-version 24)
-	(load-theme 'tangotango t)))
+	(load-theme 'naquadah t)))
   (progn
     (load-theme 'solarized-light t)))
