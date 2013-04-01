@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 23:39:04 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 23:45:01 algernon@madhouse-project.org>
 
 (packages-maybe-install '(magit git-commit-mode magithub git-gutter))
 
@@ -22,7 +22,8 @@
   (kill-buffer)
   (jump-to-register :magit-fullscreen))
 
-(define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+(eval-after-load "magit"
+  '(define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
 
 (eval-after-load "ispell"
   '(when (executable-find ispell-program-name)
