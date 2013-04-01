@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 20:48:31 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 23:34:45 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
 (global-set-key "\C-cg" 'goto-line)
@@ -60,3 +60,15 @@
 
 ;; Editing commands
 (global-set-key (kbd "C-c q") 'join-line)
+
+;; Paredit additions
+(defun paredit-wrap-round-from-behind ()
+  (interactive)
+  (forward-sexp -1)
+  (paredit-wrap-round)
+  (insert " ")
+  (forward-char -1))
+
+(eval-after-load "paredit"
+  '(define-key paredit-mode-map (kbd "M-)")
+     'paredit-wrap-round-from-behind))
