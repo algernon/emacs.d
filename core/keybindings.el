@@ -1,7 +1,19 @@
-;; Last updated: <2013/04/01 23:34:45 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 23:43:45 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+	(linum-mode 1)
+	(goto-line (read-number "Goto line: ")))
+    (linum-mode -1)
+    (git-gutter)))
+
 (global-set-key "\C-cg" 'goto-line)
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
+
 (global-unset-key "\C-z")
 (global-set-key "\C-m" 'newline-and-indent)
 
