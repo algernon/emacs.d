@@ -1,4 +1,6 @@
-;; Last updated: <2013/04/01 13:14:59 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 15:42:41 algernon@madhouse-project.org>
+
+(packages-maybe-install '(idle-highlight-mode))
 
 (require 'hippie-exp)
 
@@ -19,3 +21,5 @@
 
 (add-hook 'prog-mode-hook 'aec-pretty-lambdas)
 (add-hook 'prog-mode-hook 'aec-add-watchwords)
+(add-hook 'prog-mode-hook (lambda ()
+			    (idle-highlight-mode t)))
