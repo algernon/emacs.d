@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2013/04/02 00:02:32 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:55:51 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -50,6 +50,9 @@
 ;; From that point onward, see the git log.
 
 ;;; Code:
+
+(when (<= emacs-major-version 23)
+  (add-to-list 'load-path "~/.emacs.d/compat"))
 
 (require 'package)
 

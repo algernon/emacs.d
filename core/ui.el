@@ -1,11 +1,19 @@
-;; Last updated: <2013/04/02 00:01:33 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 01:29:45 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory
-                                             "packages/color-theme-tangotango"))
-(add-to-list 'custom-theme-load-path (concat user-emacs-directory
-                                             "packages/naquadah-theme"))
+(load "color-theme-library")
+
+(if (>= emacs-major-version 24)
+    (progn
+      (add-to-list 'custom-theme-load-path (concat user-emacs-directory
+                                                   "packages/color-theme-tangotango"))
+      (add-to-list 'custom-theme-load-path (concat user-emacs-directory
+                                                   "packages/naquadah-theme")))
+  (progn
+    (add-to-list 'load-path (concat user-emacs-directory
+                                    "packages/color-theme-tangotango"))
+    (require 'color-theme-tangotango)))
 
 (setq custom-safe-themes t
       inhibit-startup-message t
@@ -39,74 +47,81 @@
 
 (if (and (eq window-system 'x))
     (progn
-      (when (>= emacs-major-version 24)
-        (load-theme 'naquadah t)))
+      (if (>= emacs-major-version 24)
+          (load-theme 'naquadah t)
+        (color-theme-tangotango)))
   (progn
-    (load-theme 'solarized-light t)))
+    (if (>= emacs-major-version 24)
+        (load-theme 'solarized-light t)
+      (color-theme-arjen))))
 
 ;; Set the modeline
-(setq-default mode-line-format
-  (list
+(when window-system
+  (setq-default mode-line-format
+                (list
 
-   ;; the buffer name; the file name as a tool tip
-   mode-line-client
-   '(:eval (propertize "%b "
-                       'face 'font-lock-keyword-face
-                       'help-echo (buffer-file-name)))
+                 ;; the buffer name; the file name as a tool tip
+                 mode-line-client
+                 '(:eval (propertize "%b "
+                                     'face 'font-lock-keyword-face
+                                     'help-echo (buffer-file-name)))
 
-   ;; line and column
-   "(" ;; '%02' to set to 2 chars at least; prevents flickering
-   (propertize "%02l" 'face 'font-lock-type-face) ","
-   (propertize "%02c" 'face 'font-lock-type-face)
-   ") "
+                 ;; line and column
+                 "(" ;; '%02' to set to 2 chars at least; prevents flickering
+                 (propertize "%02l" 'face 'font-lock-type-face) ","
+                 (propertize "%02c" 'face 'font-lock-type-face)
+                 ") "
 
-   ;; relative position, size of file
-   "["
-   (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
-   "/"
-   (propertize "%I" 'face 'font-lock-constant-face) ;; size
-   "] "
+                 ;; relative position, size of file
+                 "["
+                 (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+                 "/"
+                 (propertize "%I" 'face 'font-lock-constant-face) ;; size
+                 "] "
 
-   ;; the current major mode for the buffer.
-   "["
-   '(:eval (propertize "%m" 'face 'font-lock-string-face
-                       'help-echo buffer-file-coding-system))
-   "] "
+                 ;; the current major mode for the buffer.
+                 "["
+                 '(:eval (propertize "%m" 'face 'font-lock-string-face
+                                     'help-echo buffer-file-coding-system))
+                 "] "
 
-   ;; insert vs overwrite mode, input-method in a tooltip
-   "["
-   '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-                       'face 'font-lock-preprocessor-face
-                       'help-echo (concat "Buffer is in "
-                                          (if overwrite-mode "overwrite" "insert") " mode")))
+                 ;; insert vs overwrite mode, input-method in a tooltip
+                 "["
+                 '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+                                     'face 'font-lock-preprocessor-face
+                                     'help-echo (concat "Buffer is in "
+                                                        (if overwrite-mode "overwrite" "insert") " mode")))
 
-   ;; was this buffer modified since the last save?
-   '(:eval (when (buffer-modified-p)
-             (concat ","  (propertize "Mod"
-                                      'face 'font-lock-warning-face
-                                      'help-echo "Buffer has been modified"))))
+                 ;; was this buffer modified since the last save?
+                 '(:eval (when (buffer-modified-p)
+                           (concat ","  (propertize "Mod"
+                                                    'face 'font-lock-warning-face
+                                                    'help-echo "Buffer has been modified"))))
 
-   ;; is this buffer read-only?
-   '(:eval (when buffer-read-only
-             (concat ","  (propertize "RO"
-                                      'face 'font-lock-type-face
-                                      'help-echo "Buffer is read-only"))))
-   "] "
+                 ;; is this buffer read-only?
+                 '(:eval (when buffer-read-only
+                           (concat ","  (propertize "RO"
+                                                    'face 'font-lock-type-face
+                                                    'help-echo "Buffer is read-only"))))
+                 "] "
 
-   ;; add misc. mode line info
-   "-- " mode-line-misc-info "--"
+                 ;; add misc. mode line info
+                 "-- "
+                 '(:eval (when (>= emacs-major-version 24) mode-line-misc-info))
+                 "--"
 
-   ;; add minor modes
-   " ["
-   `(:propertize ("" minor-mode-alist)
-                 mouse-face mode-line-highlight
-                 face font-lock-keyword-face
-                 help-echo "mouse-1: minor-mode menu, mouse-2: minor-mode help, mouse-3: toggle minor modes"
-                 local-map ,mode-line-minor-mode-keymap)
-   " ]"
+                 ;; add minor modes
+                 " ["
+                 `(:propertize ("" minor-mode-alist)
+                               mouse-face mode-line-highlight
+                               face font-lock-keyword-face
+                               help-echo "mouse-1: minor-mode menu, mouse-2: minor-mode help, mouse-3: toggle minor modes"
+                               local-map ,mode-line-minor-mode-keymap)
+                 " ]"
 
-   ;; fill the rest with spaces
-   mode-line-end-spaces))
+                 ;; fill the rest with spaces
+                 '(:eval (when (>= emacs-major-version 24) mode-line-end-spaces))
+                 )))
 
 ;; Diminish minor modes, and lookalikes
 (eval-after-load "eldoc"

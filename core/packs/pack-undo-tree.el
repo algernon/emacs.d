@@ -1,5 +1,6 @@
-;; Last updated: <2013/04/01 15:52:25 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 01:02:52 algernon@madhouse-project.org>
 
-(packages-maybe-install '(undo-tree))
+(when (>= emacs-major-version 24)
+  (packages-maybe-install '(undo-tree))
 
-(global-undo-tree-mode)
+  (global-undo-tree-mode))

@@ -1,5 +1,6 @@
-;; Last updated: <2013/04/01 19:22:29 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 01:03:27 algernon@madhouse-project.org>
 
-(packages-maybe-install '(yasnippet))
-(require 'yasnippet)
-(yas-global-mode 1)
+(when (>= emacs-major-version 24)
+  (packages-maybe-install '(yasnippet))
+  (require 'yasnippet)
+  (yas-global-mode 1))

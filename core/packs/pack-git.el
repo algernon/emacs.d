@@ -1,6 +1,8 @@
-;; Last updated: <2013/04/02 00:03:23 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 01:04:28 algernon@madhouse-project.org>
 
-(packages-maybe-install '(magit git-commit-mode magithub git-gutter))
+(packages-maybe-install '(magit git-commit-mode git-gutter))
+(when (>= emacs-major-version 24)
+  (packages-maybe-install '(magithub)))
 
 (global-set-key "\C-xg" 'magit-status)
 
