@@ -27,4 +27,3 @@
               require-final-newline t)
 
 (display-time-mode)
-(set-default 'indicate-empty-lines t)
