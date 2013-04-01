@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2013/04/01 15:19:45 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 17:26:35 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -75,12 +75,15 @@
 
 ;; Dispatch to local snippets.
 ;;
-;; Loads ~/.emacs.d/$USER/settings.el, ~/.emacs.d/core/*,
-;; ~/.emacs.d/$HOSTNAME.el, then ~/.emacs.d/$USER.el, and then
-;; ~/.emacs.d/$USER/*
-(setq aec-system-config (concat user-emacs-directory system-name ".el")
-      aec-user-config (concat user-emacs-directory user-login-name ".el")
-      aec-user-dir (concat user-emacs-directory user-login-name)
+;; Loads ~/.emacs.d/users/$USER/settings.el, ~/.emacs.d/core/*,
+;; ~/.emacs.d/hosts/$HOSTNAME.el, then ~/.emacs.d/users/$USER.el, and
+;; then ~/.emacs.d/users/$USER/*
+(setq aec-system-config (concat user-emacs-directory "hosts/"
+				system-name ".el")
+      aec-user-config (concat user-emacs-directory "users/"
+			      user-login-name ".el")
+      aec-user-dir (concat user-emacs-directory "users/"
+			   user-login-name)
       aec-core-dir (concat user-emacs-directory "core"))
 (add-to-list 'load-path aec-core-dir)
 (add-to-list 'load-path aec-user-dir)
