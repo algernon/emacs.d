@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 23:25:10 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 23:55:41 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
@@ -18,6 +18,9 @@
       uniquify-buffer-name-style 'forward
       whitespace-style '(face trailing lines-tail tabs)
       whitespace-line-column 80)
+
+(setq-default indicate-buffer-boundaries 'left
+              indicate-empty-lines nil)
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode
 		blink-cursor-mode))
