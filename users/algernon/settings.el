@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 23:55:18 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 00:08:35 algernon@madhouse-project.org>
 
 (setq user-mail-address "algernon@madhouse-project.org"
       add-log-file-name-function nil
@@ -18,13 +18,13 @@
       kept-new-versions 10
       kept-old-versions 10
       remote-shell-program "/usr/bin/ssh"
-      require-final-newline t
       safe-local-variable-values (quote ((ispell-dictionary . "magyar") (ispell-dictionary . "british")))
       tramp-default-method "scp"
       vc-diff-switches "-u"
       version-control t)
 
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil
+              require-final-newline t)
 
 (display-time-mode)
 (set-default 'indicate-empty-lines t)
