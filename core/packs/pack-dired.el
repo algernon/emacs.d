@@ -1,9 +1,9 @@
-;; Last updated: <2013/04/01 17:11:53 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 20:16:52 algernon@madhouse-project.org>
 
 (require 'dired nil t)
 (require 'dired-x nil t)
 
-(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$"
+(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
       dired-recursive-deletes 'top)
 (set-default 'dired-omit-mode t)
 
