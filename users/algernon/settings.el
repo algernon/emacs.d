@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/01 12:59:38 algernon@madhouse-project.org>
+;; Last updated: <2013/04/01 23:55:18 algernon@madhouse-project.org>
 
 (setq user-mail-address "algernon@madhouse-project.org"
       add-log-file-name-function nil
@@ -15,7 +15,6 @@
       display-time-interval 10
       display-time-string-forms (quote ((if (and (not display-time-format) display-time-day-and-date) (format-time-string "%a %b %e " now) "") (format-time-string (or display-time-format (if display-time-24hr-format "%T" "%-I:%M%p")) now)))
       frame-background-mode 'dark
-      indent-tabs-mode nil
       kept-new-versions 10
       kept-old-versions 10
       remote-shell-program "/usr/bin/ssh"
@@ -24,6 +23,8 @@
       tramp-default-method "scp"
       vc-diff-switches "-u"
       version-control t)
+
+(setq-default indent-tabs-mode nil)
 
 (display-time-mode)
 (set-default 'indicate-empty-lines t)
