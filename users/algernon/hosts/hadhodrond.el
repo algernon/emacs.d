@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/04/02 10:18:00 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 13:30:29 algernon@madhouse-project.org>
 
 (setq gnus-select-method '(nnimap "mail.balabit"
                                   (nnimap-stream network)
@@ -27,3 +27,7 @@
          (eval (setq message-sendmail-extra-arguments '("-a" "balabit")))
          ("Bcc" "algernon@balabit.hu"))
         ))
+
+(when (and window-system
+           (>= emacs-major-version 24))
+  (load-theme 'solarized-dark))
