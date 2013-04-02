@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 03:07:54 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 22:48:34 algernon@madhouse-project.org>
 
 (packages-maybe-install '(magit git-commit-mode git-gutter))
 (when (>= emacs-major-version 24)
@@ -35,7 +35,7 @@
 (when (>= emacs-major-version 24)
   (require 'git-gutter)
 
-  (setq git-gutter:window-width 2)
+  (setq-default git-gutter:window-width 1)
 
   (global-git-gutter-mode t)
 
