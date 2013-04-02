@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/04/02 13:30:29 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 01:02:04 algernon@madhouse-project.org>
 
 (setq gnus-select-method '(nnimap "mail.balabit"
                                   (nnimap-stream network)
@@ -31,3 +31,19 @@
 (when (and window-system
            (>= emacs-major-version 24))
   (load-theme 'solarized-dark))
+
+;; Replace the modeline with powerline
+(when window-system
+  (add-to-list 'load-path (concat user-emacs-directory
+                                  "packages/emacs-powerline"))
+  (require 'powerline)
+  (set-face-attribute 'mode-line nil
+                      :background "#586e75"
+                      :foreground "black"
+                      :box nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :foreground "#93a1a1"
+                      :box nil)
+
+  (setq powerline-color1 "#073642")
+  (setq powerline-color2 "#002b36"))

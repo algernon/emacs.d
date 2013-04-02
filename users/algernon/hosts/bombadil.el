@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/04/02 00:02:12 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 00:51:33 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -38,3 +38,13 @@
 
 ;(setq gnus-select-method '(nntp "madhouse-project.org"
 ;                                (nntp-port-number 8119)))
+
+;; Replace the modeline with powerline
+(when window-system
+  (add-to-list 'load-path (concat user-emacs-directory
+                                  "packages/emacs-powerline"))
+  (require 'powerline)
+  (set-face-attribute 'mode-line nil
+                      :background "grey40")
+
+  (setq powerline-color2 "grey40"))

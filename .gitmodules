@@ -10,3 +10,6 @@
 [submodule "packages/golden-ratio"]
 	path = packages/golden-ratio
 	url = git://github.com/roman/golden-ratio.el.git
+[submodule "packages/emacs-powerline"]
+	path = packages/emacs-powerline
+	url = git://github.com/jonathanchu/emacs-powerline.git
