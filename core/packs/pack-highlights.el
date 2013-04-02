@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 22:32:53 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 00:54:10 algernon@madhouse-project.org>
 
 (packages-maybe-install '(volatile-highlights highlight mic-paren))
 (require 'volatile-highlights)
@@ -11,6 +11,8 @@
 (setq nrepl-eval-sexp-fu-flash-duration 0.3)
 (set-face-attribute 'nrepl-eval-sexp-fu-flash
                     nil
+                    :foreground nil
+                    :background nil
                     :inverse-video t
                     :weight 'bold)
 
