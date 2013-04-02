@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 13:25:07 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 22:32:53 algernon@madhouse-project.org>
 
 (packages-maybe-install '(volatile-highlights highlight mic-paren))
 (require 'volatile-highlights)
@@ -8,10 +8,20 @@
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/nrepl-eval-sexp-fu"))
 (require 'nrepl-eval-sexp-fu)
-(setq nrepl-eval-sexp-fu-flash-duration 0.5)
+(setq nrepl-eval-sexp-fu-flash-duration 0.3)
+(set-face-attribute 'nrepl-eval-sexp-fu-flash
+                    nil
+                    :inverse-video t
+                    :weight 'bold)
 
 (require 'mic-paren)
 (paren-activate)
+
+(set-face-attribute 'paren-face-match
+                    nil
+                    :inverse-video nil
+                    :weight 'normal
+                    :background "#454A4B")
 
 (defun toggle-mic-paren-sexp-mode ()
   (interactive)
