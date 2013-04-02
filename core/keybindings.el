@@ -37,7 +37,7 @@
 (define-key global-map (kbd "C-<kp-add>") 'text-scale-increase)
 (define-key global-map (kbd "C-<kp-subtract>") 'text-scale-decrease)
 
-(when (>= emacs-major-version 24)
+(when (fboundp 'mouse-wheel-up-event)
   (global-set-key (vector (list 'control mouse-wheel-up-event))
                   '(lambda () (interactive) (text-scale-decrease 1)))
   (global-set-key (vector (list 'control mouse-wheel-down-event))
