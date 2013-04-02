@@ -7,3 +7,6 @@
 [submodule "packages/nrepl-eval-sexp-fu"]
 	path = packages/nrepl-eval-sexp-fu
 	url = git://github.com/samaaron/nrepl-eval-sexp-fu.git
+[submodule "packages/golden-ratio"]
+	path = packages/golden-ratio
+	url = git://github.com/roman/golden-ratio.el.git
