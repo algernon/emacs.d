@@ -36,7 +36,8 @@
 
 (column-number-mode 1)
 (delete-selection-mode t)
-(mouse-wheel-mode t)
+(when (fboundp 'mouse-wheel-mode)
+  (mouse-wheel-mode t))
 (show-paren-mode)
 (set-language-environment 'utf-8)
 

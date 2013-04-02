@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 01:04:28 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 03:07:54 algernon@madhouse-project.org>
 
 (packages-maybe-install '(magit git-commit-mode git-gutter))
 (when (>= emacs-major-version 24)
@@ -32,15 +32,16 @@
      (add-hook 'magit-log-edit-mode-hook 'turn-on-flyspell)))
 
 ;; Git gutter setup
-(require 'git-gutter)
+(when (>= emacs-major-version 24)
+  (require 'git-gutter)
 
-(setq git-gutter:window-width 2)
+  (setq git-gutter:window-width 2)
 
-(global-git-gutter-mode t)
+  (global-git-gutter-mode t)
 
-(setq git-gutter:lighter " G-+")
+  (setq git-gutter:lighter " G-+")
 
-(setq git-gutter:modified-sign "~ ")
-(setq git-gutter:added-sign "+ ")
-(setq git-gutter:deleted-sign "- ")
-(setq git-gutter:unchanged-sign nil)
+  (setq git-gutter:modified-sign "~ ")
+  (setq git-gutter:added-sign "+ ")
+  (setq git-gutter:deleted-sign "- ")
+  (setq git-gutter:unchanged-sign nil))

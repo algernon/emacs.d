@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 00:02:58 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 03:05:06 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
 (defun goto-line-with-feedback ()
@@ -37,12 +37,13 @@
 (define-key global-map (kbd "C-<kp-add>") 'text-scale-increase)
 (define-key global-map (kbd "C-<kp-subtract>") 'text-scale-decrease)
 
-(global-set-key (vector (list 'control mouse-wheel-up-event))
-                '(lambda () (interactive) (text-scale-decrease 1)))
-(global-set-key (vector (list 'control mouse-wheel-down-event))
-                '(lambda () (interactive) (text-scale-increase 1)))
-(global-set-key (kbd "C-<down-mouse-2>")
-                '(lambda () (interactive) (text-scale-adjust 0)))
+(when (>= emacs-major-version 24)
+  (global-set-key (vector (list 'control mouse-wheel-up-event))
+                  '(lambda () (interactive) (text-scale-decrease 1)))
+  (global-set-key (vector (list 'control mouse-wheel-down-event))
+                  '(lambda () (interactive) (text-scale-increase 1)))
+  (global-set-key (kbd "C-<down-mouse-2>")
+                  '(lambda () (interactive) (text-scale-adjust 0))))
 
 ;; Searching
 (setq lazy-highlight-cleanup nil)
