@@ -4,3 +4,6 @@
 [submodule "packages/naquadah-theme"]
 	path = packages/naquadah-theme
 	url = git://git.naquadah.org/naquadah-theme.git
+[submodule "packages/nrepl-eval-sexp-fu"]
+	path = packages/nrepl-eval-sexp-fu
+	url = git://github.com/samaaron/nrepl-eval-sexp-fu.git
