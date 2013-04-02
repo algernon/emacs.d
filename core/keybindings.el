@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 03:05:06 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 08:28:05 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
 (defun goto-line-with-feedback ()
@@ -37,7 +37,7 @@
 (define-key global-map (kbd "C-<kp-add>") 'text-scale-increase)
 (define-key global-map (kbd "C-<kp-subtract>") 'text-scale-decrease)
 
-(when (fboundp 'mouse-wheel-up-event)
+(when (fboundp 'mouse-wheel-mode)
   (global-set-key (vector (list 'control mouse-wheel-up-event))
                   '(lambda () (interactive) (text-scale-decrease 1)))
   (global-set-key (vector (list 'control mouse-wheel-down-event))
