@@ -3,7 +3,7 @@
 ;; Copyright (C) 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/04/02 02:43:42 algernon@madhouse-project.org>
+;; Last updated: <2013/04/02 03:12:33 algernon@madhouse-project.org>
 
 (setq gnus-select-method '(nntp "localhost"
                                 (nntp-address "localhost")
@@ -28,3 +28,5 @@
          ("Bcc" "algernon@madhouse-project.org")
          (address "algernon@madhouse-project.org"))
         ))
+
+(setq-default sendmail-program "/usr/lib/sendmail")
