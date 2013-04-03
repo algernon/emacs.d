@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 22:47:56 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 08:18:56 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
@@ -129,7 +129,7 @@
 (eval-after-load "eldoc"
   '(diminish 'eldoc-mode))
 (eval-after-load "paredit"
-  '(diminish 'paredit-mode "PE"))
+  '(diminish 'paredit-mode " π"))
 (eval-after-load "undo-tree"
   '(diminish 'undo-tree-mode))
 (eval-after-load "volatile-highlights"
@@ -142,10 +142,13 @@
   '(diminish 'yas-minor-mode))
 (eval-after-load "server"
   '(diminish 'server-buffer-clients))
+(eval-after-load "hi-lock"
+  '(diminish 'hi-lock-mode))
+(diminish 'auto-fill-function "▤")
 
 ; Develock needs some more hackery...
 (make-face 'develock-mode)
 (setq-default develock-mode-strings
-              '(" DL" nil))
+              '("Ɖ" nil))
 (add-minor-mode 'font-lock-mode
                 (cons 'develock-mode develock-mode-strings))
