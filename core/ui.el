@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/03 08:18:56 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 08:43:14 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
@@ -40,7 +40,7 @@
   (mouse-wheel-mode t))
 (show-paren-mode)
 (set-language-environment 'utf-8)
-(fringe-mode 1)
+(fringe-mode '(1 . 0))
 
 (setq x-select-enable-clipboard t)
 (if (functionp 'x-cut-buffer-or-selection-value)
