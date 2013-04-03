@@ -1,8 +1,11 @@
-;; Last updated: <2013/04/03 00:54:10 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 10:24:30 algernon@madhouse-project.org>
 
 (packages-maybe-install '(volatile-highlights highlight mic-paren))
+
 (require 'volatile-highlights)
 (volatile-highlights-mode)
+
+(diminish 'volatile-highlights-mode)
 
 (require 'highlight)
 (add-to-list 'load-path (concat user-emacs-directory

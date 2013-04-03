@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/03 08:43:14 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 10:25:24 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
@@ -128,22 +128,8 @@
 ;; Diminish minor modes, and lookalikes
 (eval-after-load "eldoc"
   '(diminish 'eldoc-mode))
-(eval-after-load "paredit"
-  '(diminish 'paredit-mode " π"))
-(eval-after-load "undo-tree"
-  '(diminish 'undo-tree-mode))
-(eval-after-load "volatile-highlights"
-  '(diminish 'volatile-highlights-mode))
-(eval-after-load "git-gutter"
-  '(diminish 'git-gutter-mode))
-(eval-after-load "auto-complete"
-  '(diminish 'auto-complete-mode))
-(eval-after-load "yasnippet"
-  '(diminish 'yas-minor-mode))
 (eval-after-load "server"
   '(diminish 'server-buffer-clients))
-(eval-after-load "hi-lock"
-  '(diminish 'hi-lock-mode))
 (diminish 'auto-fill-function "▤")
 
 ; Develock needs some more hackery...

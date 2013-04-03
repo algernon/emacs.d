@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 00:04:03 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 10:22:55 algernon@madhouse-project.org>
 
 (packages-maybe-install '(idle-highlight-mode))
 
@@ -15,3 +15,6 @@
 (add-hook 'prog-mode-hook 'aec-add-watchwords)
 (add-hook 'prog-mode-hook (lambda ()
                             (idle-highlight-mode t)))
+
+(eval-after-load "hi-lock"
+  '(diminish 'hi-lock-mode))

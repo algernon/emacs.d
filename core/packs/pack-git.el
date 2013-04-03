@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 22:50:34 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 10:24:16 algernon@madhouse-project.org>
 
 (packages-maybe-install '(magit git-commit-mode git-gutter))
 (when (>= emacs-major-version 24)
@@ -45,4 +45,6 @@
   (setq git-gutter:modified-sign "~ ")
   (setq git-gutter:added-sign "+ ")
   (setq git-gutter:deleted-sign "- ")
-  (setq git-gutter:unchanged-sign nil))
+  (setq git-gutter:unchanged-sign nil)
+
+  (diminish 'git-gutter-mode))

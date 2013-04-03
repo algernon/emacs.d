@@ -1,8 +1,11 @@
-;; Last updated: <2013/04/02 00:04:36 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 10:21:14 algernon@madhouse-project.org>
 
 (packages-maybe-install '(paredit rainbow-delimiters))
 
 (global-rainbow-delimiters-mode)
+
+(eval-after-load "paredit"
+  '(diminish 'paredit-mode " π"))
 
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
                                    (turn-on-auto-fill)
