@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/03 10:25:24 algernon@madhouse-project.org>
+;; Last updated: <2013/04/03 10:46:50 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme))
 
@@ -131,6 +131,7 @@
 (eval-after-load "server"
   '(diminish 'server-buffer-clients))
 (diminish 'auto-fill-function "▤")
+(diminish 'overwrite-mode "O")
 
 ; Develock needs some more hackery...
 (make-face 'develock-mode)
