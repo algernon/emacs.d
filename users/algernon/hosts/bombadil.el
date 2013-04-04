@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/04/03 00:51:33 algernon@madhouse-project.org>
+;; Last updated: <2013/04/04 15:59:54 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -47,4 +47,42 @@
   (set-face-attribute 'mode-line nil
                       :background "grey40")
 
-  (setq powerline-color2 "grey40"))
+  (setq powerline-color2 "grey40")
+
+  (defun bombadil-powerline-make-fill
+    (color)
+    (let ((plface (powerline-make-face color)))
+      (if (eq 'right (get-scroll-bar-mode))
+          (propertize " " 'display '((space :align-to (- right-fringe 40)))
+                      'face plface)
+        (propertize " " 'display '((space :align-to (- right-fringe 43)))
+                    'face plface))))
+
+  (setq-default
+   mode-line-format
+   (list "%e"
+         '(:eval (concat
+                  (powerline-rmw            'left   nil)
+                  (powerline-buffer-id      'left   nil
+                                            powerline-color1)
+                  (powerline-major-mode     'left
+                                            powerline-color1)
+                  (powerline-minor-modes    'left
+                                            powerline-color1)
+                  (powerline-narrow         'left        powerline-color1
+                                            powerline-color2)
+                  (powerline-vc             'center
+                                            powerline-color2)
+                  (bombadil-powerline-make-fill      powerline-color2)
+                  (powerline-row         'right       powerline-color1
+                                         powerline-color2)
+                  (powerline-make-text      ":"          powerline-color1)
+                  (powerline-column         'right
+                                            powerline-color1)
+                  (powerline-narrow 'right powerline-color2 powerline-color1)
+                  (powerline-make-text (format-mode-line
+                                        mode-line-misc-info) powerline-color2)
+                  (powerline-percent        'right  powerline-color1
+                                            powerline-color2 )
+                  (powerline-narrow 'right nil powerline-color1)
+                  (powerline-make-text      "  "    nil))))))
