@@ -1,13 +1,12 @@
-;; Last updated: <2013/04/05 15:43:49 algernon@madhouse-project.org>
+;; Last updated: <2013/04/05 21:05:05 algernon@madhouse-project.org>
 
 ;; dired
-(require 'dired nil t)
-(require 'dired-x nil t)
+(require 'dired)
+(require 'dired-x)
 
 (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
       dired-recursive-deletes 'top)
 (set-default 'dired-omit-mode t)
-(diminish 'dired-omit-mode)
 
 (global-set-key "\C-x\C-d" 'ido-dired)
 
@@ -16,6 +15,10 @@
 
 (add-hook 'dired-load-hook (function (lambda ()
                                        (load "dired-x"))))
+
+(defadvice dired-omit-startup (after diminish-dired-omit activate)
+          "Make sure to remove \"Omit\" from the modeline."
+          (diminish 'dired-omit-mode) dired-mode-map)
 
 ;; recent files
 (require 'recentf)
