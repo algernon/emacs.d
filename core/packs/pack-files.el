@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/05 15:42:24 algernon@madhouse-project.org>
+;; Last updated: <2013/04/05 15:43:49 algernon@madhouse-project.org>
 
 ;; dired
 (require 'dired nil t)
@@ -7,6 +7,7 @@
 (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
       dired-recursive-deletes 'top)
 (set-default 'dired-omit-mode t)
+(diminish 'dired-omit-mode)
 
 (global-set-key "\C-x\C-d" 'ido-dired)
 
