@@ -1,5 +1,6 @@
-;; Last updated: <2013/04/02 00:03:15 algernon@madhouse-project.org>
+;; Last updated: <2013/04/05 15:42:24 algernon@madhouse-project.org>
 
+;; dired
 (require 'dired nil t)
 (require 'dired-x nil t)
 
@@ -14,3 +15,17 @@
 
 (add-hook 'dired-load-hook (function (lambda ()
                                        (load "dired-x"))))
+
+;; recent files
+(require 'recentf)
+(setq recentf-max-saved-items 200
+      recentf-max-menu-items 15)
+(recentf-mode +1)
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
+(global-set-key (kbd "C-c f")  'recentf-ido-find-file)
