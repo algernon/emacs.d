@@ -1,11 +1,22 @@
-;; Last updated: <2013/04/03 10:21:14 algernon@madhouse-project.org>
+;; Last updated: <2013/04/06 00:09:32 algernon@madhouse-project.org>
 
 (packages-maybe-install '(paredit rainbow-delimiters))
 
 (global-rainbow-delimiters-mode)
 
+;; Paredit additions
+(defun paredit-wrap-round-from-behind ()
+  (interactive)
+  (forward-sexp -1)
+  (paredit-wrap-round)
+  (insert " ")
+  (forward-char -1))
+
 (eval-after-load "paredit"
-  '(diminish 'paredit-mode " π"))
+  '(progn
+     (define-key paredit-mode-map (kbd "M-)")
+       'paredit-wrap-round-from-behind)
+     (diminish 'paredit-mode " π")))
 
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
                                    (turn-on-auto-fill)
