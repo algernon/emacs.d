@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/03 10:22:55 algernon@madhouse-project.org>
+;; Last updated: <2013/04/05 12:33:31 algernon@madhouse-project.org>
 
 (packages-maybe-install '(idle-highlight-mode))
 
@@ -13,8 +13,11 @@
           1 font-lock-warning-face t))))
 
 (add-hook 'prog-mode-hook 'aec-add-watchwords)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (add-hook 'prog-mode-hook (lambda ()
                             (idle-highlight-mode t)))
 
+(eval-after-load "flyspell"
+  '(diminish 'flyspell-mode "α"))
 (eval-after-load "hi-lock"
   '(diminish 'hi-lock-mode))
