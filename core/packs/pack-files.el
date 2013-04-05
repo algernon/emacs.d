@@ -1,12 +1,15 @@
-;; Last updated: <2013/04/05 21:05:05 algernon@madhouse-project.org>
+;; Last updated: <2013/04/05 21:48:45 algernon@madhouse-project.org>
 
 ;; dired
+(packages-maybe-install '(dired-details+))
 (require 'dired)
 (require 'dired-x)
+(require 'dired-details+)
 
 (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
       dired-recursive-deletes 'top)
 (set-default 'dired-omit-mode t)
+(setq dired-details-hidden-string "[...] ")
 
 (global-set-key "\C-x\C-d" 'ido-dired)
 
