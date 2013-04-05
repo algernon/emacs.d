@@ -1,4 +1,6 @@
-;; Last updated: <2013/04/02 00:05:13 algernon@madhouse-project.org>
+;; Last updated: <2013/04/05 22:09:06 algernon@madhouse-project.org>
+
+(packages-maybe-install '(gnusnotes))
 
 (add-to-list 'load-path (concat user-emacs-directory "packages/"))
 
