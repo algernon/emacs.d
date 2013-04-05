@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/02 00:08:35 algernon@madhouse-project.org>
+;; Last updated: <2013/04/06 00:13:39 algernon@madhouse-project.org>
 
 (setq user-mail-address "algernon@madhouse-project.org"
       add-log-file-name-function nil
@@ -11,6 +11,7 @@
       browse-url-generic-program "chromium"
       default-justification 'left
       debian-changelog-mailing-address "algernon@madhouse-project.org"
+      delete-old-versions t
       display-time-24hr-format t
       display-time-interval 10
       display-time-string-forms (quote ((if (and (not display-time-format) display-time-day-and-date) (format-time-string "%a %b %e " now) "") (format-time-string (or display-time-format (if display-time-24hr-format "%T" "%-I:%M%p")) now)))
