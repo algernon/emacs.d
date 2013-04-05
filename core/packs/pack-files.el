@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/05 21:48:45 algernon@madhouse-project.org>
+;; Last updated: <2013/04/05 23:57:22 algernon@madhouse-project.org>
 
 ;; dired
 (packages-maybe-install '(dired-details+))
@@ -36,3 +36,10 @@
     (when file
       (find-file file))))
 (global-set-key (kbd "C-c f")  'recentf-ido-find-file)
+
+;; uniquify
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward
+      uniquify-separator "/"
+      uniquify-after-kill-buffer-p t
+      uniquify-ignore-buffers-re "^\\*")
