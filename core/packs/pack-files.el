@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/05 23:57:22 algernon@madhouse-project.org>
+;; Last updated: <2013/04/06 23:45:09 algernon@madhouse-project.org>
 
 ;; dired
 (packages-maybe-install '(dired-details+))
@@ -26,7 +26,13 @@
 ;; recent files
 (require 'recentf)
 (setq recentf-max-saved-items 200
-      recentf-max-menu-items 15)
+      recentf-max-menu-items 15
+      recentf-exclude '("\\.ido\\.last$"
+                        "^/usr/"
+                        (concat "^" (expand-file-name (concat
+                                                       user-emacs-directory
+                                                       "elpa/")))))
+
 (recentf-mode +1)
 
 (defun recentf-ido-find-file ()
