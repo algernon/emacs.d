@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/06 00:08:50 algernon@madhouse-project.org>
+;; Last updated: <2013/04/07 12:22:21 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
 (defun goto-line-with-feedback ()
@@ -16,6 +16,9 @@
 
 (global-unset-key "\C-z")
 (global-set-key "\C-m" 'newline-and-indent)
+
+; Because a space after a comma is just a waste of a keystroke.
+(global-set-key (kbd ",") (lambda() (interactive) (insert ", ")))
 
 ;; Killing, copying and yanking
 (global-unset-key "\C-xk")
