@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/06 23:45:09 algernon@madhouse-project.org>
+;; Last updated: <2013/04/07 13:55:47 algernon@madhouse-project.org>
 
 ;; dired
 (packages-maybe-install '(dired-details+))
@@ -29,9 +29,7 @@
       recentf-max-menu-items 15
       recentf-exclude '("\\.ido\\.last$"
                         "^/usr/"
-                        (concat "^" (expand-file-name (concat
-                                                       user-emacs-directory
-                                                       "elpa/")))))
+                        "\\.emacs\\.d/elpa/"))
 
 (recentf-mode +1)
 
