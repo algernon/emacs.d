@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/06 00:09:32 algernon@madhouse-project.org>
+;; Last updated: <2013/04/07 14:01:29 algernon@madhouse-project.org>
 
 (packages-maybe-install '(paredit rainbow-delimiters))
 
@@ -28,7 +28,7 @@
   'reindent-then-newline-and-indent)
 
 (font-lock-add-keywords 'emacs-lisp-mode
-                        `(("(\\(defun\\)[\[[:space:]]"
+                        `(("(\\(function\\)[\[[:space:]]"
                            (0 (progn (compose-region (match-beginning 1)
                                                      (match-end 1) "ƒ")
                                      nil)))))
@@ -40,7 +40,7 @@
                                      nil)))))
 
 (font-lock-add-keywords 'lisp-interaction-mode
-                        `(("(\\(defun\\)[\[[:space:]]"
+                        `(("(\\(function\\)[\[[:space:]]"
                            (0 (progn (compose-region (match-beginning 1)
                                                      (match-end 1) "ƒ")
                                      nil)))))
