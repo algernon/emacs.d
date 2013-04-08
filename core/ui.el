@@ -1,12 +1,13 @@
-;; Last updated: <2013/04/05 23:11:57 algernon@madhouse-project.org>
+;; Last updated: <2013/04/08 10:23:01 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           nurumacs minimap))
 
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/golden-ratio"))
-(require 'golden-ratio)
-(golden-ratio-enable)
+(when (>= emacs-major-version 24)
+  (require 'golden-ratio)
+  (golden-ratio-enable))
 
 (require 'nurumacs)
 
