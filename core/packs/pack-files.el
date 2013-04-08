@@ -1,10 +1,13 @@
-;; Last updated: <2013/04/07 13:55:47 algernon@madhouse-project.org>
+;; Last updated: <2013/04/08 07:54:30 algernon@madhouse-project.org>
 
 ;; dired
 (packages-maybe-install '(dired-details+))
 (require 'dired)
 (require 'dired-x)
 (require 'dired-details+)
+
+(add-to-list 'load-path (concat user-emacs-directory "packages/"))
+(require 'diredful)
 
 (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
       dired-recursive-deletes 'top)
