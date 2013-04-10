@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/08 10:23:01 algernon@madhouse-project.org>
+;; Last updated: <2013/04/10 14:30:13 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           nurumacs minimap))
@@ -156,6 +156,8 @@
   '(diminish 'eldoc-mode))
 (eval-after-load "server"
   '(diminish 'server-buffer-clients))
+(eval-after-load "abbrev"
+  '(diminish 'abbrev-mode))
 (diminish 'auto-fill-function "▤")
 (diminish 'overwrite-mode "O")
 
