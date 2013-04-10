@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/04/05 12:37:54 algernon@madhouse-project.org>
+;; Last updated: <2013/04/10 20:26:21 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -15,14 +15,9 @@
                                    "algernon@madhouse-project.org")))
 
 (setq gnus-secondary-select-methods
-      '((nnimap "lists@madhouse-project.org"
-                (nnimap-address "imap.lists.madhouse-project.org")
-                (nnimap-server-port 993)
-                (nnimap-stream ssl)
-                (nnimap-user "lists@madhouse-project.org"))
-;        (nntp "madhouse-project.org"
-;             (nntp-port-number 8119))
-))
+      '((nntp "news.gmane.org")
+        (nntp "madhouse-project.org"
+              (nntp-port-number 8119))))
 
 (setq gnus-posting-styles
       '((".*"
@@ -31,13 +26,6 @@
          ("Bcc" "algernon@madhouse-project.org")
          (address "algernon@madhouse-project.org"))
         ))
-
-;; (setq gnus-select-method '(nnimap "lists@madhouse-project.org"
-;;                                   (nnimap-stream shell)
-;;                                   (imap-shell-program "/usr/lib/dovecot/imap")))
-
-;(setq gnus-select-method '(nntp "madhouse-project.org"
-;                                (nntp-port-number 8119)))
 
 (when (and window-system
            (>= emacs-major-version 24))
