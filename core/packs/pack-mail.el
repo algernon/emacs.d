@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/05 22:09:06 algernon@madhouse-project.org>
+;; Last updated: <2013/04/10 20:37:20 algernon@madhouse-project.org>
 
 (packages-maybe-install '(gnusnotes))
 
@@ -39,6 +39,7 @@
  gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date))
 
 (setq mm-discouraged-alternatives '("text/html" "text/richtext")
+      gnus-buttonized-mime-types '("multipart/alternative" "multipart/signed")
       message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "/usr/bin/msmtp"
       message-subscribed-address-functions '(gnus-find-subscribed-addresses))
