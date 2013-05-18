@@ -15,7 +15,9 @@
 (add-hook 'prog-mode-hook 'aec-add-watchwords)
 ;(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (add-hook 'prog-mode-hook (lambda ()
-                            (idle-highlight-mode t)))
+                            (if (is-presentingp)
+                                (text-scale-increase 3)
+                              (idle-highlight-mode t))))
 
 (eval-after-load "flyspell"
   '(diminish 'flyspell-mode "α"))

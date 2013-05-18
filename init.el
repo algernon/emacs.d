@@ -76,6 +76,10 @@
 
   (mapcar (lambda (x) (add-to-list the-list x)) elements))
 
+(defun is-presentingp ()
+  (interactive)
+  (not (= (length (getenv "PRESENTING")) 0)))
+
 ;; Dispatch to local snippets.
 ;;
 ;; Loads ~/.emacs.d/users/$USER/settings.el, ~/.emacs.d/core/*,

@@ -29,10 +29,13 @@
 
 (when (and window-system
            (>= emacs-major-version 24))
-  (load-theme 'solarized-dark))
+  (if (is-presentingp)
+      (load-theme 'wombat)
+    (load-theme 'solarized-dark)))
 
 ;; Replace the modeline with powerline
-(when window-system
+(when (and window-system
+           (not (is-presentingp)))
   (add-to-list 'load-path (concat user-emacs-directory
                                   "packages/emacs-powerline"))
   (require 'powerline)
