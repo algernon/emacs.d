@@ -5,7 +5,8 @@
 
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/golden-ratio"))
-(when (>= emacs-major-version 24)
+(when (and (>= emacs-major-version 24)
+           (not (is-presentingp)))
   (require 'golden-ratio)
   (golden-ratio-enable))
 
