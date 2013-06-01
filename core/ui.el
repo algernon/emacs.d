@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/10 14:30:13 algernon@madhouse-project.org>
+;; Last updated: <2013/06/01 10:15:13 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           nurumacs minimap))
@@ -50,9 +50,7 @@
       global-font-lock-mode t
       frame-title-format '(buffer-file-name "%f" ("%b"))
       color-theme-is-global t
-      uniquify-buffer-name-style 'forward
-      whitespace-style '(face trailing lines-tail tabs)
-      whitespace-line-column 80)
+      uniquify-buffer-name-style 'forward)
 
 (setq-default indicate-buffer-boundaries 'left
               indicate-empty-lines nil)
@@ -68,6 +66,7 @@
 (show-paren-mode)
 (set-language-environment 'utf-8)
 (fringe-mode '(1 . 0))
+(global-whitespace-mode +1)
 
 (setq x-select-enable-clipboard t)
 (if (functionp 'x-cut-buffer-or-selection-value)
@@ -161,10 +160,3 @@
   '(diminish 'abbrev-mode))
 (diminish 'auto-fill-function "▤")
 (diminish 'overwrite-mode "O")
-
-; Develock needs some more hackery...
-(make-face 'develock-mode)
-(setq-default develock-mode-strings
-              '("Ɖ" nil))
-(add-minor-mode 'font-lock-mode
-                (cons 'develock-mode develock-mode-strings))
