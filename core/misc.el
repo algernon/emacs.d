@@ -6,3 +6,7 @@
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d"
                                                 pos))))
+
+(setq safe-local-variable-values '((encoding . utf-8)
+                                   (ispell-dictionary . "magyar")
+                                   (ispell-dictionary . "british")))
