@@ -5,7 +5,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "packages/"))
 
 (require 'gnus-switch)
-(require 'bbdb)
+(require 'bbdb nil t)
 
 (setq-default
  gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,15f %* %B%9{%up%}%s%)\n"
@@ -94,12 +94,13 @@
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
 ;; BBDB integration
-(bbdb-initialize 'gnus 'message)
-(setq bbdb-send-mail-style 'gnus
-      bbdb-complete-name-full-completion t
-      bbdb-completion-type 'primary-or-name
-      bbdb-complete-name-allow-cycling t
-      bbdb-offer-save t
-      bbdb-use-pop-up nil
-      bbdb-electric-p t
-      bbdb-silent-running nil)
+(when (featurep 'bbdb)
+  (bbdb-initialize 'gnus 'message)
+  (setq bbdb-send-mail-style 'gnus
+        bbdb-complete-name-full-completion t
+        bbdb-completion-type 'primary-or-name
+        bbdb-complete-name-allow-cycling t
+        bbdb-offer-save t
+        bbdb-use-pop-up nil
+        bbdb-electric-p t
+        bbdb-silent-running nil))
