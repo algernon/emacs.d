@@ -1,4 +1,4 @@
-;; Last updated: <2013/06/01 10:15:13 algernon@madhouse-project.org>
+;; Last updated: <2013/07/12 12:18:05 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           nurumacs minimap))
@@ -65,7 +65,8 @@
   (mouse-wheel-mode t))
 (show-paren-mode)
 (set-language-environment 'utf-8)
-(fringe-mode '(1 . 0))
+(when (fboundp 'fringe-mode)
+  (fringe-mode '(1 . 0)))
 (global-whitespace-mode +1)
 
 (setq x-select-enable-clipboard t)
