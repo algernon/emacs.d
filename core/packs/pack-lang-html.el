@@ -1,4 +1,8 @@
-;; Last updated: <2013/04/02 00:04:08 algernon@madhouse-project.org>
+;; Last updated: <2013/10/15 21:25:25 algernon@madhouse-project.org>
 
-(add-hook 'html-mode-hook '(lambda ()
-                             (turn-off-auto-fill)))
+(packages-maybe-install '(web-mode))
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(add-hook 'web-mode-hook '(lambda ()
+                            (turn-off-auto-fill)))
