@@ -1,4 +1,4 @@
-;; Last updated: <2013/07/12 12:18:05 algernon@madhouse-project.org>
+;; Last updated: <2013/10/20 14:13:39 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           nurumacs minimap))
@@ -91,46 +91,48 @@
 
                  ;; the buffer name; the file name as a tool tip
                  mode-line-client
-                 '(:eval (propertize "%b "
-                                     'face 'font-lock-keyword-face
+                 '(:eval (propertize " %b "
+                                     'face 'mode-line-buffer-id
                                      'help-echo (buffer-file-name)))
+
+                 " "
 
                  ;; line and column
                  "(" ;; '%02' to set to 2 chars at least; prevents flickering
-                 (propertize "%02l" 'face 'font-lock-type-face) ","
-                 (propertize "%02c" 'face 'font-lock-type-face)
+                 (propertize "%02l" 'face 'mode-line-emphasis) ","
+                 (propertize "%02c" 'face 'mode-line-emphasis)
                  ") "
 
                  ;; relative position, size of file
                  "["
-                 (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+                 (propertize "%p" 'face 'mode-line-emphasis) ;; % above top
                  "/"
-                 (propertize "%I" 'face 'font-lock-constant-face) ;; size
+                 (propertize "%I" 'face 'mode-line-emphasis) ;; size
                  "] "
 
                  ;; the current major mode for the buffer.
                  "["
-                 '(:eval (propertize "%m" 'face 'font-lock-string-face
+                 '(:eval (propertize "%m" 'face 'mode-line-emphasis
                                      'help-echo buffer-file-coding-system))
                  "] "
 
                  ;; insert vs overwrite mode, input-method in a tooltip
                  "["
                  '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-                                     'face 'font-lock-preprocessor-face
+                                     'face 'mode-line-emphasis
                                      'help-echo (concat "Buffer is in "
                                                         (if overwrite-mode "overwrite" "insert") " mode")))
 
                  ;; was this buffer modified since the last save?
                  '(:eval (when (buffer-modified-p)
                            (concat ","  (propertize "Mod"
-                                                    'face 'font-lock-warning-face
+                                                    'face 'mode-line-emphasis
                                                     'help-echo "Buffer has been modified"))))
 
                  ;; is this buffer read-only?
                  '(:eval (when buffer-read-only
                            (concat ","  (propertize "RO"
-                                                    'face 'font-lock-type-face
+                                                    'face 'mode-line-emphasis
                                                     'help-echo "Buffer is read-only"))))
                  "] "
 
@@ -143,7 +145,7 @@
                  " ["
                  `(:propertize ("" minor-mode-alist)
                                mouse-face mode-line-highlight
-                               face font-lock-keyword-face
+                               face mode-line-emphasis
                                help-echo "mouse-1: minor-mode menu, mouse-2: minor-mode help, mouse-3: toggle minor modes"
                                local-map ,mode-line-minor-mode-keymap)
                  " ]"
