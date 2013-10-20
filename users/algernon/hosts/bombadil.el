@@ -3,9 +3,11 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/10/20 14:21:45 algernon@madhouse-project.org>
+;; Last updated: <2013/10/20 14:26:51 algernon@madhouse-project.org>
 
 (require 'gnus)
+
+(packages-maybe-install '(molokai-theme))
 
 (setq gnus-select-method '(nnimap "algernon@madhouse-project.org"
                                   (nnimap-address "imap.madhouse-project.org")
@@ -31,4 +33,4 @@
            (>= emacs-major-version 24))
   (if (is-presentingp)
       (load-theme 'wombat)
-    (load-theme 'naquadah)))
+    (load-theme 'molokai)))
