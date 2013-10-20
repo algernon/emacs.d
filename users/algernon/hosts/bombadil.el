@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/07/14 21:59:10 algernon@madhouse-project.org>
+;; Last updated: <2013/10/20 14:21:45 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -31,6 +31,4 @@
            (>= emacs-major-version 24))
   (if (is-presentingp)
       (load-theme 'wombat)
-    (load-theme 'solarized-dark)))
-
-(aec-powerline)
+    (load-theme 'naquadah)))
