@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2013/07/30 21:35:58 algernon@madhouse-project.org>
+;; Last updated: <2013/10/26 21:28:22 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -81,6 +81,10 @@
 (defun is-presentingp ()
   (interactive)
   (not (= (length (getenv "PRESENTING")) 0)))
+
+;; Customisation goes to ~/.emacs.d/custom.el
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 ;; Dispatch to local snippets.
 ;;
