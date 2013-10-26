@@ -1,4 +1,4 @@
-;; Last updated: <2013/06/10 20:57:40 algernon@madhouse-project.org>
+;; Last updated: <2013/10/26 21:24:25 algernon@madhouse-project.org>
 
 ;; Misc. bindigs
 (defun goto-line-with-feedback ()
@@ -76,6 +76,7 @@
 
 ;; Editing commands
 (global-set-key (kbd "C-c q") 'join-line)
+(global-set-key (kbd "C-c k") 'delete-indentation)
 
 (defun top-join-line ()
   "Join the current line with the line beneath it."
