@@ -3,11 +3,11 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/11/01 14:52:04 algernon@madhouse-project.org>
+;; Last updated: <2013/11/01 15:06:38 algernon@madhouse-project.org>
 
 (require 'gnus)
 
-(packages-maybe-install '(molokai-theme smart-mode-line))
+(packages-maybe-install '(molokai-theme))
 
 (setq gnus-select-method '(nnimap "algernon@madhouse-project.org"
                                   (nnimap-address "imap.madhouse-project.org")
