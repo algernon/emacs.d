@@ -1,6 +1,6 @@
-;; Last updated: <2013/04/05 21:38:33 algernon@madhouse-project.org>
+;; Last updated: <2013/11/02 22:20:18 algernon@madhouse-project.org>
 
-(packages-maybe-install '(idle-highlight-mode))
+(packages-maybe-install '(idle-highlight-mode smartscan))
 
 (require 'hippie-exp)
 
@@ -17,7 +17,8 @@
 (add-hook 'prog-mode-hook (lambda ()
                             (if (is-presentingp)
                                 (text-scale-increase 3)
-                              (idle-highlight-mode t))))
+                              (idle-highlight-mode t)
+                              (smartscan-mode t))))
 
 (eval-after-load "flyspell"
   '(diminish 'flyspell-mode "α"))
