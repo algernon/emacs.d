@@ -3,7 +3,9 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/07/14 22:02:12 algernon@madhouse-project.org>
+;; Last updated: <2013/11/06 08:42:37 algernon@madhouse-project.org>
+
+(packages-maybe-install '(molokai-theme))
 
 (setq gnus-select-method '(nnimap "mail.balabit"
                                   (nnimap-stream network)
@@ -30,6 +32,5 @@
 
 (when (and window-system
            (>= emacs-major-version 24))
-  (load-theme 'solarized-dark))
-
-(aec-powerline)
+  (load-theme 'molokai)
+  (sml/setup))
