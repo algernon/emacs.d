@@ -1,4 +1,4 @@
-;; Last updated: <2013/10/20 14:13:39 algernon@madhouse-project.org>
+;; Last updated: <2013/11/14 17:58:13 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           nurumacs minimap))
@@ -83,76 +83,6 @@
     (if (>= emacs-major-version 24)
         (load-theme 'solarized-light t)
       (color-theme-arjen))))
-
-;; Set the modeline
-(when window-system
-  (setq-default mode-line-format
-                (list
-
-                 ;; the buffer name; the file name as a tool tip
-                 mode-line-client
-                 '(:eval (propertize " %b "
-                                     'face 'mode-line-buffer-id
-                                     'help-echo (buffer-file-name)))
-
-                 " "
-
-                 ;; line and column
-                 "(" ;; '%02' to set to 2 chars at least; prevents flickering
-                 (propertize "%02l" 'face 'mode-line-emphasis) ","
-                 (propertize "%02c" 'face 'mode-line-emphasis)
-                 ") "
-
-                 ;; relative position, size of file
-                 "["
-                 (propertize "%p" 'face 'mode-line-emphasis) ;; % above top
-                 "/"
-                 (propertize "%I" 'face 'mode-line-emphasis) ;; size
-                 "] "
-
-                 ;; the current major mode for the buffer.
-                 "["
-                 '(:eval (propertize "%m" 'face 'mode-line-emphasis
-                                     'help-echo buffer-file-coding-system))
-                 "] "
-
-                 ;; insert vs overwrite mode, input-method in a tooltip
-                 "["
-                 '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-                                     'face 'mode-line-emphasis
-                                     'help-echo (concat "Buffer is in "
-                                                        (if overwrite-mode "overwrite" "insert") " mode")))
-
-                 ;; was this buffer modified since the last save?
-                 '(:eval (when (buffer-modified-p)
-                           (concat ","  (propertize "Mod"
-                                                    'face 'mode-line-emphasis
-                                                    'help-echo "Buffer has been modified"))))
-
-                 ;; is this buffer read-only?
-                 '(:eval (when buffer-read-only
-                           (concat ","  (propertize "RO"
-                                                    'face 'mode-line-emphasis
-                                                    'help-echo "Buffer is read-only"))))
-                 "] "
-
-                 ;; add misc. mode line info
-                 "-- "
-                 '(:eval (when (>= emacs-major-version 24) mode-line-misc-info))
-                 "--"
-
-                 ;; add minor modes
-                 " ["
-                 `(:propertize ("" minor-mode-alist)
-                               mouse-face mode-line-highlight
-                               face mode-line-emphasis
-                               help-echo "mouse-1: minor-mode menu, mouse-2: minor-mode help, mouse-3: toggle minor modes"
-                               local-map ,mode-line-minor-mode-keymap)
-                 " ]"
-
-                 ;; fill the rest with spaces
-                 '(:eval (when (>= emacs-major-version 24) mode-line-end-spaces))
-                 )))
 
 ;; Diminish minor modes, and lookalikes
 (eval-after-load "eldoc"
