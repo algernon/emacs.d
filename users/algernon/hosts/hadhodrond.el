@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/11/14 17:58:02 algernon@madhouse-project.org>
+;; Last updated: <2013/11/14 18:00:18 algernon@madhouse-project.org>
 
 (packages-maybe-install '(molokai-theme nyan-mode))
 
@@ -33,5 +33,6 @@
 (when (and window-system
            (>= emacs-major-version 24))
   (load-theme 'molokai)
+  (diminish-undo 'diminished-modes)
   (nyan-mode)
   (sml/setup))
