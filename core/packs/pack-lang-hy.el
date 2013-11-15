@@ -1,4 +1,4 @@
-;; Last updated: <2013/06/07 15:09:54 algernon@madhouse-project.org>
+;; Last updated: <2013/11/15 11:14:06 algernon@madhouse-project.org>
 
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/hy-mode"))
@@ -6,7 +6,7 @@
 
 (add-hook 'hy-mode-hook '(lambda ()
                            (turn-on-auto-fill)
-                           (paredit-mode)))
+                           (smartparens-strict-mode)))
 
 (eval-after-load 'hy-mode
   '(font-lock-add-keywords 'hy-mode
