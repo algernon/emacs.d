@@ -3,11 +3,11 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/11/01 15:06:38 algernon@madhouse-project.org>
+;; Last updated: <2013/11/28 20:13:21 algernon@madhouse-project.org>
 
 (require 'gnus)
 
-(packages-maybe-install '(molokai-theme))
+(packages-maybe-install '(molokai-theme cyberpunk-theme))
 
 (setq gnus-select-method '(nnimap "algernon@madhouse-project.org"
                                   (nnimap-address "imap.madhouse-project.org")
@@ -32,6 +32,6 @@
 (when (and window-system
            (>= emacs-major-version 24))
   (if (is-presentingp)
-      (load-theme 'wombat)
+      (load-theme 'cyberpunk)
     (load-theme 'molokai))
   (sml/setup))
