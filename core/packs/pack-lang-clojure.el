@@ -1,4 +1,4 @@
-;; Last updated: <2013/11/15 11:13:36 algernon@madhouse-project.org>
+;; Last updated: <2013/07/31 11:42:22 algernon@madhouse-project.org>
 
 (packages-maybe-install '(clojure-mode clojure-test-mode clj-refactor))
 
@@ -7,7 +7,7 @@
 
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (turn-on-auto-fill)
-                                (smartparens-strict-mode)
+                                (paredit-mode)
                                 (clojure-test-mode)))
 
 (eval-after-load 'clojure-mode

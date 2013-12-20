@@ -1,4 +1,4 @@
-;; Last updated: <2013/11/15 11:15:10 algernon@madhouse-project.org>
+;; Last updated: <2013/07/30 21:37:07 algernon@madhouse-project.org>
 
 (when (>= emacs-major-version 24)
   (packages-maybe-install '(js2-mode skewer-mode))
@@ -6,8 +6,18 @@
   (add-to-list* 'auto-mode-alist
                 '("\\.\\(js\\)" . js2-mode)))
 
+(defun esk-paredit-nonlisp ()
+  "Turn on paredit mode for non-lisps."
+  (interactive)
+  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+       '((lambda (endp delimiter) nil)))
+  (paredit-mode 1))
+
 (eval-after-load 'js
-  '(progn (setq js-indent-level 2)
+  '(progn (define-key js-mode-map "{" 'paredit-open-curly)
+          (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
+          (add-hook 'js-mode-hook 'esk-paredit-nonlisp)
+          (setq js-indent-level 2)
           ;; fixes problem with pretty function font-lock
           (define-key js-mode-map (kbd ",") 'self-insert-command)
           (font-lock-add-keywords
