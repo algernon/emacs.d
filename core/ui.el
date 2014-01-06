@@ -1,11 +1,12 @@
-;; Last updated: <2013/11/28 20:08:35 algernon@madhouse-project.org>
+;; Last updated: <2014/01/06 19:46:21 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           nurumacs minimap))
 
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/golden-ratio"))
-(when (and (eq debian-emacs-flavor 'emacs-snapshot)
+(when (and (boundp 'debian-emacs-flavor)
+           (eq debian-emacs-flavor 'emacs-snapshot)
            (not (is-presentingp)))
   (require 'golden-ratio)
   (golden-ratio-enable))
