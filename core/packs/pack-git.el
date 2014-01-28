@@ -1,6 +1,6 @@
-;; Last updated: <2013/04/03 10:24:16 algernon@madhouse-project.org>
+;; Last updated: <2014/01/28 12:35:47 algernon@madhouse-project.org>
 
-(packages-maybe-install '(magit git-commit-mode git-gutter))
+(packages-maybe-install '(magit magit-log-edit git-commit-mode git-gutter))
 (when (>= emacs-major-version 24)
   (packages-maybe-install '(magithub)))
 
