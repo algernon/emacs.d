@@ -3,9 +3,12 @@
 ;; Copyright (C) 2011, 2012, 2013
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/11/14 18:00:18 algernon@madhouse-project.org>
+;; Last updated: <2014/01/28 12:03:13 algernon@madhouse-project.org>
 
-(packages-maybe-install '(molokai-theme nyan-mode))
+(packages-maybe-install '(nyan-mode))
+
+(when (>= emacs-major-version 24)
+  (packages-maybe-install '(molokai-theme)))
 
 (setq gnus-select-method '(nnimap "mail.balabit"
                                   (nnimap-stream network)
@@ -32,7 +35,13 @@
 
 (when (and window-system
            (>= emacs-major-version 24))
-  (load-theme 'molokai)
   (diminish-undo 'diminished-modes)
   (nyan-mode)
-  (sml/setup))
+  (sml/setup)
+
+  (if (and (boundp 'debian-emacs-flavor)
+           (eq debian-emacs-flavor 'emacs-snapshot))
+      (progn
+        (load-theme 'molokai)
+        (mode-line-in-header))
+    (load-theme 'solarized-dark)))
