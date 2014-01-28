@@ -1,14 +1,12 @@
-;; Last updated: <2014/01/28 12:35:47 algernon@madhouse-project.org>
+;; Last updated: <2014/01/28 12:44:51 algernon@madhouse-project.org>
 
-(packages-maybe-install '(magit magit-log-edit git-commit-mode git-gutter))
-(when (>= emacs-major-version 24)
-  (packages-maybe-install '(magithub)))
+(packages-maybe-install '(git-commit-mode magit git-gutter))
 
 (global-set-key "\C-xg" 'magit-status)
 
 (setq magit-commit-signoff t)
 
-(add-hook 'magit-log-edit-mode-hook
+(add-hook 'git-commit-mode-hook
           (lambda ()
             (set-fill-column 72)
             (auto-fill-mode)))
@@ -29,7 +27,7 @@
 
 (eval-after-load "ispell"
   '(when (executable-find ispell-program-name)
-     (add-hook 'magit-log-edit-mode-hook 'turn-on-flyspell)))
+     (add-hook 'git-commit-mode-hook 'turn-on-flyspell)))
 
 ;; Git gutter setup
 (when (>= emacs-major-version 24)
