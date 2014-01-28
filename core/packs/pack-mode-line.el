@@ -1,4 +1,4 @@
-;; Last updated: <2014/01/23 17:48:19 algernon@madhouse-project.org>
+;; Last updated: <2014/01/28 11:58:48 algernon@madhouse-project.org>
 
 ;; These were borrowed (and slightly tweaked) from http://bzg.fr/emacs-strip-tease.html
 
@@ -29,10 +29,3 @@
      0 nil 'message
      (concat "Hidden Mode Line Mode enabled.  "
              "Use M-x hidden-mode-line-mode RET to make the mode-line appear."))))
-
-;; Activate hidden-mode-line-mode
-(when (and (eq window-system 'x)
-           (boundp 'debian-emacs-flavor)
-           (eq debian-emacs-flavor 'emacs-snapshot))
-  (mode-line-in-header)
-  (hidden-mode-line-mode 1))
