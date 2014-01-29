@@ -1,6 +1,7 @@
-;; Last updated: <2014/01/28 12:44:51 algernon@madhouse-project.org>
+;; Last updated: <2014/01/29 12:11:47 algernon@madhouse-project.org>
 
-(packages-maybe-install '(git-commit-mode magit git-gutter))
+(packages-maybe-install '(git-commit-mode magit git-gutter
+                          gitconfig-mode gitignore-mode))
 
 (global-set-key "\C-xg" 'magit-status)
 
