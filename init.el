@@ -1,14 +1,14 @@
 ;;; ~/.emacs.d/ -- algernon's Emacs configuration
 
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013
+;;               2012, 2013, 2014
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2013/10/26 21:28:22 algernon@madhouse-project.org>
+;; Last updated: <2014/01/29 14:11:18 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
