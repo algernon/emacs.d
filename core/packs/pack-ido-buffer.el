@@ -1,8 +1,9 @@
-;; Last updated: <2013/04/01 15:10:31 algernon@madhouse-project.org>
+;; Last updated: <2014/01/29 12:04:23 algernon@madhouse-project.org>
 
-(packages-maybe-install '(ido-ubiquitous))
+(packages-maybe-install '(ido-ubiquitous ido-vertical-mode))
 
 (require 'ido)
+(require 'ido-vertical-mode)
 (require 'ibuffer)
 
 ;; Common ignores
@@ -23,6 +24,7 @@
 
 (ido-mode t)
 (ido-ubiquitous t)
+(ido-vertical-mode 1)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-auto-merge-work-directories-length nil
