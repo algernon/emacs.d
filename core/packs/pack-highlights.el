@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/03 10:24:30 algernon@madhouse-project.org>
+;; Last updated: <2014/02/04 08:42:48 algernon@madhouse-project.org>
 
 (packages-maybe-install '(volatile-highlights highlight mic-paren))
 
@@ -19,18 +19,20 @@
                     :inverse-video t
                     :weight 'bold)
 
-(require 'mic-paren)
-(paren-activate)
+(when (and (boundp 'debian-emacs-flavor)
+           (eq debian-emacs-flavor 'emacs-snapshot))
+  (require 'mic-paren)
+  (paren-activate)
 
-(set-face-attribute 'paren-face-match
-                    nil
-                    :inverse-video nil
-                    :weight 'normal
-                    :background "#454A4B")
+  (set-face-attribute 'paren-face-match
+                      nil
+                      :inverse-video nil
+                      :weight 'normal
+                      :background "#454A4B")
 
-(defun toggle-mic-paren-sexp-mode ()
-  (interactive)
-  (if paren-sexp-mode
-      (setq-default paren-sexp-mode nil)
-    (setq-default paren-sexp-mode 'match)))
-(global-set-key (kbd "C-x p") 'toggle-mic-paren-sexp-mode)
+  (defun toggle-mic-paren-sexp-mode ()
+    (interactive)
+    (if paren-sexp-mode
+        (setq-default paren-sexp-mode nil)
+      (setq-default paren-sexp-mode 'match)))
+  (global-set-key (kbd "C-x p") 'toggle-mic-paren-sexp-mode))
