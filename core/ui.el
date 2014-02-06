@@ -1,7 +1,7 @@
-;; Last updated: <2014/01/06 19:46:21 algernon@madhouse-project.org>
+;; Last updated: <2014/02/06 11:01:27 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
-                          nurumacs minimap))
+                          nurumacs minimap auto-dim-other-buffers))
 
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/golden-ratio"))
@@ -94,3 +94,7 @@
   '(diminish 'abbrev-mode))
 (diminish 'auto-fill-function "▤")
 (diminish 'overwrite-mode "O")
+
+(add-hook 'after-init-hook (lambda ()
+                             (when (fboundp 'auto-dim-other-buffers-mode)
+                               (auto-dim-other-buffers-mode t))))
