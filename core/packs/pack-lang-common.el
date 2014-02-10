@@ -1,6 +1,6 @@
-;; Last updated: <2013/11/02 22:20:18 algernon@madhouse-project.org>
+;; Last updated: <2014/02/10 11:43:31 algernon@madhouse-project.org>
 
-(packages-maybe-install '(idle-highlight-mode smartscan))
+(packages-maybe-install '(idle-highlight-mode smartscan color-identifiers-mode))
 
 (require 'hippie-exp)
 
@@ -19,6 +19,8 @@
                                 (text-scale-increase 3)
                               (idle-highlight-mode t)
                               (smartscan-mode t))))
+
+(global-color-identifiers-mode t)
 
 (eval-after-load "flyspell"
   '(diminish 'flyspell-mode "α"))
