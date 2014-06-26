@@ -1,7 +1,7 @@
-;; Last updated: <2014/02/06 11:01:27 algernon@madhouse-project.org>
+;; Last updated: <2014/03/13 15:18:01 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
-                          nurumacs minimap auto-dim-other-buffers))
+                          auto-dim-other-buffers))
 
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/golden-ratio"))
@@ -10,25 +10,6 @@
            (not (is-presentingp)))
   (require 'golden-ratio)
   (golden-ratio-enable))
-
-(require 'nurumacs)
-
-(require 'minimap)
-(setq-default minimap-window-location 'right
-              minimap-width-fraction 0.1)
-
-(defun minimap-toggle ()
-  (interactive)
-  (if minimap-bufname
-      (progn
-        (minimap-kill)
-        (golden-ratio-enable))
-    (progn
-      (golden-ratio-disable)
-      (delete-other-windows)
-      (minimap-create))))
-
-(global-set-key (kbd "C-c m") 'minimap-toggle)
 
 (load "color-theme-library")
 
