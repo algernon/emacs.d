@@ -3,9 +3,9 @@
 ;; Copyright (C) 2014
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/03/13 16:00:55 algernon@madhouse-project.org>
+;; Last updated: <2014/07/27 10:30:59 algernon@madhouse-project.org>
 
-(packages-maybe-install '(molokai-theme cyberpunk-theme))
+(packages-maybe-install '(molokai-theme cyberpunk-theme badger-theme))
 
 (setq gnus-select-method '(nnimap "gergely.nagy@balabit.com"
                                   (nnimap-address "imap.gmail.com")
@@ -45,6 +45,6 @@
            (>= emacs-major-version 24))
   (if (is-presentingp)
       (load-theme 'cyberpunk)
-    (load-theme 'molokai))
+    (load-theme 'badger))
   (diminish-undo 'diminished-modes)
   (sml/setup))
