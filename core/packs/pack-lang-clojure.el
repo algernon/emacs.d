@@ -1,6 +1,6 @@
-;; Last updated: <2014/01/28 12:08:51 algernon@madhouse-project.org>
+;; Last updated: <2014/08/12 14:13:17 algernon@madhouse-project.org>
 
-(packages-maybe-install '(clojure-mode clojure-test-mode clj-refactor cider))
+(packages-maybe-install '(clojure-mode clj-refactor cider))
 
 (add-to-list* 'auto-mode-alist
               '("\.cljs$" . clojure-mode))
