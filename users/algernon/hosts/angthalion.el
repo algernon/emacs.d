@@ -3,9 +3,10 @@
 ;; Copyright (C) 2014
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/07/27 10:30:59 algernon@madhouse-project.org>
+;; Last updated: <2014/08/12 14:21:51 algernon@madhouse-project.org>
 
-(packages-maybe-install '(molokai-theme cyberpunk-theme badger-theme))
+(packages-maybe-install '(molokai-theme cyberpunk-theme badger-theme
+                                        underwater-theme))
 
 (setq gnus-select-method '(nnimap "gergely.nagy@balabit.com"
                                   (nnimap-address "imap.gmail.com")
@@ -14,14 +15,15 @@
                                   (nnimap-user
                                    "gergely.nagy@balabit.com")))
 
+;(setq gnus-select-method '(nntp "news.gmane.org"))
+
 (setq gnus-secondary-select-methods
-      '((nntp "news.gmane.org")
-        (nnimap "algernon@madhouse-project.org"
-                                  (nnimap-address "imap.madhouse-project.org")
-                                  (nnimap-server-port 993)
-                                  (nnimap-stream ssl)
-                                  (nnimap-user
-                                   "algernon@madhouse-project.org"))
+      '((nnimap "algernon@madhouse-project.org"
+                (nnimap-address "imap.madhouse-project.org")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl)
+                (nnimap-user
+                 "algernon@madhouse-project.org"))
         (nnimap "lists@madhouse-project.org"
                 (nnimap-address "imap.lists.madhouse-project.org")
                 (nnimap-server-port 993)
@@ -45,6 +47,6 @@
            (>= emacs-major-version 24))
   (if (is-presentingp)
       (load-theme 'cyberpunk)
-    (load-theme 'badger))
+    (load-theme 'underwater))
   (diminish-undo 'diminished-modes)
   (sml/setup))
