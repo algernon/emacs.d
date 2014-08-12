@@ -1,4 +1,6 @@
-;; Last updated: <2013/04/02 00:03:44 algernon@madhouse-project.org>
+;; Last updated: <2014/08/12 14:15:32 algernon@madhouse-project.org>
+
+(packages-maybe-install '(company-c-headers))
 
 (global-set-key "\C-cd" 'gdb)
 (global-set-key "\C-wm" 'gdb-many-windows)
