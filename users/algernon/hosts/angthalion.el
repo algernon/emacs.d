@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/08/12 14:21:51 algernon@madhouse-project.org>
+;; Last updated: <2014/09/19 08:15:45 algernon@madhouse-project.org>
 
 (packages-maybe-install '(molokai-theme cyberpunk-theme badger-theme
                                         underwater-theme))
@@ -30,18 +30,15 @@
                 (nnimap-stream ssl)
                 (nnimap-user "lists@madhouse-project.org"))))
 
+(add-hook 'gnus-message-setup-hook 'mml-secure-message-sign-pgpmime)
+
 (setq gnus-posting-styles
-      '(("@madhouse-project"
+      '((".*"
          (organization "The MadHouse Project")
-         (eval (setq message-sendmail-extra-arguments '("-a" "madhouse")))
-         ("Bcc" "algernon@madhouse-project.org")
-         (address "algernon@madhouse-project.org"))
-        (".*"
-         (organization "BalaBit IT Security Ltd.")
          (eval (setq message-sendmail-extra-arguments '("-a"
-                                                        "balabit")))
-         ("Bcc" "algernon@balabit.hu")
-         (address "algernon@balabit.hu"))))
+                                                        "madhouse")))
+         ("Bcc" "algernon@madhouse-project.org")
+         (address "algernon@madhouse-project.org"))))
 
 (when (and window-system
            (>= emacs-major-version 24))
