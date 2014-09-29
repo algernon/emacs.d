@@ -1,9 +1,9 @@
 ;;; bombadil.el -- bombadil extras
 
-;; Copyright (C) 2011, 2012, 2013
+;; Copyright (C) 2011, 2012, 2013, 2014
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2013/11/28 20:13:21 algernon@madhouse-project.org>
+;; Last updated: <2014/09/26 09:12:13 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -17,9 +17,22 @@
                                    "algernon@madhouse-project.org")))
 
 (setq gnus-secondary-select-methods
-      '((nntp "news.gmane.org")
-        (nntp "madhouse-project.org"
-              (nntp-port-number 8119))))
+      '((nnimap "lists@madhouse-project.org"
+                (nnimap-address "imap.lists.madhouse-project.org")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl)
+                (nnimap-user "lists@madhouse-project.org"))
+        (nnimap "a@5ms.in"
+                (nnimap-address "imap.gmail.com")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl)
+                (nnimap-user "a@5ms.in"))
+        ;;(nntp "news.gmane.org")
+        ;;(nntp "madhouse-project.org"
+        ;;     (nntp-port-number 8119))
+        ))
+
+(add-hook 'gnus-message-setup-hook 'mml-secure-message-sign-pgpmime)
 
 (setq gnus-posting-styles
       '((".*"
