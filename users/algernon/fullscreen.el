@@ -1,11 +1,8 @@
-;; Last updated: <2013/04/02 02:10:32 algernon@madhouse-project.org>
+;; Last updated: <2014/10/02 07:58:08 algernon@madhouse-project.org>
 
 (defun fullscreen (&optional f)
-       (interactive)
-       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                              '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                              '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
+  (interactive)
+  (shell-command (concat "wmctrl -i -r " (frame-parameter nil 'outer-window-id) " -btoggle,maximized_vert,maximized_horz")))
 
 (when (and (eq window-system 'x)
            (not (is-presentingp)))
