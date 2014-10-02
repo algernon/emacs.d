@@ -1,4 +1,4 @@
-;; Last updated: <2014/08/12 14:13:17 algernon@madhouse-project.org>
+;; Last updated: <2014/10/02 14:23:20 algernon@madhouse-project.org>
 
 (packages-maybe-install '(clojure-mode clj-refactor cider))
 
@@ -8,7 +8,8 @@
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (turn-on-auto-fill)
                                 (paredit-mode)
-                                (clojure-test-mode)))
+                                (clojure-test-mode)
+                                (rainbow-delimiters-mode)))
 
 (eval-after-load 'clojure-mode
   '(font-lock-add-keywords
