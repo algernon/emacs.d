@@ -1,4 +1,4 @@
-;; Last updated: <2013/04/10 20:37:20 algernon@madhouse-project.org>
+;; Last updated: <2014/10/04 21:06:18 algernon@madhouse-project.org>
 
 (packages-maybe-install '(gnusnotes))
 
@@ -36,7 +36,8 @@
  gnus-gcc-mark-as-read t
  gnus-read-active-file 'some
  gnus-ignored-newsgroups ""
- gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date))
+ gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date)
+ gnutls-min-prime-bits 1024)
 
 (setq mm-discouraged-alternatives '("text/html" "text/richtext")
       gnus-buttonized-mime-types '("multipart/alternative" "multipart/signed")
