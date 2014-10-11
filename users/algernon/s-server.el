@@ -1,7 +1,8 @@
-;; Last updated: <2014/01/06 19:49:18 algernon@madhouse-project.org>
+;; Last updated: <2014/10/11 19:54:55 algernon@madhouse-project.org>
 
 (if (and (boundp 'debian-emacs-flavor)
-         (eq debian-emacs-flavor 'emacs-snapshot)
+         (or (eq debian-emacs-flavor 'emacs-snapshot)
+             (eq debian-emacs-flavor 'emacs24))
          (not (is-presentingp)))
     (progn
       (server-start)))
