@@ -1,8 +1,8 @@
-;; Last updated: <2014/10/04 21:06:18 algernon@madhouse-project.org>
-
-(packages-maybe-install '(gnusnotes))
+;; Last updated: <2014/10/22 16:06:07 algernon@madhouse-project.org>
 
 (add-to-list 'load-path (concat user-emacs-directory "packages/"))
+(add-to-list 'load-path
+             (expand-file-name "~/.local/share/emacs/site-lisp/gnus"))
 
 (require 'gnus-switch)
 (require 'bbdb nil t)
