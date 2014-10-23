@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013, 2014
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/09/26 09:12:13 algernon@madhouse-project.org>
+;; Last updated: <2014/10/23 07:57:25 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -42,9 +42,8 @@
          (address "algernon@madhouse-project.org"))
         ))
 
-(when (and window-system
-           (>= emacs-major-version 24))
-  (if (is-presentingp)
-      (load-theme 'cyberpunk)
-    (load-theme 'molokai))
-  (sml/setup))
+
+(if (is-presentingp)
+    (load-theme 'cyberpunk)
+  (load-theme 'molokai))
+(sml/setup)
