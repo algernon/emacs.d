@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013, 2014
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/10/23 07:58:46 algernon@madhouse-project.org>
+;; Last updated: <2014/10/23 07:59:14 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -59,6 +59,10 @@
       '("sc-lastchoice" "x-attribution" "firstname" "initials" "lastname"))
 
 ;; Frame setup
+(add-hook 'after-make-frame-functions 'fullscreen)
+(add-hook 'after-make-frame-functions (lambda (f)
+                                        (select-frame-set-input-focus f)))
+
 (if (is-presentingp)
     (load-theme 'cyberpunk)
   (load-theme 'molokai))
