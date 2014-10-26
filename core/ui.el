@@ -1,4 +1,4 @@
-;; Last updated: <2014/03/13 15:18:01 algernon@madhouse-project.org>
+;; Last updated: <2014/10/26 15:15:46 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           auto-dim-other-buffers))
@@ -28,7 +28,7 @@
       inhibit-startup-message t
       visible-bell t
       font-lock-maximum-decoration t
-      transient-mark-mode nil
+      transient-mark-mode t
       global-font-lock-mode t
       frame-title-format '(buffer-file-name "%f" ("%b"))
       color-theme-is-global t
