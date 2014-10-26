@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2014/01/29 14:11:18 algernon@madhouse-project.org>
+;; Last updated: <2014/10/26 11:43:46 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -59,7 +59,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
