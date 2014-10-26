@@ -1,6 +1,6 @@
-;; Last updated: <2014/02/10 11:50:24 algernon@madhouse-project.org>
+;; Last updated: <2014/10/26 11:44:49 algernon@madhouse-project.org>
 
-(packages-maybe-install '(fold-this anzu))
+(packages-maybe-install '(fold-this anzu aggressive-indent))
 
 (require 'fold-this)
 

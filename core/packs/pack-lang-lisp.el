@@ -1,4 +1,4 @@
-;; Last updated: <2014/10/02 14:22:39 algernon@madhouse-project.org>
+;; Last updated: <2014/10/26 11:45:26 algernon@madhouse-project.org>
 
 (packages-maybe-install '(paredit rainbow-delimiters))
 
@@ -20,7 +20,8 @@
                                    (turn-on-auto-fill)
                                    (eldoc-mode)
                                    (paredit-mode)
-                                   (rainbow-delimiters-mode)))
+                                   (rainbow-delimiters-mode)
+                                   (aggressive-indent-mode)))
 
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 (define-key lisp-mode-shared-map (kbd "RET")
