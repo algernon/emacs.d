@@ -3,7 +3,7 @@
 ;; Copyright (C) 2011, 2012, 2013, 2014
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/10/23 07:59:14 algernon@madhouse-project.org>
+;; Last updated: <2014/10/30 07:18:49 algernon@madhouse-project.org>
 
 (require 'gnus)
 
@@ -27,6 +27,11 @@
                 (nnimap-server-port 993)
                 (nnimap-stream ssl)
                 (nnimap-user "a@5ms.in"))
+        (nnimap "debian@madhouse-project.org"
+                (nnimap-address "imap.gmail.com")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl)
+                (nnimap-user "debian@madhouse-project.org"))
         ;;(nntp "news.gmane.org")
         ;;(nntp "madhouse-project.org"
         ;;     (nntp-port-number 8119))
