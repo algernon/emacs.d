@@ -1,6 +1,7 @@
-;; Last updated: <2014/10/26 11:44:49 algernon@madhouse-project.org>
+;; Last updated: <2014/11/28 23:46:43 algernon@madhouse-project.org>
 
-(packages-maybe-install '(fold-this anzu aggressive-indent))
+(packages-maybe-install '(fold-this anzu aggressive-indent
+                          hungry-delete))
 
 (require 'fold-this)
 
@@ -9,3 +10,4 @@
 (global-set-key (kbd "C-c M-f") 'fold-this-unfold-all)
 
 (global-anzu-mode t)
+(global-hungry-delete-mode t)
