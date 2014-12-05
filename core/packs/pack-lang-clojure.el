@@ -1,6 +1,9 @@
-;; Last updated: <2014/10/26 11:45:04 algernon@madhouse-project.org>
+;; Last updated: <2014/12/05 11:06:40 algernon@madhouse-project.org>
 
-(packages-maybe-install '(clojure-mode clj-refactor cider))
+(packages-maybe-install '(clojure-mode
+                          clj-refactor
+                          cider
+                          kibit-mode))
 
 (add-to-list* 'auto-mode-alist
               '("\.cljs$" . clojure-mode))
@@ -9,7 +12,8 @@
                                 (turn-on-auto-fill)
                                 (paredit-mode)
                                 (rainbow-delimiters-mode)
-                                (aggressive-indent-mode)))
+                                (aggressive-indent-mode)
+                                (kibit-mode)))
 
 (eval-after-load 'clojure-mode
   '(font-lock-add-keywords
