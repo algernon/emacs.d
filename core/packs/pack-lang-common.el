@@ -1,8 +1,14 @@
-;; Last updated: <2014/02/10 11:43:31 algernon@madhouse-project.org>
+;; Last updated: <2014/12/03 15:25:08 algernon@madhouse-project.org>
 
-(packages-maybe-install '(idle-highlight-mode smartscan color-identifiers-mode))
+(packages-maybe-install '(idle-highlight-mode
+                          smartscan
+                          color-identifiers-mode
+                          evil-nerd-commenter))
 
 (require 'hippie-exp)
+(require 'evil-nerd-commenter)
+
+(evilnc-default-hotkeys)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
