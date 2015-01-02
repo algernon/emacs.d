@@ -1,7 +1,7 @@
-;; Last updated: <2014/10/26 15:15:46 algernon@madhouse-project.org>
+;; Last updated: <2015/01/02 19:41:34 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
-                          auto-dim-other-buffers))
+                          auto-dim-other-buffers molokai-theme))
 
 (add-to-list 'load-path (concat user-emacs-directory
                                 "packages/golden-ratio"))
@@ -16,9 +16,7 @@
 (if (>= emacs-major-version 24)
     (progn
       (add-to-list 'custom-theme-load-path (concat user-emacs-directory
-                                                   "packages/color-theme-tangotango"))
-      (add-to-list 'custom-theme-load-path (concat user-emacs-directory
-                                                   "packages/naquadah-theme")))
+                                                   "packages/color-theme-tangotango")))
   (progn
     (add-to-list 'load-path (concat user-emacs-directory
                                     "packages/color-theme-tangotango"))
@@ -59,7 +57,7 @@
 (if (and (eq window-system 'x))
     (progn
       (if (>= emacs-major-version 24)
-          (load-theme 'naquadah t)
+          (load-theme 'molokai t)
         (color-theme-tangotango)))
   (progn
     (if (>= emacs-major-version 24)
