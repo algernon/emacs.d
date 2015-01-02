@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/02 19:41:34 algernon@madhouse-project.org>
+;; Last updated: <2015/01/02 19:43:14 algernon@madhouse-project.org>
 
 (packages-maybe-install '(solarized-theme zenburn-theme color-theme
                           auto-dim-other-buffers molokai-theme))
@@ -54,15 +54,9 @@
     (setq interprogram-paste-function
           'x-cut-buffer-or-selection-value))
 
-(if (and (eq window-system 'x))
-    (progn
-      (if (>= emacs-major-version 24)
-          (load-theme 'molokai t)
-        (color-theme-tangotango)))
-  (progn
-    (if (>= emacs-major-version 24)
-        (load-theme 'solarized-light t)
-      (color-theme-arjen))))
+(if (>= emacs-major-version 24)
+    (load-theme 'molokai t)
+  (color-theme-tangotango))
 
 ;; Diminish minor modes, and lookalikes
 (eval-after-load "eldoc"
