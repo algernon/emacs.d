@@ -11,3 +11,4 @@
 /session.*
 /tramp
 /custom.el
+*.elc
