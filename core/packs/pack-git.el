@@ -1,8 +1,9 @@
-;; Last updated: <2015/01/06 12:56:30 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 14:00:20 algernon@madhouse-project.org>
 
 (use-package git-commit-mode)
 
 (use-package magit
+  :diminish magit-auto-revert-mode
   :init (add-hook 'git-commit-mode-hook
                   (lambda ()
                     (set-fill-column 72)
