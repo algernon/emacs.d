@@ -1,14 +1,14 @@
 ;;; ~/.emacs.d/ -- algernon's Emacs configuration
 
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013, 2014
+;;               2012, 2013, 2014, 2015
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2014/10/26 11:43:46 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:10:50 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -84,7 +84,8 @@
 
 ;; Customisation goes to ~/.emacs.d/custom.el
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(if (file-exists-p custom-file)
+    (load custom-file))
 
 ;; Dispatch to local snippets.
 ;;
