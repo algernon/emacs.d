@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/06 13:15:26 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 14:05:43 algernon@madhouse-project.org>
 
 (use-package anzu
   :diminish anzu-mode
@@ -21,4 +21,4 @@
   :bind (("C-=" . er/expand-region)))
 
 (use-package flyspell
-  :diminish (flyspell-mode . "α"))
+  :diminish (flyspell-mode . " α"))
