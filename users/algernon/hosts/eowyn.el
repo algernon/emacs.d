@@ -1,14 +1,12 @@
 ;;; eowyn.el -- eowyn (xps13) extras
 
-;; Copyright (C) 2014
+;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/10/22 16:05:28 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:13:00 algernon@madhouse-project.org>
 
 (packages-maybe-install '(molokai-theme cyberpunk-theme))
 
-(add-to-list 'load-path
-             (expand-file-name "~/.local/share/emacs/site-lisp/gnus"))
 (require 'gnus)
 
 (setq gnus-select-method '(nnimap "algernon@madhouse-project.org"

@@ -1,8 +1,6 @@
-;; Last updated: <2014/10/22 16:06:07 algernon@madhouse-project.org>
+;; Last updated: <2014/11/18 15:53:32 algernon@madhouse-project.org>
 
 (add-to-list 'load-path (concat user-emacs-directory "packages/"))
-(add-to-list 'load-path
-             (expand-file-name "~/.local/share/emacs/site-lisp/gnus"))
 
 (require 'gnus-switch)
 (require 'bbdb nil t)
@@ -18,8 +16,6 @@
  gnus-sum-thread-tree-root ""
  gnus-sum-thread-tree-single-leaf "╰► "
  gnus-sum-thread-tree-vertical "│"
- gnus-agent nil
- gnus-agent-cache nil
  gnus-article-sort-functions (quote ((not
                                       gnus-article-sort-by-number)))
  gnus-visible-headers (quote ("^From:" "^Newsgroups:" "^Subject:"
@@ -105,3 +101,4 @@
         bbdb-use-pop-up nil
         bbdb-electric-p t
         bbdb-silent-running nil))
+
