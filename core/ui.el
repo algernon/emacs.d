@@ -1,7 +1,9 @@
-;; Last updated: <2015/01/06 13:45:58 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 14:29:41 algernon@madhouse-project.org>
 
 (use-package molokai-theme
              :init (load-theme 'molokai))
+
+(set-frame-font "Droid Sans Mono-12" nil t)
 
 (use-package auto-dim-other-buffers
   :diminish auto-dim-other-buffers-mode
