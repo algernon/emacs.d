@@ -1,10 +1,9 @@
-;; Last updated: <2013/04/02 00:04:39 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:18:55 algernon@madhouse-project.org>
 
 (packages-maybe-install '(markdown-mode))
 
-(add-to-list* 'auto-mode-alist
-              '("\\.markdown" . markdown-mode)
-              '("\\.md" . markdown-mode))
+(add-to-list 'auto-mode-alist
+             '("\\.\\(markdown\\|md\\)" . markdown-mode))
 
 (eval-after-load "ispell"
   '(when (executable-find ispell-program-name)

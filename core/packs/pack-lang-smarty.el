@@ -1,4 +1,4 @@
-;; Last updated: <2013/06/20 16:48:18 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:19:06 algernon@madhouse-project.org>
 
-(add-to-list* 'auto-mode-alist
-              '("\.tpl$" . html-mode))
+(add-to-list 'auto-mode-alist
+             '("\.tpl$" . html-mode))

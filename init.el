@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/06 12:10:50 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:19:28 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -71,12 +71,6 @@
   (dolist (p packages)
     (when (not (package-installed-p p))
       (package-install p))))
-
-(defun add-to-list* (the-list &rest elements)
-  "Add a set of ELEMENTS to THE-LIST, prepend by default, append
-   if APPEND is non-nil."
-
-  (mapcar (lambda (x) (add-to-list the-list x)) elements))
 
 (defun is-presentingp ()
   (interactive)

@@ -1,10 +1,10 @@
-;; Last updated: <2013/07/30 21:37:07 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:17:32 algernon@madhouse-project.org>
 
 (when (>= emacs-major-version 24)
   (packages-maybe-install '(js2-mode skewer-mode))
 
-  (add-to-list* 'auto-mode-alist
-                '("\\.\\(js\\)" . js2-mode)))
+  (add-to-list 'auto-mode-alist
+               '("\\.\\(js\\)" . js2-mode)))
 
 (defun esk-paredit-nonlisp ()
   "Turn on paredit mode for non-lisps."

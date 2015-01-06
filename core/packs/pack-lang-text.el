@@ -1,8 +1,8 @@
-;; Last updated: <2013/04/02 00:04:53 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:19:19 algernon@madhouse-project.org>
 
-(add-to-list* 'auto-mode-alist
-              '("README$\\|NEWS$\\|INSTALL$\\|AUTHORS$\\|THANKS$"
-                . text-mode))
+(add-to-list 'auto-mode-alist
+             '("README$\\|NEWS$\\|INSTALL$\\|AUTHORS$\\|THANKS$"
+               . text-mode))
 
 (setq flyspell-default-dictionary "british")
 

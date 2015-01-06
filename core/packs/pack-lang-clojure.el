@@ -1,12 +1,12 @@
-;; Last updated: <2014/12/05 11:06:40 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:17:17 algernon@madhouse-project.org>
 
 (packages-maybe-install '(clojure-mode
                           clj-refactor
                           cider
                           kibit-mode))
 
-(add-to-list* 'auto-mode-alist
-              '("\.cljs$" . clojure-mode))
+(add-to-list 'auto-mode-alist
+             '("\.cljs$" . clojure-mode))
 
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (turn-on-auto-fill)
