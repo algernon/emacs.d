@@ -1,7 +1,4 @@
-;; Last updated: <2015/01/06 14:29:41 algernon@madhouse-project.org>
-
-(use-package molokai-theme
-             :init (load-theme 'molokai))
+;; Last updated: <2015/01/06 15:58:15 algernon@madhouse-project.org>
 
 (set-frame-font "Droid Sans Mono-12" nil t)
 
@@ -12,8 +9,9 @@
             t))
 
 (use-package golden-ratio
-             :if (is-presentingp)
-             :init (golden-ratio-enable))
+  :commands (golden-ratio-enable)
+  :if (is-presentingp)
+  :init (golden-ratio-enable))
 
 (setq custom-safe-themes t
       inhibit-startup-message t
