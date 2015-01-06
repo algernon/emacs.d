@@ -1,6 +1,7 @@
-;; Last updated: <2015/01/06 15:58:15 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 16:25:27 algernon@madhouse-project.org>
 
-(set-frame-font "Droid Sans Mono-12" nil t)
+(set-face-attribute 'default nil :family "Droid Sans Mono")
+(set-face-attribute 'default nil :height 120)
 
 (use-package auto-dim-other-buffers
   :diminish auto-dim-other-buffers-mode
