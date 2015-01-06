@@ -1,4 +1,4 @@
-;;; ~/.emacs.d/ -- algernon's Emacs configuration
+;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
 
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/06 13:57:09 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 15:57:11 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -73,10 +73,17 @@
   (interactive)
   (not (= (length (getenv "PRESENTING")) 0)))
 
+(use-package auto-compile
+  :init (progn
+          (setq load-prefer-newer t)
+          (require 'auto-compile)
+          (auto-compile-on-load-mode 1)
+          (auto-compile-on-save-mode 1)))
+
 ;; Customisation goes to ~/.emacs.d/custom.el
 (setq custom-file "~/.emacs.d/custom.el")
 (if (file-exists-p custom-file)
-    (load custom-file))
+    (load (file-name-sans-extension custom-file)))
 
 ;; Dispatch to local snippets.
 ;;
@@ -84,7 +91,7 @@
 ;; ~/.emacs.d/hosts/$HOSTNAME.el, then ~/.emacs.d/users/$USER.el, and
 ;; then ~/.emacs.d/users/$USER/*
 (setq aec-system-config (concat user-emacs-directory "hosts/"
-                                system-name ".el")
+                                system-name)
       aec-user-config (concat user-emacs-directory "users/"
                               user-login-name ".el")
       aec-user-dir (concat user-emacs-directory "users/"
@@ -93,11 +100,17 @@
 (add-to-list 'load-path aec-core-dir)
 (add-to-list 'load-path aec-user-dir)
 
-(when (file-exists-p (concat aec-user-dir "/settings.el"))
-  (load (concat aec-user-dir "/settings.el")))
+(defun load-file-sans-extension (file)
+  "Load a file, sans extension"
+
+  (message "Loading %s (%s)..." file (file-name-sans-extension file))
+  (load (file-name-sans-extension file)))
+
+(when (file-exists-p (concat aec-user-dir "/settings"))
+  (load (concat aec-user-dir "/settings")))
 (when (file-exists-p aec-core-dir)
-  (mapc 'load (directory-files aec-core-dir nil "^[^#].*el$")))
+  (mapc 'load-file-sans-extension (directory-files aec-core-dir nil "^[^#].*el$")))
 (when (file-exists-p aec-system-config) (load aec-system-config))
 (when (file-exists-p aec-user-config) (load aec-user-config))
 (when (file-exists-p aec-user-dir)
-  (mapc 'load (directory-files aec-user-dir nil "^[^#].*el$")))
+  (mapc 'load-file-sans-extension (directory-files aec-user-dir nil "^[^#].*el$")))
