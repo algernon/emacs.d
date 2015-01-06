@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/06 16:15:26 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 16:25:37 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -103,7 +103,6 @@
 (defun load-file-sans-extension (file)
   "Load a file, sans extension"
 
-  (message "Loading %s (%s)..." file (file-name-sans-extension file))
   (load (file-name-sans-extension file)))
 
 (when (file-exists-p (concat aec-user-dir "/settings.el"))
