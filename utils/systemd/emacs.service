@@ -1,0 +1,17 @@
+;; -*- conf-windows -*-
+;; Place this file in ~/.config/systemd/user, and enable it with:
+;;  systemctl --user emacs
+;;
+[Unit]
+Description=Emacs: the extensible, self-documenting text editor
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+SuccessExitStatus=0 15
+Restart=always
+
+[Install]
+WantedBy=default.target
