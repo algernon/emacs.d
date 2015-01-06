@@ -3,11 +3,10 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/01/06 12:13:00 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:33:33 algernon@madhouse-project.org>
 
-(packages-maybe-install '(molokai-theme cyberpunk-theme))
-
-(require 'gnus)
+(use-package molokai-theme)
+(use-package cyberpunk-theme)
 
 (setq gnus-select-method '(nnimap "algernon@madhouse-project.org"
                                   (nnimap-address "imap.madhouse-project.org")

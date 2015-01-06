@@ -1,5 +1,6 @@
-;; Last updated: <2013/04/01 12:43:10 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:16:10 algernon@madhouse-project.org>
 
-(setq css-electric-brace-behavior t
-      css-electric-semi-behavior t
-      css-indent-offset 8)
+(use-package css-mode
+  :config (setq css-electric-brace-behavior t
+                css-electric-semi-behavior t
+                css-indent-offset 8))

@@ -1,40 +1,45 @@
-;; Last updated: <2014/01/29 12:04:23 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:06:06 algernon@madhouse-project.org>
 
-(packages-maybe-install '(ido-ubiquitous ido-vertical-mode))
+(use-package ido-mode
+  :init (progn
+          (ido-mode t)
+          (iswitchb-mode 1))
+  :bind (("C-x b" . electric-buffer-list)
+         ("C-x C-b" . ido-switch-buffer))
+  :config (progn
+            (use-package ido-ubiquitous
+              :init (ido-ubiquitous t))
 
-(require 'ido)
-(require 'ido-vertical-mode)
-(require 'ibuffer)
+            (use-package ido-vertical-mode
+              :init (ido-vertical-mode 1))
 
-;; Common ignores
-(add-to-list 'ido-ignore-buffers "*Messages")
-(add-to-list 'ido-ignore-buffers "*Buffer")
-(add-to-list 'ido-ignore-buffers "*Completions")
-(add-to-list 'ido-ignore-buffers "*ftp ")
-(add-to-list 'ido-ignore-buffers "^[tT][aA][gG][sS]$")
-(add-to-list 'ido-ignore-buffers "*ediff")
-(add-to-list 'ido-ignore-buffers "*vc#")
-(add-to-list 'ido-ignore-buffers "*gnus trace")
-(add-to-list 'ido-ignore-buffers "*imap log")
-(add-to-list 'ido-ignore-buffers "*nnimap")
-(add-to-list 'ido-ignore-buffers "^.newsrc-dribble")
-(add-to-list 'ido-ignore-buffers "^.bbdb")
-(add-to-list 'ido-ignore-buffers "*sent")
-(add-to-list 'ido-ignore-buffers "*magit")
+            (use-package ibuffer)
 
-(ido-mode t)
-(ido-ubiquitous t)
-(ido-vertical-mode 1)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point nil
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+            ;; Common ignores
+            (add-to-list 'ido-ignore-buffers "*Messages")
+            (add-to-list 'ido-ignore-buffers "*Buffer")
+            (add-to-list 'ido-ignore-buffers "*Completions")
+            (add-to-list 'ido-ignore-buffers "*ftp ")
+            (add-to-list 'ido-ignore-buffers "^[tT][aA][gG][sS]$")
+            (add-to-list 'ido-ignore-buffers "*ediff")
+            (add-to-list 'ido-ignore-buffers "*vc#")
+            (add-to-list 'ido-ignore-buffers "*gnus trace")
+            (add-to-list 'ido-ignore-buffers "*imap log")
+            (add-to-list 'ido-ignore-buffers "*nnimap")
+            (add-to-list 'ido-ignore-buffers "^.newsrc-dribble")
+            (add-to-list 'ido-ignore-buffers "^.bbdb")
+            (add-to-list 'ido-ignore-buffers "*sent")
+            (add-to-list 'ido-ignore-buffers "*magit")
 
-(iswitchb-mode 1)
+            (setq ido-enable-prefix nil
+                  ido-enable-flex-matching t
+                  ido-auto-merge-work-directories-length nil
+                  ido-create-new-buffer 'always
+                  ido-use-filename-at-point nil
+                  ido-use-virtual-buffers t
+                  ido-handle-duplicate-virtual-buffers 2
+                  ido-max-prospects 10)))
 
-(global-set-key "\C-xb" 'electric-buffer-list)
-(global-set-key "\C-x\C-b" 'ido-switch-buffer)
+
+
+

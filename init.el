@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/06 12:21:18 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:57:09 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -65,12 +65,9 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defun packages-maybe-install (packages)
-  "Install a list of packages, unless they're already installed."
-
-  (dolist (p packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+(require 'use-package)
 
 (defun is-presentingp ()
   (interactive)

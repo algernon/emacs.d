@@ -1,5 +1,7 @@
-;; Last updated: <2014/08/12 14:27:20 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:40:32 algernon@madhouse-project.org>
 
-(packages-maybe-install '(fuzzy company))
+(use-package company
+  :diminish company-mode
+  :init (global-company-mode))
 
-(global-company-mode)
+(use-package fuzzy)

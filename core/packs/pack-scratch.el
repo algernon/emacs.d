@@ -1,4 +1,3 @@
-;; Last updated: <2013/04/01 18:56:48 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:29:38 algernon@madhouse-project.org>
 
-(packages-maybe-install '(scratch))
-(require 'scratch)
+(use-package scratch)

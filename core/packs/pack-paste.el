@@ -1,5 +1,5 @@
-;; Last updated: <2013/04/01 18:57:24 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:29:29 algernon@madhouse-project.org>
 
-(packages-maybe-install '(refheap))
-(if (file-exists-p "~/.refheap-pass.el")
-    (load "~/.refheap-pass.el"))
+(use-package refheap
+  :config (if (file-exists-p "~/.refheap-pass.el")
+              (load "~/.refheap-pass.el")))

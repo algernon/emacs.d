@@ -1,10 +1,8 @@
-;; Last updated: <2013/04/01 20:01:14 algernon@madhouse-project.org>
-
-(packages-maybe-install '(ace-jump-mode))
-
-(require 'ace-jump-mode)
+;; Last updated: <2015/01/06 13:07:10 algernon@madhouse-project.org>
 
 (global-unset-key (kbd "C-o"))
-(global-set-key (kbd "C-o w") 'ace-jump-word-mode)
-(global-set-key (kbd "C-o c") 'ace-jump-char-mode)
-(global-set-key (kbd "C-o l") 'ace-jump-line-mode)
+
+(use-package ace-jump-mode
+  :bind (("C-o w" . ace-jump-word-mode)
+         ("C-o c" . ace-jump-char-mode)
+         ("C-o l" . ace-jump-line-mode)))

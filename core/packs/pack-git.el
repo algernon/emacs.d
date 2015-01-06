@@ -1,16 +1,20 @@
-;; Last updated: <2014/01/29 12:11:47 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:56:30 algernon@madhouse-project.org>
 
-(packages-maybe-install '(git-commit-mode magit git-gutter
-                          gitconfig-mode gitignore-mode))
+(use-package git-commit-mode)
 
-(global-set-key "\C-xg" 'magit-status)
-
-(setq magit-commit-signoff t)
-
-(add-hook 'git-commit-mode-hook
-          (lambda ()
-            (set-fill-column 72)
-            (auto-fill-mode)))
+(use-package magit
+  :init (add-hook 'git-commit-mode-hook
+                  (lambda ()
+                    (set-fill-column 72)
+                    (auto-fill-mode)))
+  :bind (("C-x g" . magit-status))
+  :config (progn
+            (setq magit-commit-signoff t)
+            (define-key magit-status-mode-map (kbd "q")
+              'magit-quit-session)
+            (eval-after-load "ispell"
+              '(when (executable-find ispell-program-name)
+                 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)))))
 
 (defadvice magit-status (around magit-fullscreen activate)
   (window-configuration-to-register :magit-fullscreen)
@@ -23,27 +27,18 @@
   (kill-buffer)
   (jump-to-register :magit-fullscreen))
 
-(eval-after-load "magit"
-  '(define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
+(use-package git-gutter
+  :init (global-git-gutter-mode t)
+  :diminish git-gutter-mode
+  :config (setq
+           git-gutter:window-width 1
+           git-gutter:hide-gutter t
+           git-gutter:lighter " G-+"
+           git-gutter:modified-sign "~ "
+           git-gutter:added-sign "+ "
+           git-gutter:deleted-sign "- "
+           git-gutter:unchanged-sign nil))
 
-(eval-after-load "ispell"
-  '(when (executable-find ispell-program-name)
-     (add-hook 'git-commit-mode-hook 'turn-on-flyspell)))
+(use-package gitconfig-mode)
 
-;; Git gutter setup
-(when (>= emacs-major-version 24)
-  (require 'git-gutter)
-
-  (setq-default git-gutter:window-width 1
-                git-gutter:hide-gutter t)
-
-  (global-git-gutter-mode t)
-
-  (setq git-gutter:lighter " G-+")
-
-  (setq git-gutter:modified-sign "~ ")
-  (setq git-gutter:added-sign "+ ")
-  (setq git-gutter:deleted-sign "- ")
-  (setq git-gutter:unchanged-sign nil)
-
-  (diminish 'git-gutter-mode))
+(use-package gitignore-mode)

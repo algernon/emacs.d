@@ -1,15 +1,16 @@
-;; Last updated: <2014/08/12 14:15:32 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:08:38 algernon@madhouse-project.org>
 
-(packages-maybe-install '(company-c-headers))
+(use-package company-c-headers)
 
-(global-set-key "\C-cd" 'gdb)
-(global-set-key "\C-wm" 'gdb-many-windows)
+(use-package c-mode
+  :bind (("C-c d" . gdb)
+         ("C-w m" . gdb-many-windows))
+  :config (progn
+            (add-hook 'c-mode-hook '(lambda ()
+                                      (c-set-style "gnu")
+                                      (setq c-auto-newline t)
+                                      (auto-fill-mode)))
 
-(add-hook 'c-mode-hook '(lambda ()
-                          (c-set-style "gnu")
-                          (setq c-auto-newline t)
-                          (auto-fill-mode)))
-
-(setq c-backspace-function 'backward-delete-char
-      c-comment-continuation-stars "* "
-      c-indent-comments-syntactically-p t)
+            (setq c-backspace-function 'backward-delete-char
+                  c-comment-continuation-stars "* "
+                  c-indent-comments-syntactically-p t)))

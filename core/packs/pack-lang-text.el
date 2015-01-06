@@ -1,14 +1,14 @@
-;; Last updated: <2015/01/06 12:19:19 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:24:38 algernon@madhouse-project.org>
 
 (add-to-list 'auto-mode-alist
-             '("README$\\|NEWS$\\|INSTALL$\\|AUTHORS$\\|THANKS$"
-               . text-mode))
+                     '("README$\\|NEWS$\\|INSTALL$\\|AUTHORS$\\|THANKS$"
+                       . text-mode))
 
 (setq flyspell-default-dictionary "british")
 
-(eval-after-load "ispell"
-  '(when (executable-find ispell-program-name)
-     (add-hook 'text-mode-hook 'turn-on-flyspell)))
+            (use-package ispell
+              :init (when (executable-find ispell-program-name)
+                      (add-hook 'text-mode-hook 'turn-on-flyspell)))
 
-(add-hook 'text-mode-hook '(lambda ()
-                             (turn-on-auto-fill)))
+            (add-hook 'text-mode-hook '(lambda ()
+                                         (turn-on-auto-fill)))

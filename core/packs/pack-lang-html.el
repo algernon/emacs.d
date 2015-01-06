@@ -1,8 +1,6 @@
-;; Last updated: <2013/10/15 21:25:25 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:16:38 algernon@madhouse-project.org>
 
-(packages-maybe-install '(web-mode))
-
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-(add-hook 'web-mode-hook '(lambda ()
-                            (turn-off-auto-fill)))
+(use-package web-mode
+  :init (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  :config (add-hook 'web-mode-hook '(lambda ()
+                                      (turn-off-auto-fill))))

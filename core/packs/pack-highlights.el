@@ -1,38 +1,37 @@
-;; Last updated: <2014/02/04 08:42:48 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:14:32 algernon@madhouse-project.org>
 
-(packages-maybe-install '(volatile-highlights highlight mic-paren))
+(use-package volatile-highlights
+  :diminish volatile-highlights-mode
+  :init (volatile-highlights-mode))
 
-(require 'volatile-highlights)
-(volatile-highlights-mode)
+(use-package highlight)
 
-(diminish 'volatile-highlights-mode)
+(use-package mic-paren
+  :init (progn
+          (defun toggle-mic-paren-sexp-mode ()
+            (interactive)
+            (if paren-sexp-mode
+                (setq-default paren-sexp-mode nil)
+              (setq-default paren-sexp-mode 'match)))
 
-(require 'highlight)
-(add-to-list 'load-path (concat user-emacs-directory
-                                "packages/nrepl-eval-sexp-fu"))
-(require 'nrepl-eval-sexp-fu)
-(setq nrepl-eval-sexp-fu-flash-duration 0.3)
-(set-face-attribute 'nrepl-eval-sexp-fu-flash
-                    nil
-                    :foreground nil
-                    :background nil
-                    :inverse-video t
-                    :weight 'bold)
+          (paren-activate))
+  :bind (("C-x p" . toggle-mic-paren-sexp-mode))
+  :config (set-face-attribute 'paren-face-match
+                              nil
+                              :inverse-video nil
+                              :weight 'normal
+                              :background "#454A4B"))
 
-(when (and (boundp 'debian-emacs-flavor)
-           (eq debian-emacs-flavor 'emacs-snapshot))
-  (require 'mic-paren)
-  (paren-activate)
+(use-package nrepl-eval-sexp-fu
+  :load-path "packages/nrepl-eval-sexp-fu"
+  :config (progn
+            (set-face-attribute 'nrepl-eval-sexp-fu-flash
+                                nil
+                                :foreground nil
+                                :background nil
+                                :inverse-video t
+                                :weight 'bold)
+            (setq nrepl-eval-sexp-fu-flash-duration 0.3)))
 
-  (set-face-attribute 'paren-face-match
-                      nil
-                      :inverse-video nil
-                      :weight 'normal
-                      :background "#454A4B")
-
-  (defun toggle-mic-paren-sexp-mode ()
-    (interactive)
-    (if paren-sexp-mode
-        (setq-default paren-sexp-mode nil)
-      (setq-default paren-sexp-mode 'match)))
-  (global-set-key (kbd "C-x p") 'toggle-mic-paren-sexp-mode))
+(use-package hi-lock
+  :diminish hi-lock-mode)

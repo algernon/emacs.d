@@ -1,17 +1,14 @@
-;; Last updated: <2014/12/03 15:25:08 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:15:43 algernon@madhouse-project.org>
 
-(packages-maybe-install '(idle-highlight-mode
-                          smartscan
-                          color-identifiers-mode
-                          evil-nerd-commenter))
+(use-package color-identifiers-mode
+  :init (global-color-identifiers-mode t))
 
-(require 'hippie-exp)
-(require 'evil-nerd-commenter)
+(use-package evil-nerd-commenter
+  :init (evilnc-default-hotkeys))
 
-(evilnc-default-hotkeys)
-
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-<tab>") 'hippie-expand)
+(use-package hippie-exp
+  :bind (("M-/" . hippie-expand)
+         ("C-<tab>" . hippie-expand)))
 
 (defun aec-add-watchwords ()
   (font-lock-add-keywords
@@ -19,16 +16,10 @@
           1 font-lock-warning-face t))))
 
 (add-hook 'prog-mode-hook 'aec-add-watchwords)
-;(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (add-hook 'prog-mode-hook (lambda ()
                             (if (is-presentingp)
                                 (text-scale-increase 3)
-                              (idle-highlight-mode t)
-                              (smartscan-mode t))))
-
-(global-color-identifiers-mode t)
-
-(eval-after-load "flyspell"
-  '(diminish 'flyspell-mode "α"))
-(eval-after-load "hi-lock"
-  '(diminish 'hi-lock-mode))
+                              (use-package idle-highlight-mode
+                                :init (idle-highlight-mode t))
+                              (use-package smartscan
+                                :init (smartscan-mode t)))))

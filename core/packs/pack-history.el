@@ -1,7 +1,7 @@
-;; Last updated: <2013/04/05 15:53:24 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:02:41 algernon@madhouse-project.org>
 
-(require 'saveplace)
-(setq-default save-place t)
+(use-package saveplace
+  :config (setq-default save-place t))
 
-(require 'savehist)
-(savehist-mode t)
+(use-package savehist
+  :init (savehist-mode t))

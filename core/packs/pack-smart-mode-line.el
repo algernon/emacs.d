@@ -1,8 +1,7 @@
-;; Last updated: <2013/11/01 15:08:20 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:30:00 algernon@madhouse-project.org>
 
-(packages-maybe-install '(smart-mode-line))
-
-(setq-default
- sml/hidden-modes '(" hl-p" " Undo-Tree" " VHl" " yas" " WS" " G-+"
-                    " AC")
- sml/mode-width 'full)
+(use-package smart-mode-line
+  :config (setq-default
+           sml/hidden-modes '(" hl-p" " Undo-Tree" " VHl" " yas" " WS" " G-+"
+                              " AC")
+           sml/mode-width 'full))

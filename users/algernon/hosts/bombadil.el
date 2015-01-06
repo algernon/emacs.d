@@ -1,13 +1,12 @@
 ;;; bombadil.el -- bombadil extras
 
-;; Copyright (C) 2011, 2012, 2013, 2014
+;; Copyright (C) 2011, 2012, 2013, 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2014/10/30 07:18:49 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:35:00 algernon@madhouse-project.org>
 
-(require 'gnus)
-
-(packages-maybe-install '(molokai-theme cyberpunk-theme))
+(use-package molokai-theme)
+(use-package cyberpunk-theme)
 
 (setq gnus-select-method '(nnimap "algernon@madhouse-project.org"
                                   (nnimap-address "imap.madhouse-project.org")

@@ -1,13 +1,24 @@
-;; Last updated: <2014/11/28 23:46:43 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 13:15:26 algernon@madhouse-project.org>
 
-(packages-maybe-install '(fold-this anzu aggressive-indent
-                          hungry-delete))
+(use-package anzu
+  :diminish anzu-mode
+  :init (global-anzu-mode t))
 
-(require 'fold-this)
+(use-package fold-this
+  :bind (("C-c C-f" . fold-this-all)
+         ("C-c C-F" . fold-this)
+         ("C-c M-f" . fold-this-unfold-all)))
 
-(global-set-key (kbd "C-c C-f") 'fold-this-all)
-(global-set-key (kbd "C-c C-F") 'fold-this)
-(global-set-key (kbd "C-c M-f") 'fold-this-unfold-all)
+(use-package hungry-delete
+  :init (global-hungry-delete-mode t))
 
-(global-anzu-mode t)
-(global-hungry-delete-mode t)
+(use-package aggressive-indent)
+
+(use-package abbrev
+  :diminish abbrev-mode)
+
+(use-package expand-region
+  :bind (("C-=" . er/expand-region)))
+
+(use-package flyspell
+  :diminish (flyspell-mode . "α"))
