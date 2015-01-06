@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/06 15:57:11 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 16:15:26 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -91,7 +91,7 @@
 ;; ~/.emacs.d/hosts/$HOSTNAME.el, then ~/.emacs.d/users/$USER.el, and
 ;; then ~/.emacs.d/users/$USER/*
 (setq aec-system-config (concat user-emacs-directory "hosts/"
-                                system-name)
+                                system-name ".el")
       aec-user-config (concat user-emacs-directory "users/"
                               user-login-name ".el")
       aec-user-dir (concat user-emacs-directory "users/"
@@ -106,11 +106,15 @@
   (message "Loading %s (%s)..." file (file-name-sans-extension file))
   (load (file-name-sans-extension file)))
 
-(when (file-exists-p (concat aec-user-dir "/settings"))
+(when (file-exists-p (concat aec-user-dir "/settings.el"))
   (load (concat aec-user-dir "/settings")))
 (when (file-exists-p aec-core-dir)
-  (mapc 'load-file-sans-extension (directory-files aec-core-dir nil "^[^#].*el$")))
-(when (file-exists-p aec-system-config) (load aec-system-config))
-(when (file-exists-p aec-user-config) (load aec-user-config))
+  (mapc 'load-file-sans-extension
+        (directory-files aec-core-dir nil "^[^#].*el$")))
+(when (file-exists-p aec-system-config)
+  (load-file-sans-extension aec-system-config))
+(when (file-exists-p aec-user-config)
+  (load-file-sans-extension aec-user-config))
 (when (file-exists-p aec-user-dir)
-  (mapc 'load-file-sans-extension (directory-files aec-user-dir nil "^[^#].*el$")))
+  (mapc 'load-file-sans-extension
+        (directory-files aec-user-dir nil "^[^#].*el$")))
