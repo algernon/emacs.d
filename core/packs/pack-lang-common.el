@@ -1,6 +1,7 @@
-;; Last updated: <2015/01/06 13:15:43 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 14:01:40 algernon@madhouse-project.org>
 
 (use-package color-identifiers-mode
+  :diminish color-identifiers-mode
   :init (global-color-identifiers-mode t))
 
 (use-package evil-nerd-commenter
