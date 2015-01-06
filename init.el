@@ -5,10 +5,10 @@
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
-;; Maintainer: Gergely Nagy <algernon@bonehunter.rulez.org>
+;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/06 12:19:28 algernon@madhouse-project.org>
+;; Last updated: <2015/01/06 12:21:18 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
