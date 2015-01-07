@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/07 11:25:09 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 12:12:37 algernon@madhouse-project.org>
 
 (use-package anzu
   :diminish anzu-mode
@@ -26,3 +26,12 @@
 (use-package fancy-narrow
   :diminish fancy-narrow-mode
   :init (fancy-narrow-mode))
+
+(use-package writeroom-mode
+  :bind (("C-w r" . writeroom-mode))
+  :config (progn
+            (setq writeroom-fullscreen-effect 'maximized)
+            (key-chord-define-global "wr" 'writeroom-mode)))
+
+(use-package centered-window-mode
+  :bind (("C-w w" . centered-window-mode)))
