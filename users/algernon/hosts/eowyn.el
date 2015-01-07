@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/01/06 13:33:33 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 08:53:25 algernon@madhouse-project.org>
 
 (use-package molokai-theme)
 (use-package cyberpunk-theme)
@@ -61,3 +61,4 @@
     (load-theme 'cyberpunk)
   (load-theme 'molokai))
 (sml/setup)
+(sml/apply-theme 'powerline)
