@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/06 16:25:27 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 11:29:34 algernon@madhouse-project.org>
 
 (set-face-attribute 'default nil :family "Droid Sans Mono")
 (set-face-attribute 'default nil :height 120)
@@ -43,6 +43,8 @@
 (if (functionp 'x-cut-buffer-or-selection-value)
     (setq interprogram-paste-function
           'x-cut-buffer-or-selection-value))
+
+(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 
 ;; Diminish minor modes, and lookalikes
 (eval-after-load "eldoc"
