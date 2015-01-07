@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/06 13:19:02 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 11:16:57 algernon@madhouse-project.org>
 
 (use-package js2-mode
   :init (add-to-list 'auto-mode-alist
@@ -19,8 +19,5 @@
             (setq js-indent-level 2)
             ;; fixes problem with pretty function font-lock
             (define-key js2-mode-map (kbd ",") 'self-insert-command)
-            (font-lock-add-keywords
-             'js2-mode `(("\\(function *\\)("
-                         (0 (progn (compose-region (match-beginning 1)
-                                                   (match-end 1) "\u0192")
-                                   nil)))))))
+            (push '("function" . ?λ) prettify-symbols-alist)
+            (prettify-symbols-mode)))
