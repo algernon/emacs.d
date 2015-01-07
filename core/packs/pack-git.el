@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/06 14:00:20 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 09:07:40 algernon@madhouse-project.org>
 
 (use-package git-commit-mode)
 
@@ -15,7 +15,11 @@
               'magit-quit-session)
             (eval-after-load "ispell"
               '(when (executable-find ispell-program-name)
-                 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)))))
+                 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)))
+            (advice-add #'magit-key-mode-popup-committing :after
+                        (lambda ()
+                          (magit-key-mode-toggle-option 'committing "-s")
+                          (magit-key-mode-toggle-option 'committing "-v")))))
 
 (defadvice magit-status (around magit-fullscreen activate)
   (window-configuration-to-register :magit-fullscreen)
