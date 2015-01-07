@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/06 14:05:43 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 11:25:09 algernon@madhouse-project.org>
 
 (use-package anzu
   :diminish anzu-mode
@@ -22,3 +22,7 @@
 
 (use-package flyspell
   :diminish (flyspell-mode . " α"))
+
+(use-package fancy-narrow
+  :diminish fancy-narrow-mode
+  :init (fancy-narrow-mode))
