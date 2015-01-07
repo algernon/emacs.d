@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/06 13:55:22 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 13:42:50 algernon@madhouse-project.org>
 
 ;; dired
 (use-package dired
@@ -49,3 +49,6 @@
               uniquify-after-kill-buffer-p t
               uniquify-ignore-buffers-re "^\\*"))
 
+;; neotree
+(use-package neotree
+  :bind (("C-x n t" . neotree-toggle)))
