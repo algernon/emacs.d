@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/07 13:17:41 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 13:40:58 algernon@madhouse-project.org>
 
 (set-face-attribute 'default nil :family "Droid Sans Mono")
 (set-face-attribute 'default nil :height 120)
@@ -10,6 +10,7 @@
             t))
 
 (use-package golden-ratio
+  :diminish golden-ratio-mode
   :if (not (is-presentingp))
   :init (golden-ratio-mode))
 
