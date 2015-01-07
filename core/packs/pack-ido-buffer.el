@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/06 17:25:18 algernon@madhouse-project.org>
+;; Last updated: <2015/01/07 11:59:40 algernon@madhouse-project.org>
 
 (ido-mode t)
 
@@ -36,5 +36,5 @@
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
 
-(global-set-key "\C-xb" 'electric-buffer-list)
+(global-set-key "\C-xb" 'ibuffer)
 (global-set-key "\C-x\C-b" 'ido-switch-buffer)
