@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/08 13:14:51 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 13:17:58 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -99,7 +99,8 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "/lisp"))
 
-(require (intern (concat "users/" user-login-name "/settings")))
+(require (intern (concat "users/" user-login-name "/settings"))
+         nil t)
 
 (require 'aec/misc)
 (require 'aec/keybindings)
