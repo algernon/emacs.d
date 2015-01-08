@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:46:33 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 15:45:01 algernon@madhouse-project.org>
 
 (ido-mode t)
 
@@ -9,6 +9,10 @@
 (use-package ido-vertical-mode
   :ensure t
   :init (ido-vertical-mode 1))
+
+(use-package flx-ido
+  :ensure t
+  :init (flx-ido-mode +1))
 
 (require 'ido)
 (require 'ibuffer)
@@ -36,7 +40,8 @@
       ido-use-filename-at-point nil
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+      ido-max-prospects 10
+      ido-use-faces nil)
 
 (global-set-key "\C-xb" #'ibuffer)
 (global-set-key "\C-x\C-b" #'ido-switch-buffer)
