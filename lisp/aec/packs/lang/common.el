@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:51:08 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 15:36:11 algernon@madhouse-project.org>
 
 (use-package color-identifiers-mode
   :ensure t
@@ -50,5 +50,22 @@ warning face."
           1 font-lock-warning-face t))))
 
 (add-hook 'prog-mode-hook #'aec-add-watchwords)
+
+(use-package flycheck
+  :ensure t
+  :defer t
+  :diminish flycheck-mode
+  :init (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package flycheck-clojure
+  :ensure t
+  :defer t)
+
+(use-package flycheck-pos-tip
+  :ensure t
+  :defer t
+  :init (eval-after-load 'flycheck
+          '(setq
+            flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
 (provide 'aec/packs/lang/common)
