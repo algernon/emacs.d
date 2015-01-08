@@ -1,10 +1,10 @@
-;; Last updated: <2015/01/08 11:08:49 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:29:29 algernon@madhouse-project.org>
 
 (use-package git-commit-mode
   :ensure t
-  :defer t
+  :demand t
   :init (progn
-          (add-hook 'git-commit-mode-hook #'auto-fill-mode)
+          (add-hook 'git-commit-mode-hook #'turn-on-auto-fill)
           (add-hook 'git-commit-mode-hook #'turn-on-flyspell)))
 
 (use-package magit
