@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/08 13:17:58 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 13:18:39 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -84,8 +84,8 @@
 
 ;; Dispatch to local snippets.
 ;;
-;; Loads ~/.emacs.d/users/$USER/settings.el, ~/.emacs.d/aec/*,
-;; then ~/.emacs.d/users/$USER/*.
+;; Loads ~/.emacs.d/lisp/users/$USER/settings.el, then
+;; ~/.emacs.d/lisp/aec/*, and finally ~/.emacs.d/lisp/users/$USER/*.
 (defun aec-require (path &optional noerror)
   (when (file-exists-p (concat user-emacs-directory "/lisp/" path))
     (mapc
