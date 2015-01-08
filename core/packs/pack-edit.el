@@ -1,4 +1,7 @@
-;; Last updated: <2015/01/08 11:38:32 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 12:18:17 algernon@madhouse-project.org>
+
+(setq sentence-end-double-space nil
+      diff-switches "-u")
 
 (use-package anzu
   :ensure t

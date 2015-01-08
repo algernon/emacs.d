@@ -1,4 +1,6 @@
-;; Last updated: <2015/01/08 11:19:30 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 12:17:39 algernon@madhouse-project.org>
+
+(defalias 'yes-or-no-p #'y-or-n-p)
 
 (set-face-attribute 'default nil :family "Droid Sans Mono")
 (set-face-attribute 'default nil :height 120)
@@ -29,7 +31,8 @@
       frame-title-format '(buffer-file-name "%f" ("%b"))
       uniquify-buffer-name-style 'forward
       indicate-buffer-boundaries 'left
-      indicate-empty-lines nil)
+      indicate-empty-lines nil
+      show-trailing-whitespace 1)
 
 (dolist (mode '(menu-bar-mode
                 tool-bar-mode
