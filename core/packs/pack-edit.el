@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 11:07:53 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:38:32 algernon@madhouse-project.org>
 
 (use-package anzu
   :ensure t
@@ -52,4 +52,5 @@
 
 (use-package centered-window-mode
   :ensure t
-  :bind (("C-w w" . centered-window-mode)))
+  :bind (("C-w w" . centered-window-mode))
+  :init (centered-window-mode))
