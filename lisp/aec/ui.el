@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:28:31 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 16:18:31 algernon@madhouse-project.org>
 
 (defalias 'yes-or-no-p #'y-or-n-p)
 
@@ -15,6 +15,7 @@
 (use-package golden-ratio
   :diminish golden-ratio-mode
   :if (not (is-presentingp))
+  :bind (("C-w g" . golden-ratio-mode))
   :init (golden-ratio-mode))
 
 (use-package page-break-lines
