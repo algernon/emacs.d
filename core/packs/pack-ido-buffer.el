@@ -1,11 +1,13 @@
-;; Last updated: <2015/01/07 11:59:40 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:39:43 algernon@madhouse-project.org>
 
 (ido-mode t)
 
 (use-package ido-ubiquitous
+  :ensure t
   :init (ido-ubiquitous-mode t))
 
 (use-package ido-vertical-mode
+  :ensure t
   :init (ido-vertical-mode 1))
 
 (require 'ido)
@@ -36,5 +38,5 @@
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
 
-(global-set-key "\C-xb" 'ibuffer)
-(global-set-key "\C-x\C-b" 'ido-switch-buffer)
+(global-set-key "\C-xb" #'ibuffer)
+(global-set-key "\C-x\C-b" #'ido-switch-buffer)

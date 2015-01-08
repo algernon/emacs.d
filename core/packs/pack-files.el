@@ -1,24 +1,30 @@
-;; Last updated: <2015/01/07 13:42:50 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:08:25 algernon@madhouse-project.org>
 
 ;; dired
 (use-package dired
   :init (progn
-          (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
-                dired-recursive-deletes 'top
-                dired-omit-mode t
-                dired-details-hidden-string "[...] ")
-          (add-hook 'dired-load-hook (function (lambda ()
-                                          (load "dired-x"))))
-          (add-hook 'dired-mode-hook 'dired-omit-mode))
+          (use-package dired-x)
+          (use-package dired-details+)
+          (use-package diredful
+            :load-path "packages/")
+          (add-hook 'dired-mode-hook #'dired-omit-mode))
   :config (progn
-            (use-package dired-x)
-            (use-package dired-details+)
-            (use-package diredful
-              :load-path "packages/"))
-
+            (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
+                  dired-recursive-deletes 'top
+                  dired-omit-mode t
+                  dired-details-hidden-string "[...] "))
   :bind (("C-x C-d" . ido-dired)
          ("C-x C-j" . dired-jump)
          ("C-x f" . find-file)))
+
+(defun aec-dired-x-load ()
+  "Load dired-x"
+
+  (load "dired-x"))
+
+(use-package dired-x
+  :defer t
+  :init (add-hook 'dired-load-hook #'aec-dired-x-load))
 
 (defadvice dired-omit-startup (after diminish-dired-omit activate)
           "Make sure to remove \"Omit\" from the modeline."
@@ -33,6 +39,7 @@
       (find-file file))))
 
 (use-package recentf
+  :ensure t
   :init (progn
           (setq recentf-max-saved-items 200
                 recentf-max-menu-items 15
@@ -51,4 +58,6 @@
 
 ;; neotree
 (use-package neotree
+  :ensure t
+  :defer t
   :bind (("C-x n t" . neotree-toggle)))

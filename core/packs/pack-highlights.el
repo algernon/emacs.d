@@ -1,13 +1,17 @@
-;; Last updated: <2015/01/06 13:14:32 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:38:43 algernon@madhouse-project.org>
 
 (use-package volatile-highlights
+  :ensure t
   :diminish volatile-highlights-mode
   :init (volatile-highlights-mode))
 
-(use-package highlight)
+(use-package highlight
+  :ensure t)
 
 (use-package mic-paren
-  :init (progn
+  :ensure t
+  :defer t
+  :idle (progn
           (defun toggle-mic-paren-sexp-mode ()
             (interactive)
             (if paren-sexp-mode
@@ -23,6 +27,8 @@
                               :background "#454A4B"))
 
 (use-package nrepl-eval-sexp-fu
+  :ensure t
+  :defer t
   :load-path "packages/nrepl-eval-sexp-fu"
   :config (progn
             (set-face-attribute 'nrepl-eval-sexp-fu-flash
@@ -34,4 +40,5 @@
             (setq nrepl-eval-sexp-fu-flash-duration 0.3)))
 
 (use-package hi-lock
+  :ensure t
   :diminish hi-lock-mode)

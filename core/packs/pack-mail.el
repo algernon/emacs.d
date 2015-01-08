@@ -1,11 +1,16 @@
-;; Last updated: <2015/01/06 13:27:50 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 10:47:43 algernon@madhouse-project.org>
+
+(use-package gnus-switch
+  :load-path "packages/"
+  :demand t)
 
 (use-package gnus
-  :init (use-package gnus-switch
-          :load-path "packages/")
+  :ensure t
+  :defer t
   :bind (("C-x m" . gnus-switch))
   :config (progn
             (use-package bbdb
+              :ensure t
               :config
               (progn
                 (bbdb-initialize 'gnus 'message)
@@ -26,7 +31,7 @@
              gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,15f %* %B%9{%up%}%s%)\n"
              gnus-summary-user-date-format-alist '((t . "%Y-%m-%d %H:%M"))
              gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M"))
-             gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references
+             gnus-summary-thread-gathering-function #'gnus-gather-threads-by-references
              gnus-sum-thread-tree-false-root ""
              gnus-sum-thread-tree-indent " "
              gnus-sum-thread-tree-leaf-with-other "├► "
@@ -43,7 +48,7 @@
                                           "^Mail-Followup-To:" "^Apparently-To:"
                                           "^Gnus-Warning:" "^Resent-From:"
                                           "^X-Debian-PR-Package:"))
-             gnus-subscribe-newsgroup-method 'gnus-subscribe-interactively
+             gnus-subscribe-newsgroup-method #'gnus-subscribe-interactively
              gnus-subscribe-hierarchical-interactive t
              gnus-level-unsubscribed 5
              gnus-gcc-mark-as-read t
@@ -54,7 +59,7 @@
 
              mm-discouraged-alternatives '("text/html" "text/richtext")
              gnus-buttonized-mime-types '("multipart/alternative" "multipart/signed")
-             message-send-mail-function 'message-send-mail-with-sendmail
+             message-send-mail-function #'message-send-mail-with-sendmail
              sendmail-program "/usr/bin/msmtp"
              message-subscribed-address-functions
              '(gnus-find-subscribed-addresses))
@@ -65,13 +70,13 @@
 
             (add-hook 'gnus-group-mode-hook '(lambda ()
                                                (local-set-key (kbd "g")
-                                                              'aec-gnus-get-new-news)))
+                                                              #'aec-gnus-get-new-news)))
 
             (defun aec-setup-hl-line ()
               (hl-line-mode 1))
 
-            (add-hook 'gnus-summary-mode-hook 'aec-setup-hl-line)
-            (add-hook 'gnus-group-mode-hook 'aec-setup-hl-line)
+            (add-hook 'gnus-summary-mode-hook #'aec-setup-hl-line)
+            (add-hook 'gnus-group-mode-hook #'aec-setup-hl-line)
 
             ;; Layout
             (setq gnus-topic-line-format "%i[ %u&topic-line; ] %v\n")
@@ -100,4 +105,4 @@
                            (vertical 1.0
                                      (summary 1.0 point)))))
 
-            (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)))
+            (add-hook 'gnus-group-mode-hook #'gnus-topic-mode)))

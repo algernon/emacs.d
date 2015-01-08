@@ -1,21 +1,21 @@
-;; Last updated: <2015/01/07 09:07:40 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:08:49 algernon@madhouse-project.org>
 
-(use-package git-commit-mode)
+(use-package git-commit-mode
+  :ensure t
+  :defer t
+  :init (progn
+          (add-hook 'git-commit-mode-hook #'auto-fill-mode)
+          (add-hook 'git-commit-mode-hook #'turn-on-flyspell)))
 
 (use-package magit
+  :ensure t
+  :defer t
   :diminish magit-auto-revert-mode
-  :init (add-hook 'git-commit-mode-hook
-                  (lambda ()
-                    (set-fill-column 72)
-                    (auto-fill-mode)))
   :bind (("C-x g" . magit-status))
   :config (progn
             (setq magit-commit-signoff t)
             (define-key magit-status-mode-map (kbd "q")
-              'magit-quit-session)
-            (eval-after-load "ispell"
-              '(when (executable-find ispell-program-name)
-                 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)))
+              #'magit-quit-session)
             (advice-add #'magit-key-mode-popup-committing :after
                         (lambda ()
                           (magit-key-mode-toggle-option 'committing "-s")
@@ -33,7 +33,9 @@
   (jump-to-register :magit-fullscreen))
 
 (use-package git-gutter
-  :init (global-git-gutter-mode t)
+  :ensure t
+  :defer t
+  :idle (global-git-gutter-mode t)
   :diminish git-gutter-mode
   :config (setq
            git-gutter:window-width 1
@@ -44,6 +46,10 @@
            git-gutter:deleted-sign "- "
            git-gutter:unchanged-sign nil))
 
-(use-package gitconfig-mode)
+(use-package gitconfig-mode
+  :ensure t
+  :defer t)
 
-(use-package gitignore-mode)
+(use-package gitignore-mode
+  :ensure t
+  :defer t)

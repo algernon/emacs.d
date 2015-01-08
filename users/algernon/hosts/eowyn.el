@@ -3,10 +3,13 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/01/07 08:53:25 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:16:48 algernon@madhouse-project.org>
 
-(use-package molokai-theme)
-(use-package cyberpunk-theme)
+(use-package molokai-theme
+  :ensure t)
+(use-package cyberpunk-theme
+  :ensure t
+  :defer t)
 
 (setq gnus-select-method '(nnimap "algernon@madhouse-project.org"
                                   (nnimap-address "imap.madhouse-project.org")
@@ -39,9 +42,9 @@
 ;; Supercite setup
 (autoload 'sc-cite-original "supercite")
 (autoload 'sc-submit-bug-report "supercite")
-(add-hook 'mail-citation-hook 'sc-cite-original)
+(add-hook 'mail-citation-hook #'sc-cite-original)
 
-(setq message-cite-function 'sc-cite-original)
+(setq message-cite-function #'sc-cite-original)
 
 (setq news-reply-header-hook nil)
 (setq sc-auto-fill-region-p nil)
@@ -53,9 +56,8 @@
       '("sc-lastchoice" "x-attribution" "firstname" "initials" "lastname"))
 
 ;; Frame setup
-(add-hook 'after-make-frame-functions 'fullscreen)
-(add-hook 'after-make-frame-functions (lambda (f)
-                                        (select-frame-set-input-focus f)))
+(add-hook 'after-make-frame-functions #'fullscreen)
+(add-hook 'after-make-frame-functions #'select-frame-set-input-focus)
 
 (if (is-presentingp)
     (load-theme 'cyberpunk)

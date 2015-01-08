@@ -1,7 +1,6 @@
-;; Last updated: <2015/01/06 15:57:24 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 10:45:13 algernon@madhouse-project.org>
 
-(add-hook 'write-file-hooks '(lambda ()
-                               (time-stamp)))
+(add-hook 'write-file-hooks #'time-stamp)
 (setq time-stamp-active t
       time-stamp-start "[lL]ast [uU]pdated:[ 	]+\\\\?[\"<]+"
       time-stamp-line-limit 20

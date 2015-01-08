@@ -1,5 +1,7 @@
-;; Last updated: <2015/01/06 13:44:02 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 10:45:42 algernon@madhouse-project.org>
 
 (use-package yasnippet
+  :ensure t
+  :defer t
   :diminish yas-minor-mode
-  :init (yas-global-mode 1))
+  :idle (yas-global-mode 1))

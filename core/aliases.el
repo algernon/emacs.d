@@ -1,3 +1,3 @@
-;; Last updated: <2013/04/01 12:21:43 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:17:13 algernon@madhouse-project.org>
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p #'y-or-n-p)

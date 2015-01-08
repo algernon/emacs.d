@@ -1,16 +1,12 @@
-;; Last updated: <2015/01/07 11:15:58 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:09:36 algernon@madhouse-project.org>
 
 (use-package clojure-mode
-  :init (add-to-list 'auto-mode-alist
-                     '("\.cljs$" . clojure-mode))
-  :config (progn
-            (use-package kibit-mode)
+  :ensure t
+  :defer t
+  :mode "\.cljs$"
+  :init (progn
+          (use-package kibit-mode
+            :ensure t)
 
-            (add-hook 'clojure-mode-hook
-                      '(lambda ()
-                         (turn-on-auto-fill)
-                         (paredit-mode)
-                         (rainbow-delimiters-mode)
-                         (aggressive-indent-mode)
-                         (kibit-mode)
-                         (prettify-symbols-mode)))))
+          (add-hook 'clojure-mode-hook #'turn-on-auto-fill)
+          (add-hook 'clojure-mode-hook #'kibit-mode)))

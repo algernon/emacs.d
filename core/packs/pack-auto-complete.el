@@ -1,7 +1,11 @@
-;; Last updated: <2015/01/06 12:40:32 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:22:53 algernon@madhouse-project.org>
 
 (use-package company
+  :ensure t
+  :defer t
   :diminish company-mode
-  :init (global-company-mode))
+  :idle (global-company-mode))
 
-(use-package fuzzy)
+(use-package fuzzy
+  :ensure t
+  :defer t)

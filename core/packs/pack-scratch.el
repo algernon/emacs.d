@@ -1,3 +1,4 @@
-;; Last updated: <2015/01/06 13:29:38 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 10:44:44 algernon@madhouse-project.org>
 
-(use-package scratch)
+(use-package scratch
+  :ensure t)

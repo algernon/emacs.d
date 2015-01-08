@@ -1,11 +1,15 @@
-;; Last updated: <2015/01/07 11:09:14 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:10:16 algernon@madhouse-project.org>
+
+(defun aec-hy-mode-prettify ()
+  "Prettify (fn) and (lambda) in Hy mode."
+
+  (push '("fn" . ?ƒ) prettify-symbols-alist)
+  (push '("lambda" . ?λ) prettify-symbols-alist))
 
 (use-package hy-mode
-  :config (progn
-            (add-hook 'hy-mode-hook
-                      '(lambda ()
-                         (turn-on-auto-fill)
-                         (paredit-mode)
-                         (push '("fn" . ?ƒ) prettify-symbols-alist)
-                         (push '("lambda" . ?λ) prettify-symbols-alist)
-                         (prettify-symbols-mode)))))
+  :ensure t
+  :defer t
+  :init (progn
+          (add-hook 'hy-mode-hook #'turn-on-auto-fill)
+          (add-hook 'hy-mode-hook #'aec-hy-mode-prettify)
+          (add-hook 'hy-mode-hook #'prettify-symbols-mode)))

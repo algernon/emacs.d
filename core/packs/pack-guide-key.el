@@ -1,6 +1,7 @@
-;; Last updated: <2015/01/06 14:01:00 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:37:18 algernon@madhouse-project.org>
 
 (use-package guide-key
+  :ensure t
   :diminish guide-key-mode
   :init (guide-key-mode 1)
   :config (setq
