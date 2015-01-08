@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/08 13:18:39 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 16:10:33 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -61,6 +61,10 @@
 
 (when (not package-archive-contents)
   (package-refresh-contents))
+
+(when (not (package-installed-p 'benchmark-init))
+  (package-install 'benchmark-init))
+(require 'benchmark-init)
 
 (when (not (package-installed-p 'use-package))
   (package-install 'use-package))
