@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/07 12:12:37 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:13:37 algernon@madhouse-project.org>
 
 (use-package anzu
   :diminish anzu-mode
@@ -26,6 +26,14 @@
 (use-package fancy-narrow
   :diminish fancy-narrow-mode
   :init (fancy-narrow-mode))
+
+(use-package whitespace
+  :diminish whitespace-mode
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  :config (setq whitespace-line-column 80
+                whitespace-style '(face trailing lines-tail tabs)))
 
 (use-package writeroom-mode
   :bind (("C-w r" . writeroom-mode))

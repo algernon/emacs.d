@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 09:05:12 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:13:14 algernon@madhouse-project.org>
 
 (set-face-attribute 'default nil :family "Droid Sans Mono")
 (set-face-attribute 'default nil :height 120)
@@ -43,7 +43,6 @@
 (set-language-environment 'utf-8)
 (when (fboundp 'fringe-mode)
   (fringe-mode '(1 . 0)))
-(global-whitespace-mode +1)
 
 (setq x-select-enable-clipboard t)
 (if (functionp 'x-cut-buffer-or-selection-value)
