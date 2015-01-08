@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 11:12:57 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 11:30:09 algernon@madhouse-project.org>
 
 (add-to-list 'auto-mode-alist
                      '("README$\\|NEWS$\\|INSTALL$\\|AUTHORS$\\|THANKS$"
@@ -16,4 +16,6 @@
   :ensure t
   :defer t
   :diminish sentence-highlight-mode
-  :init (add-hook 'text-mode-hook #'sentence-highlight-mode))
+  :init (progn
+          (require 'sentence-highlight)
+          (add-hook 'text-mode-hook #'sentence-highlight-mode)))
