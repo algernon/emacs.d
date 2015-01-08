@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/06 16:33:28 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 13:14:51 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -84,33 +84,26 @@
 
 ;; Dispatch to local snippets.
 ;;
-;; Loads ~/.emacs.d/users/$USER/settings.el, ~/.emacs.d/core/*,
-;; ~/.emacs.d/hosts/$HOSTNAME.el, then ~/.emacs.d/users/$USER.el, and
-;; then ~/.emacs.d/users/$USER/*
-(setq aec-system-config (concat user-emacs-directory "hosts/"
-                                system-name ".el")
-      aec-user-config (concat user-emacs-directory "users/"
-                              user-login-name ".el")
-      aec-user-dir (concat user-emacs-directory "users/"
-                           user-login-name)
-      aec-core-dir (concat user-emacs-directory "core"))
-(add-to-list 'load-path aec-core-dir)
-(add-to-list 'load-path aec-user-dir)
+;; Loads ~/.emacs.d/users/$USER/settings.el, ~/.emacs.d/aec/*,
+;; then ~/.emacs.d/users/$USER/*.
+(defun aec-require (path &optional noerror)
+  (when (file-exists-p (concat user-emacs-directory "/lisp/" path))
+    (mapc
+     (lambda (name)
+       (require (intern (concat path "/"
+                                (file-name-sans-extension name)))
+                nil noerror))
+     (directory-files (concat user-emacs-directory
+                              "lisp/" path)
+                      nil "^[^#].*el$"))))
 
-(defun load-file-sans-extension (file)
-  "Load a file, sans extension"
+(add-to-list 'load-path (concat user-emacs-directory "/lisp"))
 
-  (load (file-name-sans-extension file)))
+(require (intern (concat "users/" user-login-name "/settings")))
 
-(when (file-exists-p (concat aec-user-dir "/settings.el"))
-  (load (concat aec-user-dir "/settings")))
-(when (file-exists-p aec-core-dir)
-  (mapc 'load-file-sans-extension
-        (directory-files aec-core-dir nil "^[^#].*el$")))
-(when (file-exists-p aec-system-config)
-  (load-file-sans-extension aec-system-config))
-(when (file-exists-p aec-user-config)
-  (load-file-sans-extension aec-user-config))
-(when (file-exists-p aec-user-dir)
-  (mapc 'load-file-sans-extension
-        (directory-files aec-user-dir nil "^[^#].*el$")))
+(require 'aec/misc)
+(require 'aec/keybindings)
+(require 'aec/ui)
+(require 'aec/packs)
+
+(aec-require (concat "users/" user-login-name) t)
