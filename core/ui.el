@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 09:13:14 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:14:33 algernon@madhouse-project.org>
 
 (set-face-attribute 'default nil :family "Droid Sans Mono")
 (set-face-attribute 'default nil :height 120)
@@ -15,6 +15,7 @@
   :init (golden-ratio-mode))
 
 (use-package page-break-lines
+  :disabled t
   :diminish page-break-lines-mode
   :init (global-page-break-lines-mode))
 
