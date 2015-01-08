@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 15:36:11 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 15:51:46 algernon@madhouse-project.org>
 
 (use-package color-identifiers-mode
   :ensure t
@@ -55,7 +55,9 @@ warning face."
   :ensure t
   :defer t
   :diminish flycheck-mode
-  :init (add-hook 'after-init-hook #'global-flycheck-mode))
+  :init (add-hook 'after-init-hook #'global-flycheck-mode)
+  :config (progn
+            (setq flycheck-indication-mode 'right-fringe)))
 
 (use-package flycheck-clojure
   :ensure t
