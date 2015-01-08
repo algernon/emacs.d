@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/07 13:59:48 algernon@madhouse-project.org>
+;; Last updated: <2015/01/08 09:05:12 algernon@madhouse-project.org>
 
 (set-face-attribute 'default nil :family "Droid Sans Mono")
 (set-face-attribute 'default nil :height 120)
@@ -29,8 +29,10 @@
       indicate-buffer-boundaries 'left
       indicate-empty-lines nil)
 
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode
-                              blink-cursor-mode))
+(dolist (mode '(menu-bar-mode
+                tool-bar-mode
+                scroll-bar-mode
+                blink-cursor-mode))
   (when (fboundp mode) (funcall mode -1)))
 
 (column-number-mode 1)
