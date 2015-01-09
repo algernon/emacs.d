@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:44:56 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 10:23:16 algernon@madhouse-project.org>
 
 (setq sentence-end-double-space nil
       diff-switches "-u")
@@ -31,10 +31,26 @@
   :defer t
   :diminish (flyspell-mode . " α"))
 
+(defun fancy-narrow-or-widen-dwim (p)
+  "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
+Intelligently means: region, subtree, or defun, whichever applies
+first.
+
+With prefix P, don't widen, just narrow even if buffer is already
+narrowed."
+  (interactive "P")
+  (declare (interactive-only))
+  (cond ((and (fancy-narrow-active-p) (not p)) (fancy-widen))
+        ((region-active-p)
+         (fancy-narrow-to-region (region-beginning) (region-end)))
+        ((derived-mode-p 'org-mode) (org-fancy-narrow-to-subtree))
+        (t (fancy-narrow-to-defun))))
+
 (use-package fancy-narrow
   :ensure t
   :defer t
   :diminish fancy-narrow-mode
+  :bind (("C-x n i" . fancy-narrow-or-widen-dwim))
   :idle (fancy-narrow-mode))
 
 (use-package whitespace
