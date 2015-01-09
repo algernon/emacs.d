@@ -1,6 +1,7 @@
-;; Last updated: <2015/01/08 12:48:56 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 13:10:58 algernon@madhouse-project.org>
 
-(setq powerline-default-separator 'arrow)
+(setq powerline-default-separator 'curve
+      powerline-default-separator-dir '(right . left))
 
 (use-package smart-mode-line
   :ensure t
