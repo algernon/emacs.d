@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 10:46:46 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 12:27:51 algernon@madhouse-project.org>
 
 (use-package paredit
   :ensure t
@@ -39,5 +39,10 @@
   (push '("function" . ?ƒ) prettify-symbols-alist))
 
 (add-hook 'emacs-lisp-mode-hook #'aec-emacs-lisp-mode-prettify)
+
+(use-package elisp-slime-nav
+  :ensure t
+  :diminish elisp-slime-nav-mode
+  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
 
 (provide 'aec/packs/lang/lisp)
