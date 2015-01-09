@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:45:27 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 13:47:00 algernon@madhouse-project.org>
 
 (use-package git-commit-mode
   :ensure t
@@ -53,5 +53,10 @@
 (use-package gitignore-mode
   :ensure t
   :defer t)
+
+(use-package git-messenger
+  :ensure t
+  :defer t
+  :bind (("C-x v p" . git-messenger:popup-message)))
 
 (provide 'aec/packs/git)
