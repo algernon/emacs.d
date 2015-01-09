@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 10:51:55 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 13:37:04 algernon@madhouse-project.org>
 
 (setq sentence-end-double-space nil
       diff-switches "-u")
@@ -73,5 +73,10 @@ narrowed."
   :ensure t
   :bind (("C-w w" . centered-window-mode))
   :init (centered-window-mode))
+
+(use-package drag-stuff
+  :ensure t
+  :diminish drag-stuff-mode
+  :init (drag-stuff-global-mode))
 
 (provide 'aec/packs/edit)
