@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 15:51:46 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 10:51:16 algernon@madhouse-project.org>
 
 (use-package color-identifiers-mode
   :ensure t
@@ -19,6 +19,7 @@
 (use-package aggressive-indent
   :ensure t
   :defer t
+  :diminish (aggressive-indent-mode . " ")
   :init
   (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook hy-mode-hook))
     (add-hook hook #'aggressive-indent-mode)))

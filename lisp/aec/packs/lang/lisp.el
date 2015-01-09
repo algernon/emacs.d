@@ -1,10 +1,10 @@
-;; Last updated: <2015/01/08 12:51:55 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 10:46:46 algernon@madhouse-project.org>
 
 (use-package paredit
   :ensure t
   :defer t
   :commands (paredit-wrap-round)
-  :diminish (paredit-mode . " π")
+  :diminish (paredit-mode . " ")
   :config (progn
             (defun paredit-wrap-round-from-behind ()
               (interactive)
@@ -17,7 +17,7 @@
             (define-key paredit-mode-map (kbd "M-)")
               #'paredit-wrap-round-from-behind))
   :init (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook hy-mode-hook))
-              (add-hook hook #'paredit-mode)))
+          (add-hook hook #'paredit-mode)))
 
 (use-package rainbow-delimiters
   :ensure t

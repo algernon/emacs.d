@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 10:23:16 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 10:51:55 algernon@madhouse-project.org>
 
 (setq sentence-end-double-space nil
       diff-switches "-u")
@@ -29,7 +29,7 @@
 (use-package flyspell
   :ensure t
   :defer t
-  :diminish (flyspell-mode . " α"))
+  :diminish (flyspell-mode . " "))
 
 (defun fancy-narrow-or-widen-dwim (p)
   "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.

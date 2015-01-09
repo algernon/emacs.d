@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 16:18:31 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 10:39:50 algernon@madhouse-project.org>
 
 (defalias 'yes-or-no-p #'y-or-n-p)
 
@@ -62,7 +62,9 @@
   '(diminish 'eldoc-mode))
 (eval-after-load "server"
   '(diminish 'server-buffer-clients))
-(diminish 'auto-fill-function " ▤")
-(diminish 'overwrite-mode " O")
+
+;; Auto-fill uses left-align from FontAwesome
+(diminish 'auto-fill-function (concat " " [#xF036]))
+(diminish 'overwrite-mode (concat " " [#xF0CC]))
 
 (provide 'aec/ui)
