@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/01/08 12:41:21 algernon@madhouse-project.org>
+;; Last updated: <2015/01/09 11:35:01 algernon@madhouse-project.org>
 
 (use-package molokai-theme
   :ensure t)
@@ -64,5 +64,6 @@
   (load-theme 'molokai))
 (sml/setup)
 (sml/apply-theme 'powerline)
+(setq mode-line-end-spaces (make-string 7 #x20))
 
 (provide 'users/algernon/hosts/eowyn)
