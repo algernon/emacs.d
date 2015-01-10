@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 12:27:51 algernon@madhouse-project.org>
+;; Last updated: <2015/01/10 11:51:33 algernon@madhouse-project.org>
 
 (use-package paredit
   :ensure t
@@ -15,7 +15,13 @@
               (forward-char -1))
 
             (define-key paredit-mode-map (kbd "M-)")
-              #'paredit-wrap-round-from-behind))
+              #'paredit-wrap-round-from-behind)
+            (define-key paredit-mode-map (kbd "C-<up>")
+              #'paredit-splice-sexp-killing-backward)
+            (define-key paredit-mode-map (kbd "C-<down>")
+              #'paredit-splice-sexp-killing-forward)
+            (define-key paredit-mode-map (kbd "M-<up>") nil)
+            (define-key paredit-mode-map (kbd "M-<down>") nil))
   :init (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook hy-mode-hook))
           (add-hook hook #'paredit-mode)))
 
@@ -23,7 +29,7 @@
   :ensure t
   :defer t
   :init (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook hy-mode-hook))
-            (add-hook hook #'rainbow-delimiters-mode)))
+          (add-hook hook #'rainbow-delimiters-mode)))
 
 (define-key read-expression-map (kbd "TAB") #'completion-at-point)
 (define-key lisp-mode-shared-map (kbd "RET")
