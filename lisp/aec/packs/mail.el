@@ -1,8 +1,16 @@
-;; Last updated: <2015/01/08 12:48:02 algernon@madhouse-project.org>
+;; Last updated: <2015/01/13 13:01:02 algernon@madhouse-project.org>
 
 (use-package gnus-switch
   :load-path "packages/"
   :demand t)
+
+(use-package supercite
+  :defer t
+  :diminish sc-minor-mode)
+
+(use-package mml
+  :defer t
+  :diminish mml-mode)
 
 (use-package gnus
   :ensure t
