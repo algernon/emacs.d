@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/01/09 15:50:57 algernon@madhouse-project.org>
+;; Last updated: <2015/01/14 12:30:29 algernon@madhouse-project.org>
 
 (use-package molokai-theme
   :ensure t)
@@ -29,6 +29,11 @@
                 (nnimap-server-port 993)
                 (nnimap-stream ssl)
                 (nnimap-user "a@5ms.in"))
+        (nnimap "gergo@csillger.hu"
+                (nnimap-address "imap.gmail.com")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl)
+                (nnimap-user "gergo@csillger.hu"))
         (nntp "news.gmane.org")))
 
 (setq gnus-posting-styles
