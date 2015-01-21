@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 10:39:50 algernon@madhouse-project.org>
+;; Last updated: <2015/01/21 11:44:47 algernon@madhouse-project.org>
 
 (defalias 'yes-or-no-p #'y-or-n-p)
 
@@ -33,7 +33,8 @@
       uniquify-buffer-name-style 'forward
       indicate-buffer-boundaries 'left
       indicate-empty-lines nil
-      show-trailing-whitespace 1)
+      show-trailing-whitespace 1
+      window-combination-resize t)
 
 (dolist (mode '(menu-bar-mode
                 tool-bar-mode
