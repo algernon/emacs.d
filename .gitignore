@@ -8,6 +8,7 @@
 /ac-comphist.dat
 /eshell/history
 /history
+/semanticdb/
 /session.*
 /tramp
 /custom.el
