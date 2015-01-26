@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/10 11:51:33 algernon@madhouse-project.org>
+;; Last updated: <2015/01/26 08:29:52 algernon@madhouse-project.org>
 
 (use-package paredit
   :ensure t
@@ -24,6 +24,13 @@
             (define-key paredit-mode-map (kbd "M-<down>") nil))
   :init (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook hy-mode-hook))
           (add-hook hook #'paredit-mode)))
+
+(use-package lispy
+  :ensure t
+  :defer t
+  :diminish (lispy-mode . " λ")
+  :init (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook hy-mode-hook))
+          (add-hook hook #'lispy-mode)))
 
 (use-package rainbow-delimiters
   :ensure t
