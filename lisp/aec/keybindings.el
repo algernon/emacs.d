@@ -1,4 +1,11 @@
-;; Last updated: <2015/01/08 12:28:07 algernon@madhouse-project.org>
+;; Last updated: <2015/02/06 09:51:45 algernon@madhouse-project.org>
+
+(use-package key-chord
+  :ensure t
+  :init (key-chord-mode 1)
+  :config (progn
+            (key-chord-define-global ",," #'indent-for-comment)
+            (key-chord-define-global "''" "`'\C-b")))
 
 ;; Misc. bindigs
 (defun goto-line-with-feedback ()
@@ -34,19 +41,17 @@
 (global-set-key "\C-wp" #'yank)
 (global-set-key "\C-wx" #'delete-region)
 
-;; Text scaling
-(define-key global-map (kbd "C-+") #'text-scale-increase)
-(define-key global-map (kbd "C--") #'text-scale-decrease)
-(define-key global-map (kbd "C-<kp-add>") #'text-scale-increase)
-(define-key global-map (kbd "C-<kp-subtract>") #'text-scale-decrease)
+(use-package hydra
+  :ensure t
+  :init
+  (progn
+    ;; Text scaling
+    (defhydra hydra-zoom (global-map "<f2>")
+      "zoom"
+      ("g" text-scale-increase "in")
+      ("l" text-scale-decrease "out"))
 
-(when (fboundp 'mouse-wheel-mode)
-  (global-set-key (vector (list 'control mouse-wheel-up-event))
-                  (lambda () (interactive) (text-scale-decrease 1)))
-  (global-set-key (vector (list 'control mouse-wheel-down-event))
-                  (lambda () (interactive) (text-scale-increase 1)))
-  (global-set-key (kbd "C-<down-mouse-2>")
-                  (lambda () (interactive) (text-scale-adjust 0))))
+    (key-chord-define-global "tt" 'hydra-zoom/body)))
 
 ;; Searching
 (setq lazy-highlight-cleanup nil)
