@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:42:15 algernon@madhouse-project.org>
+;; Last updated: <2015/02/24 09:41:24 algernon@madhouse-project.org>
 
 (if (and (boundp 'debian-emacs-flavor)
          (or (eq debian-emacs-flavor 'emacs-snapshot)
@@ -7,4 +7,4 @@
     (progn
       (server-start)))
 
-(provide 'users/algernon/s-server)
+(provide 'aec/packs/server)

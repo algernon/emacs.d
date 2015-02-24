@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:37:55 algernon@madhouse-project.org>
+;; Last updated: <2015/02/24 09:43:54 algernon@madhouse-project.org>
 
 (defun fullscreen (&optional f)
   (interactive)
@@ -10,4 +10,4 @@
 
 (global-set-key [f11] 'fullscreen)
 
-(provide 'users/algernon/fullscreen)
+(provide 'aec/packs/fullscreen)

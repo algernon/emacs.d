@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 13:15:08 algernon@madhouse-project.org>
+;; Last updated: <2015/02/24 09:42:01 algernon@madhouse-project.org>
 
 (require (intern (concat "users/"
                          user-login-name
@@ -6,4 +6,4 @@
                          system-name))
          nil t)
 
-(provide 'users/algernon/s-hosts)
+(provide 'aec/user/hosts)

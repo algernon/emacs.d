@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/01/08 16:10:33 algernon@madhouse-project.org>
+;; Last updated: <2015/02/24 09:38:37 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -110,5 +110,4 @@
 (require 'aec/keybindings)
 (require 'aec/ui)
 (require 'aec/packs)
-
-(aec-require (concat "users/" user-login-name) t)
+(require 'aec/user)
