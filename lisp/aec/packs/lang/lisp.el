@@ -1,4 +1,4 @@
-;; Last updated: <2015/02/06 10:33:53 algernon@madhouse-project.org>
+;; Last updated: <2015/03/06 14:02:11 algernon@madhouse-project.org>
 
 (use-package paredit
   :ensure t
@@ -49,7 +49,7 @@
   :ensure t
   :defer t
   :diminish (lispy-mode . " λ")
-  :init (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook hy-mode-hook))
+  :init (dolist (hook '(clojure-mode-hook emacs-lisp-mode-hook))
           (add-hook hook #'lispy-mode)))
 
 (use-package rainbow-delimiters
