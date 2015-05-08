@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:45:08 algernon@madhouse-project.org>
+;; Last updated: <2015/03/12 15:56:38 algernon@madhouse-project.org>
 
 ;; dired
 (use-package dired
@@ -9,7 +9,7 @@
             :load-path "packages/")
           (add-hook 'dired-mode-hook #'dired-omit-mode))
   :config (progn
-            (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps$"
+            (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^CVS$\\|,v$\\|^\\.arch-ids$\\|^{arch}\\|^,,\\|^\\.git$\\|^\\.dirstamp$\\|^\\.deps\\|\\.gcno$"
                   dired-recursive-deletes 'top
                   dired-omit-mode t
                   dired-details-hidden-string "[...] "))
