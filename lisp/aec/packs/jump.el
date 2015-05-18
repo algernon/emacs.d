@@ -1,4 +1,4 @@
-;; Last updated: <2015/05/18 13:34:44 algernon@madhouse-project.org>
+;; Last updated: <2015/05/18 13:37:43 algernon@madhouse-project.org>
 
 (global-unset-key (kbd "C-o"))
 
@@ -16,6 +16,7 @@
 (use-package ace-window
   :ensure t
   :defer t
-  :bind (("C-o C-w" . ace-window)))
+  :bind (("C-o C-w" . ace-window)
+         ("C-x o" . ace-window)))
 
 (provide 'aec/packs/jump)
