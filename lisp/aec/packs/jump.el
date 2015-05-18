@@ -1,12 +1,16 @@
-;; Last updated: <2015/01/08 12:46:44 algernon@madhouse-project.org>
+;; Last updated: <2015/05/18 12:37:27 algernon@madhouse-project.org>
 
 (global-unset-key (kbd "C-o"))
 
-(use-package ace-jump-mode
+(use-package avy
   :ensure t
   :defer t
-  :bind (("C-o w" . ace-jump-word-mode)
-         ("C-o c" . ace-jump-char-mode)
-         ("C-o l" . ace-jump-line-mode)))
+  :config (avy-setup-default)
+  :bind (("C-o w" . avy-goto-word-1)
+         ("C-o c" . avy-goto-char)
+         ("C-o l" . avy-goto-line)
+         ("C-c g" . avy-goto-line)
+         ("M-g g" . avy-goto-line)
+         ("M-g M-g" . avy-goto-line)))
 
 (provide 'aec/packs/jump)
