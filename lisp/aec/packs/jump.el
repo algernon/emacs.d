@@ -1,4 +1,4 @@
-;; Last updated: <2015/05/18 12:37:27 algernon@madhouse-project.org>
+;; Last updated: <2015/05/18 13:34:44 algernon@madhouse-project.org>
 
 (global-unset-key (kbd "C-o"))
 
@@ -12,5 +12,10 @@
          ("C-c g" . avy-goto-line)
          ("M-g g" . avy-goto-line)
          ("M-g M-g" . avy-goto-line)))
+
+(use-package ace-window
+  :ensure t
+  :defer t
+  :bind (("C-o C-w" . ace-window)))
 
 (provide 'aec/packs/jump)
