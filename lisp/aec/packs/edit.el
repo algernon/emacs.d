@@ -69,7 +69,7 @@ narrowed."
             (setq writeroom-fullscreen-effect 'maximized)
             (key-chord-define-global "wr" 'writeroom-mode)))
 
-(when boundp 'set-fringe-mode
+(when (fboundp #'set-fringe-mode)
       (use-package centered-window-mode
         :ensure t
         :bind (("C-w w" . centered-window-mode))
