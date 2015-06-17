@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 13:47:00 algernon@madhouse-project.org>
+;; Last updated: <2015/06/17 09:31:47 algernon@madhouse-project.org>
 
 (use-package git-commit-mode
   :ensure t
@@ -35,7 +35,7 @@
 (use-package git-gutter
   :ensure t
   :defer t
-  :idle (global-git-gutter-mode t)
+  :init (global-git-gutter-mode t)
   :diminish git-gutter-mode
   :config (setq
            git-gutter:window-width 1

@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:46:09 algernon@madhouse-project.org>
+;; Last updated: <2015/06/17 09:31:57 algernon@madhouse-project.org>
 
 (use-package volatile-highlights
   :ensure t
@@ -11,7 +11,7 @@
 (use-package mic-paren
   :ensure t
   :defer t
-  :idle (progn
+  :init (progn
           (defun toggle-mic-paren-sexp-mode ()
             (interactive)
             (if paren-sexp-mode

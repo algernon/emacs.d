@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 13:37:04 algernon@madhouse-project.org>
+;; Last updated: <2015/06/17 09:31:40 algernon@madhouse-project.org>
 
 (setq sentence-end-double-space nil
       diff-switches "-u")
@@ -51,7 +51,7 @@ narrowed."
   :defer t
   :diminish fancy-narrow-mode
   :bind (("C-x n i" . fancy-narrow-or-widen-dwim))
-  :idle (fancy-narrow-mode))
+  :init (fancy-narrow-mode))
 
 (use-package whitespace
   :ensure t

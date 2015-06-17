@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/09 10:51:16 algernon@madhouse-project.org>
+;; Last updated: <2015/06/17 09:32:06 algernon@madhouse-project.org>
 
 (use-package color-identifiers-mode
   :ensure t
@@ -8,7 +8,7 @@
 (use-package evil-nerd-commenter
   :ensure t
   :defer t
-  :idle (evilnc-default-hotkeys))
+  :init (evilnc-default-hotkeys))
 
 (use-package hippie-exp
   :ensure t
