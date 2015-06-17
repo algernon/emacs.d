@@ -3,7 +3,9 @@
 (use-package volatile-highlights
   :ensure t
   :diminish volatile-highlights-mode
-  :init (volatile-highlights-mode))
+  :init (progn
+	  (require 'volatile-highlights)
+	  (volatile-highlights-mode t)))
 
 (use-package highlight
   :ensure t)
