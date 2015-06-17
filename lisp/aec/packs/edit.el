@@ -72,7 +72,8 @@ narrowed."
 (use-package centered-window-mode
   :ensure t
   :bind (("C-w w" . centered-window-mode))
-  :init (centered-window-mode))
+  :init (when (boundp 'set-fringe-mode)
+          (centered-window-mode)))
 
 (use-package drag-stuff
   :ensure t
