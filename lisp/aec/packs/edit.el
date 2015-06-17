@@ -1,4 +1,4 @@
-;; Last updated: <2015/06/17 09:31:40 algernon@madhouse-project.org>
+;; Last updated: <2015/06/17 09:41:27 algernon@madhouse-project.org>
 
 (setq sentence-end-double-space nil
       diff-switches "-u")
@@ -69,11 +69,11 @@ narrowed."
             (setq writeroom-fullscreen-effect 'maximized)
             (key-chord-define-global "wr" 'writeroom-mode)))
 
-(use-package centered-window-mode
-  :ensure t
-  :bind (("C-w w" . centered-window-mode))
-  :init (when (boundp 'set-fringe-mode)
-          (centered-window-mode)))
+(when boundp 'set-fringe-mode
+      (use-package centered-window-mode
+        :ensure t
+        :bind (("C-w w" . centered-window-mode))
+        :init (centered-window-mode)))
 
 (use-package drag-stuff
   :ensure t
