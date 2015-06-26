@@ -1,4 +1,4 @@
-;; Last updated: <2015/02/23 08:22:34 algernon@madhouse-project.org>
+;; Last updated: <2015/06/26 12:17:18 algernon@madhouse-project.org>
 
 (defalias 'yes-or-no-p #'y-or-n-p)
 
@@ -7,6 +7,7 @@
 
 (use-package auto-dim-other-buffers
   :diminish auto-dim-other-buffers-mode
+  :ensure t
   :init
   (add-hook 'after-init-hook
             #'auto-dim-other-buffers-mode
@@ -14,6 +15,7 @@
 
 (use-package golden-ratio
   :diminish golden-ratio-mode
+  :ensure t
   :if (not (is-presentingp))
   :bind (("C-w g" . golden-ratio-mode))
   :config
@@ -28,6 +30,7 @@
 
 (use-package page-break-lines
   :disabled t
+  :ensure t
   :diminish page-break-lines-mode
   :init (global-page-break-lines-mode))
 
