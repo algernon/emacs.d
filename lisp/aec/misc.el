@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:28:01 algernon@madhouse-project.org>
+;; Last updated: <2015/06/26 12:48:25 algernon@madhouse-project.org>
 
 (defun what-face (pos)
   (interactive "d")
@@ -16,5 +16,8 @@
   (interactive)
 
   (insert (format-time-string "%a, %e %b %Y %H:%M:%S %z")))
+
+(use-package try
+  :ensure t)
 
 (provide 'aec/misc)
