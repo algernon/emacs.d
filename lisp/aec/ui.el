@@ -1,4 +1,4 @@
-;; Last updated: <2015/06/26 12:17:18 algernon@madhouse-project.org>
+;; Last updated: <2015/06/26 12:25:02 algernon@madhouse-project.org>
 
 (defalias 'yes-or-no-p #'y-or-n-p)
 
@@ -33,6 +33,30 @@
   :ensure t
   :diminish page-break-lines-mode
   :init (global-page-break-lines-mode))
+
+(use-package swiper
+  :ensure t
+  :config
+  (progn
+    (defun counsel--load-theme-action (x)
+      "Disable current themes and load theme X."
+      (condition-case nil
+          (progn
+            (mapc #'disable-theme custom-enabled-themes)
+            (load-theme (intern x))
+            (when (fboundp 'powerline-reset)
+              (powerline-reset)))
+        (error "Problem loading theme %s" x)))
+
+    (defun counsel-load-theme ()
+      "Forward to `load-theme'.
+Usable with `ivy-resume', `ivy-next-line-and-call' and
+`ivy-previous-line-and-call'."
+      (interactive)
+      (ivy-read "Load custom theme: "
+                (mapcar 'symbol-name
+                        (custom-available-themes))
+                :action #'counsel--load-theme-action))))
 
 (setq custom-safe-themes t
       inhibit-startup-message t
