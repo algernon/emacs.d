@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/01/15 16:01:56 algernon@madhouse-project.org>
+;; Last updated: <2015/06/26 12:17:31 algernon@madhouse-project.org>
 
 (use-package molokai-theme
   :ensure t)
@@ -80,7 +80,9 @@
     (load-theme 'cyberpunk)
   (load-theme 'molokai))
 (sml/setup)
-(sml/apply-theme 'powerline)
+(use-package smart-mode-line-powerline-theme
+  :ensure t
+  :init (sml/apply-theme 'powerline))
 (setq mode-line-end-spaces (make-string 7 #x20)
       sml/mode-width 'right)
 
