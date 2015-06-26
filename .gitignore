@@ -1,6 +1,7 @@
 /.smex-items
 /backups/
 /elpa/
+/eshell/
 /places
 *~
 .#*
@@ -10,6 +11,7 @@
 /history
 /semanticdb/
 /session.*
+/srecode-map.el
 /tramp
 /custom.el
 *.elc
