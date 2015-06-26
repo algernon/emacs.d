@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 12:48:15 algernon@madhouse-project.org>
+;; Last updated: <2015/06/26 12:38:47 algernon@madhouse-project.org>
 
 ;; These were borrowed (and slightly tweaked) from http://bzg.fr/emacs-strip-tease.html
 
@@ -15,7 +15,7 @@
 (define-minor-mode hidden-mode-line-mode
   "Minor mode to hide the mode-line in the current buffer."
   :init-value nil
-  :global nil
+  :global t
   :variable hidden-mode-line-mode
   :group 'editing-basics
   (if hidden-mode-line-mode
@@ -23,11 +23,16 @@
             mode-line-format nil)
     (setq mode-line-format hide-mode-line
           hide-mode-line nil))
+  (force-mode-line-update)
+  ;; Apparently force-mode-line-update is not always enough to
+  ;; redisplay the mode-line
+  (redraw-display)
   (when (and (called-interactively-p 'interactive)
              hidden-mode-line-mode)
     (run-with-idle-timer
      0 nil 'message
      (concat "Hidden Mode Line Mode enabled.  "
-             "Use M-x hidden-mode-line-mode RET to make the mode-line appear."))))
+             "Use M-x hidden-mode-line-mode to make the mode-line appear."))))
+(global-set-key "\C-wz" #'hidden-mode-line-mode)
 
 (provide 'aec/packs/mode-line)
