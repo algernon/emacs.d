@@ -1,4 +1,4 @@
-;; Last updated: <2015/06/17 09:41:27 algernon@madhouse-project.org>
+;; Last updated: <2015/06/29 08:47:27 algernon@madhouse-project.org>
 
 (setq sentence-end-double-space nil
       diff-switches "-u")
@@ -6,7 +6,9 @@
 (use-package anzu
   :ensure t
   :diminish anzu-mode
-  :init (global-anzu-mode t))
+  :init (global-anzu-mode t)
+  :bind (("M-%" . anzu-query-replace)
+         ("C-M-%" . anzu-query-replace-regexp)))
 
 (use-package fold-this
   :ensure t
