@@ -1,9 +1,11 @@
-;; Last updated: <2015/06/26 12:25:02 algernon@madhouse-project.org>
+;; Last updated: <2015/07/02 06:56:27 algernon@madhouse-project.org>
 
 (defalias 'yes-or-no-p #'y-or-n-p)
 
-(set-face-attribute 'default nil :family "Droid Sans Mono")
-(set-face-attribute 'default nil :height 120)
+(unless (eq system-type 'windows-nt)
+  (progn
+    (set-face-attribute 'default nil :family "Droid Sans Mono")
+    (set-face-attribute 'default nil :height 120)))
 
 (use-package auto-dim-other-buffers
   :diminish auto-dim-other-buffers-mode
