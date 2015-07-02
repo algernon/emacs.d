@@ -8,7 +8,7 @@
 ;; Maintainer: Gergely Nagy <algernon@madhouse-project.org>
 ;; Created: 2000-08-03
 ;; Keywords: local
-;; Last updated: <2015/02/24 09:38:37 algernon@madhouse-project.org>
+;; Last updated: <2015/07/02 06:54:25 algernon@madhouse-project.org>
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -85,6 +85,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (if (file-exists-p custom-file)
     (load (file-name-sans-extension custom-file)))
+
+(if (file-exists-p "~/.emacs.d/local.el")
+    (load "~/.emacs.d/local"))
 
 ;; Dispatch to local snippets.
 ;;
