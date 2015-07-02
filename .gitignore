@@ -14,4 +14,8 @@
 /srecode-map.el
 /tramp
 /custom.el
+/ido.last
+/local.el
+/recentf
+/server/
 *.elc
