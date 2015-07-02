@@ -1,6 +1,6 @@
-;; Last updated: <2015/06/17 09:31:47 algernon@madhouse-project.org>
+;; Last updated: <2015/07/02 06:55:30 algernon@madhouse-project.org>
 
-(use-package git-commit-mode
+(use-package git-commit
   :ensure t
   :demand t
   :init (progn
@@ -10,7 +10,6 @@
 (use-package magit
   :ensure t
   :defer t
-  :diminish magit-auto-revert-mode
   :bind (("C-x g" . magit-status))
   :config (progn
             (setq magit-commit-signoff t)
