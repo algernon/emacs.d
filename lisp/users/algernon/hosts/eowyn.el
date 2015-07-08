@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/06/26 12:27:37 algernon@madhouse-project.org>
+;; Last updated: <2015/07/08 11:51:16 algernon@madhouse-project.org>
 
 (use-package material-theme
   :ensure t)
@@ -86,9 +86,10 @@
 (sml/setup)
 (use-package smart-mode-line-powerline-theme
   :ensure t
-  :init (sml/apply-theme 'powerline))
-(setq mode-line-end-spaces (make-string 7 #x20)
-      sml/mode-width 'right)
+  :init (progn
+          (sml/apply-theme 'powerline)
+          (setq mode-line-end-spaces (make-string 7 #x20)
+                sml/mode-width 'right)))
 
 ;; Experiment with the Monaco font...
 (set-face-attribute 'default nil :family "Monaco")
