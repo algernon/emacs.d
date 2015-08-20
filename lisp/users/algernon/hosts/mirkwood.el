@@ -1,9 +1,9 @@
-;;; huan.madhouse-project.org.el -- Storage
+;;; mirkwood.el -- desktop VM
 
 ;; Copyright (C) 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/07/13 16:56:34 algernon@madhouse-project.org>
+;; Last updated: <2015/08/20 13:53:11 algernon@madhouse-project.org>
 
 (use-package material-theme
   :ensure t)
@@ -16,4 +16,4 @@
 (setq mode-line-end-spaces (make-string 7 #x20)
       sml/mode-width 'right)
 
-(provide 'users/algernon/hosts/huan.madhouse-project.org)
+(provide 'users/algernon/hosts/mirkwood)
