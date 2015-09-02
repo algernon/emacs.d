@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/07/08 11:51:16 algernon@madhouse-project.org>
+;; Last updated: <2015/09/02 09:57:50 algernon@madhouse-project.org>
 
 (use-package material-theme
   :ensure t)
@@ -92,6 +92,8 @@
                 sml/mode-width 'right)))
 
 ;; Experiment with the Monaco font...
-(set-face-attribute 'default nil :family "Monaco")
+(set-face-attribute 'default nil
+                    :family "Hack"
+                    :height 120)
 
 (provide 'users/algernon/hosts/eowyn)
