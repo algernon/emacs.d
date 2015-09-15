@@ -1,4 +1,4 @@
-;; Last updated: <2015/06/17 09:32:06 algernon@madhouse-project.org>
+;; Last updated: <2015/09/15 10:57:05 algernon@madhouse-project.org>
 
 (use-package color-identifiers-mode
   :ensure t
@@ -70,5 +70,10 @@ warning face."
   :init (eval-after-load 'flycheck
           '(setq
             flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
+
+(define-key prog-mode-map "\C-x\C-n" #'forward-page)
+(define-key prog-mode-map "\C-x\C-p" #'backward-page)
+(advice-add #'backward-page :after #'recenter)
+(advice-add #'forward-page  :after #'recenter)
 
 (provide 'aec/packs/lang/common)
