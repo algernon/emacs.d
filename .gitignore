@@ -13,6 +13,7 @@
 /session.*
 /srecode-map.el
 /tramp
+/tumblr-oauth-token
 /custom.el
 /ido.last
 /local.el
