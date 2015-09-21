@@ -1,4 +1,4 @@
-;; Last updated: <2015/09/21 15:09:48 algernon@madhouse-project.org>
+;; Last updated: <2015/09/21 15:17:09 algernon@madhouse-project.org>
 
 (require 'eshell)
 (require 'em-smart)
@@ -25,5 +25,18 @@
   (unless (file-exists-p ".gitignore")
     (with-temp-file ".gitignore"
       (insert "*\n"))))
+
+(defun eshell/e (&rest args)
+  "Invoke `find-file' on the file.
+    \"e +42 foo\" also goes to line 42 in the buffer."
+  (while args
+    (if (string-match "\\`\\+\\([0-9]+\\)\\'" (car args))
+        (let* ((line (string-to-number (match-string 1 (pop args))))
+               (file (pop args)))
+          (find-file file)
+          (goto-line line))
+      (find-file (pop args)))))
+
+(defalias 'eshell/v 'view-file)
 
 (provide 'aec/packs/eshell)
