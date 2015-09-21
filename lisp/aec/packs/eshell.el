@@ -1,4 +1,4 @@
-;; Last updated: <2015/09/21 11:20:28 algernon@madhouse-project.org>
+;; Last updated: <2015/09/21 15:09:48 algernon@madhouse-project.org>
 
 (require 'eshell)
 (require 'em-smart)
@@ -13,6 +13,9 @@
 (use-package eshell-git-prompt
   :ensure t
   :init (eshell-git-prompt-use-theme 'powerline))
+
+(use-package eshell-z
+  :ensure t)
 
 (defun eshell/mkbuilddir (&optional dir)
   (setq dir (or dir "b"))
