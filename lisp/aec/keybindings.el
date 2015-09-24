@@ -1,4 +1,4 @@
-;; Last updated: <2015/02/06 09:51:45 algernon@madhouse-project.org>
+;; Last updated: <2015/09/24 09:59:37 algernon@madhouse-project.org>
 
 (use-package key-chord
   :ensure t
@@ -24,7 +24,7 @@
 (global-unset-key "\C-z")
 (global-set-key "\C-m" #'newline-and-indent)
 
-; Because a space after a comma is just a waste of a keystroke.
+;; Because a space after a comma is just a waste of a keystroke.
 (global-set-key (kbd ",") (lambda() (interactive) (insert ", ")))
 
 ;; Killing, copying and yanking
@@ -49,9 +49,7 @@
     (defhydra hydra-zoom (global-map "<f2>")
       "zoom"
       ("g" text-scale-increase "in")
-      ("l" text-scale-decrease "out"))
-
-    (key-chord-define-global "tt" 'hydra-zoom/body)))
+      ("l" text-scale-decrease "out"))))
 
 ;; Searching
 (setq lazy-highlight-cleanup nil)
