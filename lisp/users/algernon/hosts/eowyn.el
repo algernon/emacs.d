@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014, 2015
 ;; Gergely Nagy <algernon@madhouse-project.org>
 
-;; Last updated: <2015/09/02 09:57:50 algernon@madhouse-project.org>
+;; Last updated: <2015/09/30 09:31:29 algernon@madhouse-project.org>
 
 (use-package material-theme
   :ensure t)
@@ -83,13 +83,22 @@
 (if (is-presentingp)
     (load-theme 'cyberpunk)
   (load-theme 'material))
-(sml/setup)
-(use-package smart-mode-line-powerline-theme
+
+(defun algernon-powerline-setup ()
+  (sml/setup)
+  (use-package smart-mode-line-powerline-theme
+    :ensure t
+    :init (progn
+            (sml/apply-theme 'powerline)
+            (setq mode-line-end-spaces (make-string 7 #x20)
+                  sml/mode-width 'right))))
+
+;;(algernon-powerline-setup)
+(use-package spaceline
   :ensure t
   :init (progn
-          (sml/apply-theme 'powerline)
-          (setq mode-line-end-spaces (make-string 7 #x20)
-                sml/mode-width 'right)))
+          (require 'spaceline-config)
+          (spaceline-spacemacs-theme)))
 
 ;; Experiment with the Monaco font...
 (set-face-attribute 'default nil
