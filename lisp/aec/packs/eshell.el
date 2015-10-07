@@ -1,4 +1,4 @@
-;; Last updated: <2015/09/21 15:17:09 algernon@madhouse-project.org>
+;; Last updated: <2015/09/22 15:24:06 algernon@madhouse-project.org>
 
 (require 'eshell)
 (require 'em-smart)
@@ -38,5 +38,7 @@
       (find-file (pop args)))))
 
 (defalias 'eshell/v 'view-file)
+
+(setenv "EDITOR" "emacsclient")
 
 (provide 'aec/packs/eshell)
