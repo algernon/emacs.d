@@ -16,7 +16,7 @@ algernon's Emacs configuration
 Screenshot
 ----------
 
-![My Emacs on 2015-01-16](https://github.com/algernon/emacs.d/raw/master/data/screenshot-2015-01-16.png)
+![My Emacs on 2015-10-26](https://github.com/algernon/emacs.d/raw/master/data/screenshot-2015-10-26.png)
 
 License
 -------
