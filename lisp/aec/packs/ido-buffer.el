@@ -1,4 +1,4 @@
-;; Last updated: <2015/01/08 15:45:01 algernon@madhouse-project.org>
+;; Last updated: <2015/10/26 09:25:01 algernon@madhouse-project.org>
 
 (ido-mode t)
 
@@ -45,5 +45,9 @@
 
 (global-set-key "\C-xb" #'ibuffer)
 (global-set-key "\C-x\C-b" #'ido-switch-buffer)
+
+(use-package ido-grid-mode
+  :ensure t
+  :init (ido-grid-mode 1))
 
 (provide 'aec/packs/ido-buffer)
