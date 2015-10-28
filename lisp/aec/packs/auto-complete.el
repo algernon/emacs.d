@@ -1,4 +1,4 @@
-;; Last updated: <2015/10/07 15:52:24 algernon@madhouse-project.org>
+;; Last updated: <2015/10/27 14:40:52 algernon@madhouse-project.org>
 
 (use-package company
   :ensure t
@@ -16,7 +16,10 @@
                     (set-fontset-font "fontset-default"
                                       '(#x1f600 . #x1f64f) "Symbola")
                     (set-fontset-font "fontset-default"
-                                      '(#x2600  . #x27bf ) "Symbola")))))
+                                      '(#x2600  . #x27bf ) "Symbola")
+                    (set-fontset-font
+                     t 'symbol
+                     (font-spec :family "Symbola") nil 'prepend)))))
 
 (use-package fuzzy
   :ensure t
