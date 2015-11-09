@@ -23,8 +23,11 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
-     ;; better-defaults
+     (auto-completion :variables
+                      auto-completion-enable-help-tooltip t
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t)
+     better-defaults
      c-c++
      centered-window
      (clojure :variables clojure-enable-fancify-symbols t)
@@ -32,10 +35,12 @@ values."
      emacs-lisp
      emoji
      git
+     github
      gnus
      markdown
      (org :variables org-enable-github-support t)
      perspectives
+     semantic
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
@@ -207,6 +212,10 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+
+  (setq magit-push-always-verify nil)
+  (setq-default git-magit-status-fullscreen t)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
