@@ -35,6 +35,7 @@ values."
              colors-enable-nyan-cat-progress-bar nil)
      emacs-lisp
      emoji
+     fancy-narrower
      git
      github
      gnus
