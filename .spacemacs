@@ -31,7 +31,8 @@ values."
      c-c++
      centered-window
      (clojure :variables clojure-enable-fancify-symbols t)
-     (colors :variables colors-enable-rainbow-identifiers t)
+     (colors :variables colors-enable-rainbow-identifiers t
+             colors-enable-nyan-cat-progress-bar nil)
      emacs-lisp
      emoji
      git
@@ -213,9 +214,13 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  (setq magit-push-always-verify nil)
+  (setq magit-push-always-verify nil
+        display-time-24hr-format t
+        display-time-default-load-average nil)
   (setq-default git-magit-status-fullscreen t)
-)
+  (global-aggressive-indent-mode 1)
+  (global-vi-tilde-fringe-mode 0)
+  (display-time-mode))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
