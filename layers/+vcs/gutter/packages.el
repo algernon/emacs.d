@@ -19,6 +19,7 @@
 
   (use-package git-gutter
     :defer t
+    :diminish git-gutter-mode
     :init (progn
             (setq-default git-gutter:added-sign "⚫"
                           git-gutter:modified-sign "⚫"
