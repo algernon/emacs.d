@@ -43,6 +43,7 @@ values."
      markdown
      (org :variables org-enable-github-support t)
      perspectives
+     scala
      semantic
      (shell :variables
             shell-default-height 30
