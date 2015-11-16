@@ -221,8 +221,10 @@ layers configuration. You are free to put any user code."
   (setq magit-push-always-verify nil
         magit-commit-arguments '("--signoff")
         display-time-24hr-format t
-        display-time-default-load-average nil)
-  (setq-default git-magit-status-fullscreen t)
+        display-time-default-load-average nil
+        magit-post-display-buffer-hook #'(lambda ()
+                                           (when (derived-mode-p 'magit-status-mode)
+                                             (delete-other-windows))))
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
   (display-time-mode))
