@@ -226,7 +226,13 @@ layers configuration. You are free to put any user code."
         display-time-default-load-average nil
         magit-post-display-buffer-hook #'(lambda ()
                                            (when (derived-mode-p 'magit-status-mode)
-                                             (delete-other-windows))))
+                                             (delete-other-windows)))
+        time-stamp-active t
+        time-stamp-start "[lL]ast [uU]pdated:[    ]+\\\\?[\"<]+"
+        time-stamp-line-limit 20
+        time-stamp-format (concat "%:y/%02m/%02d %02H:%02M:%02S "
+                                  user-mail-address))
+  (add-hook 'write-file-hooks #'time-stamp)
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
   (display-time-mode))
