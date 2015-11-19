@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/19 12:35:34 algernon@madhouse-project.org>
+;; Last updated: <2015/11/19 16:19:21 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -141,6 +141,7 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  (setq user-mail-address "algernon@madhouse-project.org")
   )
 
 (defun dotspacemacs/user-config ()
@@ -155,7 +156,6 @@ layers configuration. You are free to put any user code."
         magit-post-display-buffer-hook #'(lambda ()
                                            (when (derived-mode-p 'magit-status-mode)
                                              (delete-other-windows)))
-        user-mail-address "algernon@madhouse-project.org"
         time-stamp-active t
         time-stamp-start "[lL]ast [uU]pdated:[    ]+\\\\?[\"<]+"
         time-stamp-line-limit 20
