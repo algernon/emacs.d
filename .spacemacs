@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/19 16:19:21 algernon@madhouse-project.org>
+;; Last updated: <2015/11/19 16:21:05 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -70,7 +70,7 @@ values."
      centered-window
      (clojure :variables clojure-enable-fancify-symbols t)
      (colors :variables colors-enable-rainbow-identifiers t
-             colors-enable-nyan-cat-progress-bar nil)
+             colors-enable-nyan-cat-progress-bar t)
      emacs-lisp
      emoji
      fancy-narrower
@@ -164,6 +164,7 @@ layers configuration. You are free to put any user code."
   (add-hook 'write-file-hooks #'time-stamp)
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
+  (spacemacs/toggle-nyan-cat-progress-bar-off)
   (display-time-mode))
 
 ;; Do not write anything past this comment. This is where Emacs will
