@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/19 10:29:26 algernon@madhouse-project.org>
+;; Last updated: <2015/11/19 11:14:58 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -106,6 +106,11 @@ before layers configuration.
 You should not put any user code in there besides modifying the variable
 values."
   (setq-default
+   dotspacemacs-editing-style 'vim
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-command-key ":"
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects bookmarks)
    dotspacemacs-themes '(material
