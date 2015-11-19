@@ -146,6 +146,7 @@ layers configuration. You are free to put any user code."
         magit-post-display-buffer-hook #'(lambda ()
                                            (when (derived-mode-p 'magit-status-mode)
                                              (delete-other-windows)))
+        user-mail-address "algernon@madhouse-project.org"
         time-stamp-active t
         time-stamp-start "[lL]ast [uU]pdated:[    ]+\\\\?[\"<]+"
         time-stamp-line-limit 20
