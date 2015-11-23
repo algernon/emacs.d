@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/19 16:21:05 algernon@madhouse-project.org>
+;; Last updated: <2015/11/23 15:24:16 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -80,6 +80,7 @@ values."
      gutter
      html
      (hy :variables hy-enable-fancify-symbols t)
+     (latex :variables latex-enable-auto-fill t)
      markdown
      (org :variables org-enable-github-support t)
      perspectives
