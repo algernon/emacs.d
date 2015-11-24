@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/24 15:50:01 algernon@madhouse-project.org>
+;; Last updated: <2015/11/24 15:53:05 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -164,6 +164,13 @@ user code."
                                   user-mail-address))
   (add-hook 'write-file-hooks #'time-stamp))
 
+(defun algernon/config-global-search-and-replace ()
+  (defun algernon/global-ex-search-and-replace ()
+    (interactive)
+    (let ((evil-ex-substitute-global t))
+      (evil-ex "%s/")))
+  (define-key evil-normal-state-map "S" #'algernon/global-ex-search-and-replace))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -172,6 +179,7 @@ layers configuration. You are free to put any user code."
   (algernon/config-magit)
   (algernon/config-display-time)
   (algernon/config-time-stamp-on-save)
+  (algernon/config-global-search-and-replace)
 
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
