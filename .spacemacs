@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/24 14:47:09 algernon@madhouse-project.org>
+;; Last updated: <2015/11/24 15:50:01 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -144,28 +144,38 @@ user code."
   (setq user-mail-address "algernon@madhouse-project.org")
   )
 
+(defun algernon/config-magit ()
+  (setq magit-push-always-verify nil
+        magit-commit-arguments '("--signoff")
+        magit-post-display-buffer-hook #'(lambda ()
+                                           (when (derived-mode-p 'magit-status-mode)
+                                             (delete-other-windows)))))
+
+(defun algernon/config-display-time ()
+  (setq display-time-24hr-format t
+        display-time-default-load-average nil)
+  (display-time-mode))
+
+(defun algernon/config-time-stamp-on-save ()
+  (setq time-stamp-active t
+        time-stamp-start "[lL]ast [uU]pdated:[    ]+\\\\?[\"<]+"
+        time-stamp-line-limit 20
+        time-stamp-format (concat "%:y/%02m/%02d %02H:%02M:%02S "
+                                  user-mail-address))
+  (add-hook 'write-file-hooks #'time-stamp))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  (setq magit-push-always-verify nil
-        magit-commit-arguments '("--signoff")
-        display-time-24hr-format t
-        display-time-default-load-average nil
-        magit-post-display-buffer-hook #'(lambda ()
-                                           (when (derived-mode-p 'magit-status-mode)
-                                             (delete-other-windows)))
-        time-stamp-active t
-        time-stamp-start "[lL]ast [uU]pdated:[    ]+\\\\?[\"<]+"
-        time-stamp-line-limit 20
-        time-stamp-format (concat "%:y/%02m/%02d %02H:%02M:%02S "
-                                  user-mail-address))
-  (add-hook 'write-file-hooks #'time-stamp)
+  (algernon/config-magit)
+  (algernon/config-display-time)
+  (algernon/config-time-stamp-on-save)
+
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
-  (spacemacs/toggle-nyan-cat-progress-bar-off)
-  (display-time-mode))
+  (spacemacs/toggle-nyan-cat-progress-bar-off))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
