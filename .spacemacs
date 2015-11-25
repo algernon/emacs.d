@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/24 15:59:41 algernon@madhouse-project.org>
+;; Last updated: <2015/11/25 10:20:54 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -72,6 +72,7 @@ values."
      (colors :variables colors-enable-rainbow-identifiers t
              colors-enable-nyan-cat-progress-bar t)
      emacs-lisp
+     eyebrowse
      fancy-narrower
      git
      github
@@ -82,7 +83,6 @@ values."
      (latex :variables latex-enable-auto-fill t)
      markdown
      (org :variables org-enable-github-support t)
-     perspectives
      python
      (ranger :variables
              ranger-show-preview t)
