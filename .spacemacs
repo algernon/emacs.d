@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/25 10:20:54 algernon@madhouse-project.org>
+;; Last updated: <2015/11/25 15:18:27 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -74,6 +74,7 @@ values."
      emacs-lisp
      eyebrowse
      fancy-narrower
+     feed-reader
      git
      github
      gnus
@@ -174,6 +175,11 @@ user code."
 (defun algernon/config-evil ()
   (setq evil-move-cursor-back nil))
 
+(defun algernon/config-elfeed ()
+  (let ((feed-file (concat user-emacs-directory "private/etc/feeds.el")))
+    (if (file-exists-p feed-file)
+        (load feed-file))))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -184,6 +190,7 @@ layers configuration. You are free to put any user code."
   (algernon/config-time-stamp-on-save)
   (algernon/config-global-search-and-replace)
   (algernon/config-evil)
+  (algernon/config-elfeed)
 
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
