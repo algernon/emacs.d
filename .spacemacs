@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/25 15:18:27 algernon@madhouse-project.org>
+;; Last updated: <2015/11/26 13:58:05 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -191,6 +191,8 @@ layers configuration. You are free to put any user code."
   (algernon/config-global-search-and-replace)
   (algernon/config-evil)
   (algernon/config-elfeed)
+
+  (evil-leader/set-key "q#" #'server-edit)
 
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
