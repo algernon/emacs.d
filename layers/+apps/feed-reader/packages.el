@@ -30,6 +30,7 @@
 
       ;; Terrible hack for Elfeed split pane view
       (defun elfeed-show-entry (entry)
+        "Display ENTRY in the current buffer."
         (let ((buff (get-buffer-create "*elfeed-entry*")))
           (with-current-buffer buff
             (elfeed-show-mode)
