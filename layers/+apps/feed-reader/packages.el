@@ -76,7 +76,8 @@
 
       (add-hook 'elfeed-kill-entry-hook #'popwin:elfeed-kill-buffer)
 
-      ;; (defconst feed-reader/update-timer
-      ;;   (run-with-timer 1 (* 60 60) #'elfeed-update))
+      (defconst feed-reader/update-timer
+        (run-with-timer 1 (* 60 60) #'elfeed-update))
+
 
       (setf url-queue-timeout 30))))
