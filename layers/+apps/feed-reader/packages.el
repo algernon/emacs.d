@@ -48,7 +48,6 @@
                              :stick t))
       (add-hook 'elfeed-show-entry-hook #'popwin:elfeed-show-entry)
 
-
       (defun elfeed-show-next ()
         "Show the next item in the elfeed-search buffer."
         (interactive)
