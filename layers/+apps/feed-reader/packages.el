@@ -5,6 +5,7 @@
     :commands elfeed
     :defer t
     :init (evil-leader/set-key "af" #'elfeed)
+    :pin manual
     :config
     (progn
       (evil-set-initial-state #'elfeed-search-mode 'emacs)
@@ -29,6 +30,16 @@
                (kbd "&") #'feed-reader/search-mode-browse-external-browser)
 
       ;; Terrible hack for Elfeed split pane view
+      (defvar elfeed-show-entry-switch #'switch-to-buffer
+        "Function to call to display and switch to the feed entry buffer.
+Defaults to `switch-to-buffer'.")
+
+      (defvar elfeed-show-entry-delete #'elfeed-kill-buffer
+        "Function called when quitting from the elfeed-entry
+buffer. Does not take any arguments.
+
+Defaults to `elfeed-kill-buffer'.")
+
       (defun elfeed-show-entry (entry)
         "Display ENTRY in the current buffer."
         (let ((buff (get-buffer-create "*elfeed-entry*")))
@@ -36,37 +47,32 @@
             (elfeed-show-mode)
             (setq elfeed-show-entry entry)
             (elfeed-show-refresh))
-          (if elfeed-show-entry-hook
-              (run-hook-with-args 'elfeed-show-entry-hook buff entry)
-            (switch-to-buffer buff))))
-
-      (defun popwin:elfeed-show-entry (buff entry)
-        (popwin:popup-buffer buff
-                             :position 'right
-                             :width 0.5
-                             :dedicated t
-                             :noselect nil
-                             :stick t))
-      (add-hook 'elfeed-show-entry-hook #'popwin:elfeed-show-entry)
+          (funcall elfeed-show-entry-switch buff)))
 
       (defun elfeed-show-next ()
         "Show the next item in the elfeed-search buffer."
         (interactive)
-        (if elfeed-kill-entry-hook
-            (run-hooks 'elfeed-kill-entry-hook)
-          (elfeed-kill-buffer))
+        (funcall elfeed-show-entry-delete)
         (with-current-buffer (elfeed-search-buffer)
           (call-interactively #'elfeed-search-show-entry)))
 
       (defun elfeed-show-prev ()
         "Show the previous item in the elfeed-search buffer."
         (interactive)
-        (if elfeed-kill-entry-hook
-            (run-hooks 'elfeed-kill-entry-hook)
-          (elfeed-kill-buffer))
+        (funcall elfeed-show-entry-delete)
         (with-current-buffer (elfeed-search-buffer)
           (forward-line -2)
           (call-interactively #'elfeed-search-show-entry)))
+
+      ;; Terrible hack ends here.
+
+      (defun popwin:elfeed-show-entry (buff)
+        (popwin:popup-buffer buff
+                             :position 'right
+                             :width 0.5
+                             :dedicated t
+                             :noselect nil
+                             :stick t))
 
       (defun popwin:elfeed-kill-buffer ()
         (interactive)
@@ -74,9 +80,8 @@
           (kill-buffer (get-buffer "*elfeed-entry*"))
           (delete-window window)))
 
-      (add-hook 'elfeed-kill-entry-hook #'popwin:elfeed-kill-buffer)
-
-      ;; Terrible hack ends here.
+      (setq elfeed-show-entry-switch #'popwin:elfeed-show-entry
+            elfeed-show-entry-delete #'popwin:elfeed-kill-buffer)
 
       (defconst feed-reader/update-timer
         (run-with-timer 1 (* 60 60) #'elfeed-update))
