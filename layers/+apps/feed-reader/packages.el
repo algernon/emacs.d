@@ -76,6 +76,8 @@
 
       (add-hook 'elfeed-kill-entry-hook #'popwin:elfeed-kill-buffer)
 
+      ;; Terrible hack ends here.
+
       (defconst feed-reader/update-timer
         (run-with-timer 1 (* 60 60) #'elfeed-update))
 
