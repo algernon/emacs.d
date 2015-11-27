@@ -1,5 +1,10 @@
 (defconst feed-reader-packages '(elfeed))
 
+;; This requires my fork of elfeed for now, find it on GitHub[1]. It will work
+;; with upstream elfeed too, but the behaviour will not be the same.
+;;
+;; [1]: https://github.com/algernon/elfeed
+
 (defun feed-reader/init-elfeed ()
   (use-package elfeed
     :commands elfeed
@@ -28,43 +33,6 @@
       (evilify elfeed-show-mode elfeed-show-mode-map
                (kbd "q") #'elfeed-kill-buffer
                (kbd "&") #'feed-reader/search-mode-browse-external-browser)
-
-      ;; Terrible hack for Elfeed split pane view
-      (defvar elfeed-show-entry-switch #'switch-to-buffer
-        "Function to call to display and switch to the feed entry buffer.
-Defaults to `switch-to-buffer'.")
-
-      (defvar elfeed-show-entry-delete #'elfeed-kill-buffer
-        "Function called when quitting from the elfeed-entry
-buffer. Does not take any arguments.
-
-Defaults to `elfeed-kill-buffer'.")
-
-      (defun elfeed-show-entry (entry)
-        "Display ENTRY in the current buffer."
-        (let ((buff (get-buffer-create "*elfeed-entry*")))
-          (with-current-buffer buff
-            (elfeed-show-mode)
-            (setq elfeed-show-entry entry)
-            (elfeed-show-refresh))
-          (funcall elfeed-show-entry-switch buff)))
-
-      (defun elfeed-show-next ()
-        "Show the next item in the elfeed-search buffer."
-        (interactive)
-        (funcall elfeed-show-entry-delete)
-        (with-current-buffer (elfeed-search-buffer)
-          (call-interactively #'elfeed-search-show-entry)))
-
-      (defun elfeed-show-prev ()
-        "Show the previous item in the elfeed-search buffer."
-        (interactive)
-        (funcall elfeed-show-entry-delete)
-        (with-current-buffer (elfeed-search-buffer)
-          (forward-line -2)
-          (call-interactively #'elfeed-search-show-entry)))
-
-      ;; Terrible hack ends here.
 
       (defun popwin:elfeed-show-entry (buff)
         (popwin:popup-buffer buff
