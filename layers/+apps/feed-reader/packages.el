@@ -81,6 +81,7 @@
       (defconst feed-reader/update-timer
         (run-with-timer 1 (* 60 60) #'elfeed-update))
 
-      (setq elfeed-max-connections 2)
+      (setq-default elfeed-max-connections 2
+                    elfeed-search-filter "+unread")
 
       (setf url-queue-timeout 30))))
