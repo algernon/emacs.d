@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/30 13:40:34 algernon@madhouse-project.org>
+;; Last updated: <2015/11/30 16:34:04 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -78,6 +78,7 @@ values."
      feed-reader
      git
      github
+     gh-notify
      gnus
      gutter
      html
