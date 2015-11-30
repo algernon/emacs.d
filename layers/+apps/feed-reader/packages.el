@@ -25,6 +25,38 @@
         (length url-queue)
         (cl-count-if #'url-queue-buffer url-queue)))
 
+(defun feed-reader/search-print (entry)
+  "Print ENTRY to the buffer."
+
+  (let* ((feed-width 16)
+         (tags-width 24)
+
+         (title (or (elfeed-meta entry :title) (elfeed-entry-title entry) ""))
+         (title-faces (elfeed-search--faces (elfeed-entry-tags entry)))
+         (feed (elfeed-entry-feed entry))
+         (feed-title
+          (when feed
+            (or (elfeed-meta feed :title) (elfeed-feed-title feed))))
+         (tags (mapcar #'symbol-name (elfeed-entry-tags entry)))
+         (tags-str (concat "[" (mapconcat 'identity tags ",") "]"))
+         (title-width (- (window-width) feed-width tags-width 4))
+         (title-column (elfeed-format-column
+                        title (elfeed-clamp
+                               elfeed-search-title-min-width
+                               title-width
+                               elfeed-search-title-max-width)
+                        :left))
+         (tag-column (elfeed-format-column
+                      tags-str (elfeed-clamp (length tags-str) tags-width tags-width)
+                      :left))
+         (feed-column (elfeed-format-column
+                       feed-title (elfeed-clamp feed-width feed-width feed-width)
+                       :left)))
+
+    (insert (propertize feed-column 'face 'elfeed-search-feed-face) " ")
+    (insert (propertize tag-column 'face 'elfeed-search-tag-face) " ")
+    (insert (propertize title 'face title-faces 'kbd-help title))))
+
 (defun feed-reader/search-header ()
   "Returns the string to be used as the Elfeed header."
   (let* ((separator-left (intern (format "powerline-%s-%s"
@@ -124,4 +156,5 @@
 
       (setf url-queue-timeout 30)
 
-      (setq elfeed-search-header-function #'feed-reader/search-header))))
+      (setq elfeed-search-header-function #'feed-reader/search-header
+            elfeed-search-print-f #'feed-reader/search-print))))
