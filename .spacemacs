@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/27 09:10:56 algernon@madhouse-project.org>
+;; Last updated: <2015/11/30 12:58:58 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -71,6 +71,7 @@ values."
      (clojure :variables clojure-enable-fancify-symbols t)
      (colors :variables colors-enable-rainbow-identifiers t
              colors-enable-nyan-cat-progress-bar t)
+     debian-changelog
      emacs-lisp
      eyebrowse
      fancy-narrower
