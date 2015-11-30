@@ -20,6 +20,11 @@
              (cl-return
               (list unread-count entry-count (hash-table-count feeds))))))
 
+(defun feed-reader/db-stats ()
+  (list (hash-table-count elfeed-db-feeds)
+        (length url-queue)
+        (cl-count-if #'url-queue-buffer url-queue)))
+
 (defun feed-reader/search-header ()
   "Returns the string to be used as the Elfeed header."
   (let* ((separator-left (intern (format "powerline-%s-%s"
@@ -45,21 +50,16 @@
              (center (list
                       (funcall separator-left 'mode-line 'powerline-active2)
                       (destructuring-bind (unread entry-count feed-count) stats
-                        (let* ((content (format " %d/%d:%d" unread entry-count feed-count))
-                               (help-text nil)
-                               )
-                          (if url-queue
-                              (let* ((total (length url-queue))
-                                     (in-process (cl-count-if #'url-queue-buffer url-queue)))
-                                (setf content (concat content " (*)"))
-                                (setf help-text (format " %d feeds pending, %d in process ... "
-                                                        total in-process))))
+                        (let ((content (format " %d/%d:%d" unread entry-count feed-count)))
+                          (when url-queue
+                            (destructuring-bind (total-feeds queue-length in-progress) (feed-reader/db-stats)
+                              (setf content (concat content (format " (* %.0f%%%%)"
+                                                                    (* (/ (- total-feeds (+ queue-length
+                                                                                            in-progress))
+                                                                          total-feeds 1.0) 100))))))
                           (propertize content
-                                      'face 'powerline-active2
-                                      'help-echo help-text)))
-                      (funcall separator-right 'powerline-active2 'mode-line)
-                      )
-                     )
+                                      'face 'powerline-active2)))
+                      (funcall separator-right 'powerline-active2 'mode-line)))
              (rhs (list
                    (funcall separator-left 'mode-line 'powerline-active1)
                    (powerline-raw (concat " " update) 'powerline-active1 'r))))
