@@ -44,7 +44,7 @@
                         title (elfeed-clamp
                                elfeed-search-title-min-width
                                title-width
-                               elfeed-search-title-max-width)
+                               title-width)
                         :left))
          (tag-column (elfeed-format-column
                       tags-str (elfeed-clamp (length tags-str) tags-width tags-width)
