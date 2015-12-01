@@ -131,22 +131,7 @@
                (kbd "q") #'elfeed-kill-buffer
                (kbd "&") #'feed-reader/search-mode-browse-external-browser)
 
-      (defun popwin:elfeed-show-entry (buff)
-        (popwin:popup-buffer buff
-                             :position 'right
-                             :width 0.5
-                             :dedicated t
-                             :noselect nil
-                             :stick t))
-
-      (defun popwin:elfeed-kill-buffer ()
-        (interactive)
-        (let ((window (get-buffer-window (get-buffer "*elfeed-entry*"))))
-          (kill-buffer (get-buffer "*elfeed-entry*"))
-          (delete-window window)))
-
-      (setq elfeed-show-entry-switch #'popwin:elfeed-show-entry
-            elfeed-show-entry-delete #'popwin:elfeed-kill-buffer)
+      (elfeed-setup-split-pane)
 
       (defconst feed-reader/update-timer
         (run-with-timer 1 (* 60 60) #'elfeed-update))
@@ -157,4 +142,4 @@
       (setf url-queue-timeout 30)
 
       (setq elfeed-search-header-function #'feed-reader/search-header
-            elfeed-search-print-f #'feed-reader/search-print))))
+            elfeed-search-print-entry-function #'feed-reader/search-print))))
