@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/11/30 16:34:04 algernon@madhouse-project.org>
+;; Last updated: <2015/12/02 11:43:20 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -181,6 +181,22 @@ user code."
     (if (file-exists-p feed-file)
         (load feed-file))))
 
+(defun algernon/forward-sentence-or-sexp (&optional count)
+  (interactive)
+  (if (member major-mode '(hy-mode clojure-mode emacs-lisp-mode))
+      (sp-forward-sexp count)
+    (evil-forward-sentence-begin count)))
+
+(defun algernon/backward-sentence-or-sexp (&optional count)
+  (interactive)
+  (if (member major-mode '(hy-mode clojure-mode emacs-lisp-mode))
+      (sp-backward-sexp count)
+    (evil-backward-sentence-begin count)))
+
+(defun algernon/config-lispy-modes ()
+  (define-key evil-normal-state-map ")" #'algernon/forward-sentence-or-sexp)
+  (define-key evil-normal-state-map "(" #'algernon/backward-sentence-or-sexp))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -192,6 +208,7 @@ layers configuration. You are free to put any user code."
   (algernon/config-global-search-and-replace)
   (algernon/config-evil)
   (algernon/config-elfeed)
+  (algernon/config-lispy-modes)
 
   (evil-leader/set-key "q#" #'server-edit)
 
