@@ -102,6 +102,26 @@
                 (powerline-fill nil (powerline-width rhs))
                 (powerline-render rhs))))))
 
+(defun elfeed-show-entry--switch-pane (buff)
+  "Display BUFF in a popup window."
+  (popwin:popup-buffer buff
+                       :position 'right
+                       :width 0.5))
+
+(defun elfeed-show-entry--delete-pane ()
+  "Delete the *elfeed-entry* split pane."
+  (interactive)
+  (let* ((buff (get-buffer "*elfeed-entry*"))
+         (window (get-buffer-window buff)))
+    (kill-buffer buff)
+    (delete-window window)))
+
+(defun elfeed-setup-split-pane ()
+  "Sets up Elfeed for split pane view."
+  (interactive)
+  (setq elfeed-show-entry-switch #'elfeed-show-entry--switch-pane
+        elfeed-show-entry-delete #'elfeed-show-entry--delete-pane))
+
 (defun feed-reader/init-elfeed ()
   (use-package elfeed
     :commands elfeed
