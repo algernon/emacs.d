@@ -1,10 +1,5 @@
 (defconst feed-reader-packages '(elfeed))
 
-;; This requires my fork of elfeed for now, find it on GitHub[1]. It will work
-;; with upstream elfeed too, but the behaviour will not be the same.
-;;
-;; [1]: https://github.com/algernon/elfeed
-
 (defun feed-reader/stats ()
   "Count the number of entries and feeds being currently displayed."
   (if (and elfeed-search-filter-active elfeed-search-filter-overflowing)
