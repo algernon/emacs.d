@@ -28,8 +28,6 @@
         "n" 'elfeed-show-next
         "p" 'elfeed-show-prev)
 
-      (evil-set-initial-state #'elfeed-show-mode 'emacs)
-
       (defconst feed-reader/update-timer
         (run-with-timer 1 (* 60 60) #'elfeed-update))
 
