@@ -1,30 +1,34 @@
-(defconst feed-reader-packages '(elfeed))
+(setq feed-reader-packages
+      '(elfeed
+        (elfeed-goodies :location (recipe :fetcher github
+                                          :repo "algernon/elfeed-goodies"))
+        ))
 
 (defun feed-reader/init-elfeed ()
   (use-package elfeed
-    :defer t
     :commands elfeed
     :init (evil-leader/set-key "af" #'elfeed)
     :config
     (progn
-      (evil-set-initial-state #'elfeed-search-mode 'emacs)
+      (spacemacs|evilify-map elfeed-search-mode-map
+        :mode elfeed-search-mode
+        :eval-after-load elfeed-search
+        :bindings
+        "c"  'elfeed-db-compact
+        "gr" 'elfeed-update
+        "o"  'elfeed-load-opml
+        "q"  'quit-window
+        "r"  'elfeed-search-update--force)
+
+      (spacemacs|evilify-map elfeed-show-mode-map
+        :mode elfeed-show-mode
+        :eval-after-load elfeed-show
+        :bindings
+        "q" 'quit-window
+        "n" 'elfeed-show-next
+        "p" 'elfeed-show-prev)
+
       (evil-set-initial-state #'elfeed-show-mode 'emacs)
-
-      (defun feed-reader/search-mode-browse-external-browser ()
-        (interactive)
-
-        (let ((browse-url-browser-function 'browse-url-default-browser))
-          (call-interactively #'elfeed-show-visit)))
-
-      (evilify elfeed-search-mode elfeed-search-mode-map
-               (kbd "q") #'quit-window
-               (kbd "G") #'elfeed-search-fetch
-               (kbd "g") #'elfeed-search-update--force
-               (kbd "n") #'next-line
-               (kbd "p") #'previous-line)
-
-      (evilify elfeed-show-mode elfeed-show-mode-map
-               (kbd "q") #'elfeed-kill-buffer)
 
       (defconst feed-reader/update-timer
         (run-with-timer 1 (* 60 60) #'elfeed-update))
@@ -37,9 +41,10 @@
 
       (setf url-queue-timeout 30)
 
-      (use-package elfeed-goodies
-        :load-path "~/src/personal/elfeed-goodies"
-        :pin manual
-        :config (elfeed-goodies/setup)))))
+      )))
 
-(defun feed-reader/init-elfeed-goodies ())
+(defun feed-reader/init-elfeed-goodies ()
+  (use-package elfeed-goodies
+    :commands elfeed-goodies/setup
+    :init (spacemacs|use-package-add-hook elfeed
+            :post-config (elfeed-goodies/setup))))
