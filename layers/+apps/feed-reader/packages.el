@@ -1,8 +1,7 @@
 (setq feed-reader-packages
       '(elfeed
         (elfeed-goodies :location (recipe :fetcher github
-                                          :repo "algernon/elfeed-goodies"))
-        ))
+                                          :repo "algernon/elfeed-goodies"))))
 
 (defun feed-reader/init-elfeed ()
   (use-package elfeed
@@ -18,7 +17,8 @@
         "gr" 'elfeed-update
         "o"  'elfeed-load-opml
         "q"  'quit-window
-        "r"  'elfeed-search-update--force)
+        "r"  'elfeed-search-update--force
+        "e"  'elfeed-goodies/toggle-logs)
 
       (spacemacs|evilify-map elfeed-show-mode-map
         :mode elfeed-show-mode
@@ -37,11 +37,10 @@
                     elfeed-search-filter "+unread"
                     elfeed-goodies/wide-threshold 0.25
                     elfeed-goodies/entry-pane-position 'bottom
-                    elfeed-goodies/entry-pane-size 0.85)
+                    elfeed-goodies/entry-pane-size 0.85
+                    elfeed-goodies/show-mode-padding 200)
 
-      (setf url-queue-timeout 30)
-
-      )))
+      (setf url-queue-timeout 30))))
 
 (defun feed-reader/init-elfeed-goodies ()
   (use-package elfeed-goodies
