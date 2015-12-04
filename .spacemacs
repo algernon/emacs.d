@@ -67,7 +67,6 @@ values."
                       auto-completion-enable-snippets-in-popup t)
      better-defaults
      c-c++
-     centered-window
      (clojure :variables clojure-enable-fancify-symbols t)
      (colors :variables colors-enable-rainbow-identifiers t
              colors-enable-nyan-cat-progress-bar t)
