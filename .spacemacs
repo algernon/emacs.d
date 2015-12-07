@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/12/03 16:58:19 algernon@madhouse-project.org>
+;; Last updated: <2015/12/04 14:16:41 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -178,7 +178,34 @@ user code."
 (defun algernon/config-elfeed ()
   (let ((feed-file (concat user-emacs-directory "private/etc/feeds.el")))
     (if (file-exists-p feed-file)
-        (load feed-file))))
+        (load feed-file)))
+
+  (defface algernon/elfeed-tag-nsfw-face
+    '((t :foreground "#bc8f8f"))
+    "Face used for NSFW tagged posts."
+    :group 'elfeed)
+
+  (defface algernon/elfeed-tag-planet-face
+    '((t :inherit font-lock-constant-face))
+    "Face used for PLANET tagged posts."
+    :group 'elfeed)
+
+  (defface algernon/elfeed-tag-9gag-face
+    '((t :inherit font-lock-constant-face))
+    "Face used for 9GAG tagged posts."
+    :group 'elfeed)
+
+  (defface algernon/elfeed-tag-fun-face
+    '((t :inherit font-lock-function-name-face))
+    "Face used for FUN tagged posts."
+    :group 'elfeed)
+
+  (setq elfeed-search-face-alist
+        '((unread elfeed-search-unread-title-face)
+          (nsfw algernon/elfeed-tag-nsfw-face)
+          (9gag algernon/elfeed-tag-9gag-face)
+          (fun algernon/elfeed-tag-fun-face)
+          (planet algernon/elfeed-tag-planet-face))))
 
 (defun algernon/forward-sentence-or-sexp (&optional count)
   (interactive)
