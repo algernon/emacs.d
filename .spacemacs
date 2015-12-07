@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/12/04 14:16:41 algernon@madhouse-project.org>
+;; Last updated: <2015/12/07 10:50:22 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -235,6 +235,9 @@ layers configuration. You are free to put any user code."
   (algernon/config-evil)
   (algernon/config-elfeed)
   (algernon/config-lispy-modes)
+
+  (with-current-buffer "*scratch*"
+    (lisp-interaction-mode))
 
   (evil-leader/set-key "q#" #'server-edit)
 
