@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/12/07 10:50:22 algernon@madhouse-project.org>
+;; Last updated: <2015/12/09 10:05:46 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -240,6 +240,7 @@ layers configuration. You are free to put any user code."
     (lisp-interaction-mode))
 
   (evil-leader/set-key "q#" #'server-edit)
+  (evil-ex-define-cmd "do[ne]" #'server-edit)
 
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
