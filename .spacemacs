@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/12/09 10:05:46 algernon@madhouse-project.org>
+;; Last updated: <2015/12/09 10:12:48 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -199,6 +199,9 @@ user code."
     '((t :inherit font-lock-function-name-face))
     "Face used for FUN tagged posts."
     :group 'elfeed)
+
+  (require 'elfeed-goodies-show-mode)
+  (setq elfeed-goodies/show-mode-padding 50)
 
   (setq elfeed-search-face-alist
         '((unread elfeed-search-unread-title-face)
