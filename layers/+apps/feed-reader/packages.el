@@ -35,7 +35,7 @@
                     elfeed-goodies/wide-threshold 0.25
                     elfeed-goodies/entry-pane-position 'bottom
                     elfeed-goodies/entry-pane-size 0.85
-                    elfeed-goodies/show-mode-padding 0
+                    elfeed-goodies/show-mode-padding 50
                     elfeed-goodies/html-decode-title-tags '(9gag))
 
       (setf url-queue-timeout 30))))
