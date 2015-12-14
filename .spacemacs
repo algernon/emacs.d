@@ -88,6 +88,7 @@ values."
      (ranger :variables
              ranger-show-preview t)
      scala
+     selectric
      semantic
      (shell :variables
             shell-default-height 30
