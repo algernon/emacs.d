@@ -77,7 +77,6 @@ values."
      feed-reader
      git
      github
-     gh-notify
      gnus
      gutter
      html
