@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/12/09 15:51:44 algernon@madhouse-project.org>
+;; Last updated: <2015/12/10 16:25:36 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -227,6 +227,8 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+
+  (setq popwin:close-popup-window-timer-interval 0.1)
 
   (algernon/config-magit)
   (algernon/config-display-time)
