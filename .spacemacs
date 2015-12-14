@@ -62,9 +62,9 @@ values."
    dotspacemacs-configuration-layers
    '(
      (auto-completion :variables
-                      auto-completion-enable-help-tooltip t
+                      auto-completion-enable-help-tooltip nil
                       auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup t)
+                      auto-completion-enable-snippets-in-popup nil)
      better-defaults
      c-c++
      (clojure :variables clojure-enable-fancify-symbols t)
