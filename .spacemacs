@@ -101,7 +101,7 @@ values."
      writeroom
      yaml
      )
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(swiper-helm ace-jump-mode noflet speed-type)
    dotspacemacs-excluded-packages '(diff-hl)
    dotspacemacs-delete-orphan-packages nil))
 
@@ -242,7 +242,7 @@ layers configuration. You are free to put any user code."
     (lisp-interaction-mode))
 
   (evil-leader/set-key "q#" #'server-edit)
-  (evil-ex-define-cmd "do[ne]" #'server-edit)
+  (define-key evil-normal-state-map (kbd "M-/") #'swiper-helm)
 
   (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
