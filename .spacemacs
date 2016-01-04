@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2015/12/10 16:25:36 algernon@madhouse-project.org>
+;; Last updated: <2016/01/04 11:16:51 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -71,10 +71,10 @@ values."
      (colors :variables colors-enable-rainbow-identifiers t
              colors-enable-nyan-cat-progress-bar t)
      debian-changelog
+     elfeed
      emacs-lisp
      eyebrowse
      fancy-narrower
-     feed-reader
      git
      github
      gnus
@@ -100,8 +100,15 @@ values."
      version-control
      writeroom
      yaml
+     gutter
      )
-   dotspacemacs-additional-packages '(swiper-helm ace-jump-mode noflet speed-type)
+   dotspacemacs-additional-packages '(swiper-helm
+                                      ace-jump-mode
+                                      noflet
+                                      speed-type
+                                      edit-server
+                                      highlight-leading-spaces
+                                      )
    dotspacemacs-excluded-packages '(diff-hl)
    dotspacemacs-delete-orphan-packages nil))
 
@@ -205,7 +212,26 @@ user code."
           (nsfw algernon/elfeed-tag-nsfw-face)
           (9gag algernon/elfeed-tag-9gag-face)
           (fun algernon/elfeed-tag-fun-face)
-          (planet algernon/elfeed-tag-planet-face))))
+          (planet algernon/elfeed-tag-planet-face)))
+
+  (spacemacs|use-package-add-hook elfeed-goodies
+    :post-config (progn
+                   (defconst feed-reader/update-timer
+                     (run-with-timer 1 (* 60 60)
+                                     (lambda ()
+                                       (elfeed-unjam)
+                                       (elfeed-update))))
+
+                   (setq-default elfeed-max-connections 2
+                                 elfeed-search-filter "+unread"
+                                 elfeed-goodies/wide-threshold 0.25
+                                 elfeed-goodies/entry-pane-position 'top
+                                 elfeed-goodies/entry-pane-size 0.85
+                                 elfeed-goodies/show-mode-padding 50
+                                 elfeed-goodies/html-decode-title-tags '(:all))))
+
+
+  (setf url-queue-timeout 30))
 
 (defun algernon/forward-sentence-or-sexp (&optional count)
   (interactive)
@@ -248,4 +274,5 @@ layers configuration. You are free to put any user code."
   (global-vi-tilde-fringe-mode 0)
   (spacemacs/toggle-nyan-cat-progress-bar-off)
   (setq custom-file (concat user-emacs-directory "private/etc/custom.el")
-        paradox-github-token t))
+        paradox-github-token t)
+  (edit-server-start))
