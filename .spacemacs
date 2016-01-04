@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/01/04 11:37:32 algernon@madhouse-project.org>
+;; Last updated: <2016/01/04 11:48:57 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -270,7 +270,7 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "M-/") #'swiper-helm)
 
   (global-aggressive-indent-mode 1)
-  ;;(global-vi-tilde-fringe-mode 0)
+  (global-vi-tilde-fringe-mode 0)
   (spacemacs/toggle-nyan-cat-progress-bar-off)
   (setq custom-file (concat user-emacs-directory "private/etc/custom.el")
         paradox-github-token t)
