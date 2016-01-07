@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/01/04 11:48:57 algernon@madhouse-project.org>
+;; Last updated: <2016/01/05 08:55:43 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -213,7 +213,7 @@ user code."
           (fun algernon/elfeed-tag-fun-face)
           (planet algernon/elfeed-tag-planet-face)))
 
-  (spacemacs|use-package-add-hook elfeed-goodies
+  (spacemacs|use-package-add-hook elfeed
     :post-config (progn
                    (defconst feed-reader/update-timer
                      (run-with-timer 1 (* 60 60)
@@ -221,13 +221,24 @@ user code."
                                        (elfeed-unjam)
                                        (elfeed-update))))
 
-                   (setq-default elfeed-max-connections 2
-                                 elfeed-search-filter "+unread"
-                                 elfeed-goodies/wide-threshold 0.25
-                                 elfeed-goodies/entry-pane-position 'top
-                                 elfeed-goodies/entry-pane-size 0.85
-                                 elfeed-goodies/show-mode-padding 50
-                                 elfeed-goodies/html-decode-title-tags '(:all))))
+                   (setq elfeed-max-connections 2
+                         elfeed-search-filter "+unread"
+                         elfeed-goodies/wide-threshold 0.25
+                         elfeed-goodies/entry-pane-position 'top
+                         elfeed-goodies/entry-pane-size 0.85
+                         elfeed-goodies/show-mode-padding 50
+                         elfeed-goodies/html-decode-title-tags '(:all))
+
+                   (evilified-state-evilify-map elfeed-show-mode-map
+                     :mode elfeed-show-mode
+                     :eval-after-load elfeed-show
+                     :bindings
+                     "q" 'quit-window
+                     "n" 'elfeed-show-next
+                     "p" 'elfeed-show-prev)
+                   )
+
+    )
 
 
   (setf url-queue-timeout 30))
