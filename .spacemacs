@@ -81,11 +81,13 @@ values."
      html
      (hy :variables hy-enable-fancify-symbols t)
      (latex :variables latex-enable-auto-fill t)
+     jabber
      markdown
      (org :variables org-enable-github-support t)
      python
      (ranger :variables
              ranger-show-preview t)
+     search-engine
      selectric
      semantic
      (shell :variables
@@ -93,8 +95,10 @@ values."
             shell-default-position 'bottom
             shell-default-shell 'eshell
             shell-enable-smart-eshell t)
+     smex
      spell-checking
      syntax-checking
+     unimpaired
      (version-control :variables
                       version-control-global-margin t
                       version-control-diff-tool 'git-gutter+)
