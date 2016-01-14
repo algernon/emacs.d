@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/01/05 08:55:43 algernon@madhouse-project.org>
+;; Last updated: <2016/01/14 10:31:25 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -66,6 +66,7 @@ values."
                       auto-completion-enable-snippets-in-popup nil)
      better-defaults
      c-c++
+     chrome
      (clojure :variables clojure-enable-fancify-symbols t)
      (colors :variables colors-enable-rainbow-identifiers t
              colors-enable-nyan-cat-progress-bar t)
@@ -99,15 +100,8 @@ values."
                       version-control-global-margin t
                       version-control-diff-tool 'git-gutter+)
      writeroom
-     yaml
-     )
-   dotspacemacs-additional-packages '(swiper-helm
-                                      ace-jump-mode
-                                      noflet
-                                      speed-type
-                                      edit-server
-                                      highlight-leading-spaces
-                                      )
+     yaml)
+   dotspacemacs-additional-packages '(highlight-leading-spaces swiper-helm)
    dotspacemacs-excluded-packages '()
    dotspacemacs-delete-orphan-packages nil))
 
@@ -142,8 +136,7 @@ values."
    dotspacemacs-enable-paste-micro-state t
    dotspacemacs-maximized-at-startup t
    dotspacemacs-smartparens-strict-mode nil
-   dotspacemacs-persistent-server t
-   ))
+   dotspacemacs-persistent-server t))
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
