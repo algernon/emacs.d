@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/01/14 10:34:34 algernon@madhouse-project.org>
+;; Last updated: <2016/01/15 09:45:52 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -255,12 +255,37 @@ user code."
   (define-key evil-normal-state-map ")" #'algernon/forward-sentence-or-sexp)
   (define-key evil-normal-state-map "(" #'algernon/backward-sentence-or-sexp))
 
+(defun algernon/set-frame-zoom ()
+  (interactive)
+  (let ((zoom-frame/buffer 'frame))
+    (zoom-in/out 1)
+    (zoom-in/out 0)
+    (zoom-in/out 11)))
+
+(defun work/notes ()
+  "Open the notes project"
+  (interactive)
+  (find-file "~/Documents/Cloudera/notes"))
+
+(defun work/wip ()
+  "Open the WIP"
+  (interactive)
+  (find-file "~/Documents/Cloudera/cases/wip.org"))
+
+(defun algernon/config-SPC-$ ()
+  (spacemacs/declare-prefix "$" "work")
+  (spacemacs/set-leader-keys
+    "$n" #'work/notes
+    "$w" #'work/wip))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
   (setq popwin:close-popup-window-timer-interval 0.1)
+
+  (require 'zoom-frm)
 
   (algernon/config-magit)
   (algernon/config-display-time)
@@ -269,6 +294,14 @@ layers configuration. You are free to put any user code."
   (algernon/config-evil)
   (algernon/config-elfeed)
   (algernon/config-lispy-modes)
+  (algernon/set-frame-zoom)
+  (add-hook 'after-make-frame-functions (lambda (buffer)
+                                          (run-with-timer 2 nil
+                                                          (lambda ()
+                                                            (algernon/set-frame-zoom)
+                                                            (spacemacs/toggle-maximize-frame)
+                                                            (shell-command "wmctrl -r 'Edit with Emacs FRAME' -e 0,0,0,1920,1080; wmctrl -a 'Edit with Emacs FRAME'")))))
+  (algernon/config-SPC-$)
 
   (with-current-buffer "*scratch*"
     (lisp-interaction-mode))
