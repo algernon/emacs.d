@@ -278,6 +278,11 @@ user code."
     "$n" #'work/notes
     "$w" #'work/wip))
 
+(defun algernon/config-gnus ()
+  (let ((feed-file (concat user-emacs-directory "private/etc/gnus.el")))
+    (if (file-exists-p feed-file)
+        (load feed-file))))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -294,6 +299,7 @@ layers configuration. You are free to put any user code."
   (algernon/config-evil)
   (algernon/config-elfeed)
   (algernon/config-lispy-modes)
+  (algernon/config-gnus)
   (algernon/set-frame-zoom)
   (add-hook 'after-make-frame-functions (lambda (buffer)
                                           (run-with-timer 2 nil
