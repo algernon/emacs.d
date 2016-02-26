@@ -218,7 +218,7 @@ user code."
                                        (elfeed-update))))
 
                    (setq elfeed-max-connections 2
-                         elfeed-search-filter "+unread"
+                         elfeed-search-filter "+unread -9gag -comic"
                          elfeed-goodies/wide-threshold 0.25
                          elfeed-goodies/entry-pane-position 'top
                          elfeed-goodies/entry-pane-size 0.85
