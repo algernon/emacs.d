@@ -137,6 +137,7 @@ values."
    dotspacemacs-helm-position 'top
    dotspacemacs-enable-paste-micro-state t
    dotspacemacs-maximized-at-startup t
+   dotspacemacs-scratch-mode 'lisp-interaction-mode
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-persistent-server t))
 
