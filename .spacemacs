@@ -98,7 +98,6 @@ values."
      smex
      spell-checking
      syntax-checking
-     unimpaired
      (version-control :variables
                       version-control-global-margin t
                       version-control-diff-tool 'git-gutter+)
