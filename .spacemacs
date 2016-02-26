@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/01/15 09:45:52 algernon@madhouse-project.org>
+;; Last updated: <2016/02/23 12:15:34 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015
@@ -287,6 +287,18 @@ user code."
   (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
                             (sequence "⚑ WAITING(w)" "|")
                             (sequence "|" "✘ CANCELED(c)"))))
+
+(defun algernon/shorten-class-name (class)
+  (let* ((parts (split-string class "\\."))
+         (head (-butlast parts))
+         (last (-last-item parts)))
+
+    (concat
+     (string-join (-map (lambda (component)
+                          (char-to-string (string-to-char component)))
+                        head)
+                  ".")
+     "." last)))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
