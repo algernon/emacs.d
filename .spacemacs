@@ -283,6 +283,11 @@ user code."
     (if (file-exists-p feed-file)
         (load feed-file))))
 
+(defun algernon/config-org ()
+  (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
+                            (sequence "⚑ WAITING(w)" "|")
+                            (sequence "|" "✘ CANCELED(c)"))))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -308,6 +313,7 @@ layers configuration. You are free to put any user code."
                                                             (spacemacs/toggle-maximize-frame)
                                                             (shell-command "wmctrl -r 'Edit with Emacs FRAME' -e 0,0,0,1920,1080; wmctrl -a 'Edit with Emacs FRAME'")))))
   (algernon/config-SPC-$)
+  (algernon/config-org)
 
   (with-current-buffer "*scratch*"
     (lisp-interaction-mode))
