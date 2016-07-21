@@ -1,8 +1,8 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/03/03 10:38:20 algernon@madhouse-project.org>
+;; Last updated: <2016/07/21 10:44:19 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013, 2014, 2015
+;;               2012, 2013, 2014, 2015, 2016
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
@@ -60,17 +60,16 @@ values."
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     (auto-completion :variables
-                      auto-completion-enable-help-tooltip nil
-                      auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup nil)
+     go
+     javascript
+     ruby
      better-defaults
      c-c++
      chrome
      (clojure :variables clojure-enable-fancify-symbols t)
-     (colors :variables colors-enable-rainbow-identifiers t
+     (colors :variables colors-colorize-identifiers 'all
              colors-enable-nyan-cat-progress-bar t)
-     debian-changelog
+     ;;debian-changelog
      elfeed
      emacs-lisp
      eyebrowse
@@ -78,17 +77,17 @@ values."
      git
      github
      gnus
+     helm
      html
      (hy :variables hy-enable-fancify-symbols t)
      (latex :variables latex-enable-auto-fill t)
-     jabber
      markdown
+     nlinum
      (org :variables org-enable-github-support t)
      python
      (ranger :variables
              ranger-show-preview t)
      search-engine
-     selectric
      semantic
      (shell :variables
             shell-default-height 30
@@ -97,7 +96,7 @@ values."
             shell-enable-smart-eshell t)
      smex
      spell-checking
-     syntax-checking
+     ;;syntax-checking
      (version-control :variables
                       version-control-global-margin t
                       version-control-diff-tool 'git-gutter+)
@@ -105,7 +104,8 @@ values."
      yaml)
    dotspacemacs-additional-packages '(highlight-leading-spaces swiper-helm)
    dotspacemacs-excluded-packages '()
-   dotspacemacs-delete-orphan-packages nil))
+   dotspacemacs-download-packages 'used-but-keep-unused
+   ))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -114,6 +114,7 @@ before layers configuration.
 You should not put any user code in there besides modifying the variable
 values."
   (setq-default
+   dotspacemacs-override-evil-folding 'origami
    dotspacemacs-editing-style 'vim
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
@@ -121,7 +122,8 @@ values."
    dotspacemacs-command-key ":"
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects bookmarks)
-   dotspacemacs-themes '(material
+   dotspacemacs-themes '(darkokai
+                         material
                          material-light
                          spacemacs-light
                          spacemacs-dark
@@ -129,8 +131,8 @@ values."
                          solarized-light
                          leuven)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("mononoki"
+                               :size 24
                                :weight normal
                                :width normal
                                :powerline-scale 1.7)
@@ -260,23 +262,29 @@ user code."
   (let ((zoom-frame/buffer 'frame))
     (zoom-in/out 1)
     (zoom-in/out 0)
-    (zoom-in/out 11)))
+    (zoom-in/out 5)))
 
 (defun work/notes ()
   "Open the notes project"
   (interactive)
-  (find-file "~/Documents/Cloudera/notes"))
+  (find-file "~/Documents/UStream/notes"))
 
 (defun work/wip ()
   "Open the WIP"
   (interactive)
-  (find-file "~/Documents/Cloudera/cases/wip.org"))
+  (find-file "~/Documents/UStream/notes/wip.org"))
+
+(defun work/sources ()
+  "Open work-related sources"
+  (interactive)
+  (eshell-z "~/src/ustream"))
 
 (defun algernon/config-SPC-$ ()
   (spacemacs/declare-prefix "$" "work")
   (spacemacs/set-leader-keys
     "$n" #'work/notes
-    "$w" #'work/wip))
+    "$w" #'work/wip
+    "$s" #'work/sources))
 
 (defun algernon/config-gnus ()
   (let ((feed-file (concat user-emacs-directory "private/etc/gnus.el")))
@@ -317,7 +325,7 @@ layers configuration. You are free to put any user code."
   (algernon/config-elfeed)
   (algernon/config-lispy-modes)
   (algernon/config-gnus)
-  (algernon/set-frame-zoom)
+  ;;(algernon/set-frame-zoom)
   (add-hook 'after-make-frame-functions (lambda (buffer)
                                           (run-with-timer 2 nil
                                                           (lambda ()
