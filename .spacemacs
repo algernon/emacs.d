@@ -97,6 +97,7 @@ values."
      smex
      spell-checking
      ;;syntax-checking
+     themes-megapack
      (version-control :variables
                       version-control-global-margin t
                       version-control-diff-tool 'git-gutter+)
@@ -122,7 +123,9 @@ values."
    dotspacemacs-command-key ":"
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects bookmarks)
-   dotspacemacs-themes '(darkokai
+   dotspacemacs-themes '(
+                         misterioso
+                         subatomic
                          material
                          material-light
                          spacemacs-light
