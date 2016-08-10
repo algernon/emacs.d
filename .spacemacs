@@ -341,7 +341,6 @@ layers configuration. You are free to put any user code."
   (evil-leader/set-key "q#" #'server-edit)
   (define-key evil-normal-state-map (kbd "M-/") #'swiper-helm)
 
-  (global-aggressive-indent-mode 1)
   (global-vi-tilde-fringe-mode 0)
   (spacemacs/toggle-nyan-cat-progress-bar-off)
   (setq custom-file (concat user-emacs-directory "private/etc/custom.el")
