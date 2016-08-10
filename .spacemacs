@@ -102,7 +102,7 @@ values."
                       version-control-diff-tool 'git-gutter+)
      writeroom
      yaml)
-   dotspacemacs-additional-packages '(highlight-leading-spaces swiper-helm)
+   dotspacemacs-additional-packages '(highlight-leading-spaces swiper-helm feature-mode)
    dotspacemacs-excluded-packages '()
    dotspacemacs-download-packages 'used-but-keep-unused
    ))
