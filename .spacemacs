@@ -311,6 +311,21 @@ user code."
                   ".")
      "." last)))
 
+(defun algernon/persp-workaround ()
+  (with-eval-after-load "persp-mode"
+
+    (defun persp-remove-killed-buffers ()
+      (interactive)
+      (mapc #'(lambda (p)
+                (when p
+                  (setf (persp-buffers p)
+                        (delete-if-not #'buffer-live-p
+                                       (persp-buffers p)))))
+            (persp-persps)))
+
+
+    (run-at-time t 30 #'persp-remove-killed-buffers)))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -328,6 +343,7 @@ layers configuration. You are free to put any user code."
   (algernon/config-elfeed)
   (algernon/config-lispy-modes)
   (algernon/config-gnus)
+  (algernon/persp-workaround)
   ;;(algernon/set-frame-zoom)
   (add-hook 'after-make-frame-functions (lambda (buffer)
                                           (run-with-timer 2 nil
