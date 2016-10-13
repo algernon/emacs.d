@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/08/10 14:24:34 algernon@madhouse-project.org>
+;; Last updated: <2016/10/13 08:03:57 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016
@@ -104,7 +104,7 @@ values."
      writeroom
      yaml)
    dotspacemacs-additional-packages '(highlight-leading-spaces swiper-helm feature-mode)
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(anaconda-mode)
    dotspacemacs-download-packages 'used-but-keep-unused
    ))
 
