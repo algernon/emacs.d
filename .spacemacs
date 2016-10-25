@@ -352,7 +352,7 @@ layers configuration. You are free to put any user code."
   (add-hook 'after-make-frame-functions (lambda (buffer)
                                           (run-with-timer 2 nil
                                                           (lambda ()
-                                                            (algernon/set-frame-zoom)
+                                                            ;(algernon/set-frame-zoom)
                                                             (spacemacs/toggle-maximize-frame)
                                                             (shell-command "wmctrl -r 'Edit with Emacs FRAME' -e 0,0,0,1920,1080; wmctrl -a 'Edit with Emacs FRAME'")))))
   (algernon/config-SPC-$)
