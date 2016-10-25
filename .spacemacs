@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/10/13 08:09:27 algernon@madhouse-project.org>
+;; Last updated: <2016/10/23 08:27:38 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016
@@ -347,7 +347,7 @@ layers configuration. You are free to put any user code."
   (algernon/config-lispy-modes)
   (algernon/config-gnus)
   (algernon/persp-workaround)
-  (algernon/focus-mode)
+  ;;(algernon/focus-mode)
   ;;(algernon/set-frame-zoom)
   (add-hook 'after-make-frame-functions (lambda (buffer)
                                           (run-with-timer 2 nil
