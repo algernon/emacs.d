@@ -122,7 +122,7 @@ values."
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-command-key ":"
    dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-lists '(recents projects bookmarks)
+   dotspacemacs-startup-lists '((recents . 5) (projects . 10) (agenda . 5) (todos . 5) bookmarks)
    dotspacemacs-themes '(
                          solarized-dark
                          misterioso
