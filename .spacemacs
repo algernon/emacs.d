@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/05/23 12:51:14 algernon@madhouse-project.org>
+;; Last updated: <2017/05/23 13:11:25 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016
@@ -80,10 +80,12 @@ values."
      (hy :variables hy-enable-fancify-symbols t)
      (latex :variables latex-enable-auto-fill t)
      markdown
+     nginx
      (org :variables org-enable-github-support t)
      python
      (ranger :variables
              ranger-show-preview t)
+     restclient
      search-engine
      semantic
      (shell :variables
@@ -94,7 +96,9 @@ values."
      smex
      spell-checking
      ;;syntax-checking
+     systemd
      themes-megapack
+     typography
      (version-control :variables
                       version-control-global-margin t
                       version-control-diff-tool 'git-gutter+)
