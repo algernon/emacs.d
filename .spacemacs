@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2016/10/23 08:27:38 algernon@madhouse-project.org>
+;; Last updated: <2017/05/23 12:51:14 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016
@@ -69,20 +69,16 @@ values."
      (clojure :variables clojure-enable-fancify-symbols t)
      (colors :variables colors-colorize-identifiers 'all
              colors-enable-nyan-cat-progress-bar t)
-     ;;debian-changelog
      elfeed
      emacs-lisp
-     ;;eyebrowse
      fancy-narrower
      git
      github
      gnus
-     helm
      html
      (hy :variables hy-enable-fancify-symbols t)
      (latex :variables latex-enable-auto-fill t)
      markdown
-     nlinum
      (org :variables org-enable-github-support t)
      python
      (ranger :variables
