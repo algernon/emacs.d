@@ -69,6 +69,7 @@ values."
      (clojure :variables clojure-enable-fancify-symbols t)
      (colors :variables colors-colorize-identifiers 'all
              colors-enable-nyan-cat-progress-bar t)
+     docker
      elfeed
      emacs-lisp
      fancy-narrower
