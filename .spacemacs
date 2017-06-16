@@ -1,8 +1,8 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/05/23 13:11:25 algernon@madhouse-project.org>
+;; Last updated: <2017/06/16 13:26:04 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013, 2014, 2015, 2016
+;;               2012, 2013, 2014, 2015, 2016, 2017
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
@@ -312,21 +312,6 @@ user code."
                   ".")
      "." last)))
 
-(defun algernon/persp-workaround ()
-  (with-eval-after-load "persp-mode"
-
-    (defun persp-remove-killed-buffers ()
-      (interactive)
-      (mapc #'(lambda (p)
-                (when p
-                  (setf (persp-buffers p)
-                        (delete-if-not #'buffer-live-p
-                                       (persp-buffers p)))))
-            (persp-persps)))
-
-
-    (run-at-time t 30 #'persp-remove-killed-buffers)))
-
 (defun algernon/focus-mode ()
   (add-hook 'prog-mode-hook #'focus-mode))
 
@@ -347,7 +332,6 @@ layers configuration. You are free to put any user code."
   (algernon/config-elfeed)
   (algernon/config-lispy-modes)
   (algernon/config-gnus)
-  (algernon/persp-workaround)
   ;;(algernon/focus-mode)
   ;;(algernon/set-frame-zoom)
   (add-hook 'after-make-frame-functions (lambda (buffer)
