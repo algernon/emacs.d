@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 08:35:56 algernon@madhouse-project.org>
+;; Last updated: <2017/06/18 08:39:28 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -106,6 +106,7 @@
                                      all-the-icons-ivy
                                      doom-themes
                                      dracula-theme
+                                     evil-goggles
                                      feature-mode
                                      focus
                                      highlight-leading-spaces
