@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/16 13:26:04 algernon@madhouse-project.org>
+;; Last updated: <2017/06/18 08:35:56 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -51,6 +51,72 @@
 
 ;;; Code:
 
+(setq algernon/layers/core '(better-defaults
+                             (colors :variables colors-colorize-identifiers 'all
+                                     colors-enable-nyan-cat-progress-bar t)
+                             fancy-narrower
+                             git
+                             github
+                             search-engine
+                             semantic
+                             smex
+                             spell-checking
+                             ;;syntax-checking
+                             themes-megapack
+                             typography
+                             (version-control :variables
+                                              version-control-global-margin t
+                                              version-control-diff-tool 'git-gutter+)
+                             writeroom)
+
+      algernon/layers/lang '(c-c++
+                             (clojure :variables clojure-enable-fancify-symbols t)
+                             emacs-lisp
+                             go
+                             html
+                             ;;(hy :variables hy-enable-fancify-symbols t)
+                             javascript
+                             (latex :variables latex-enable-auto-fill t)
+                             markdown
+                             (org :variables org-enable-github-support t)
+                             (python :variables
+                                     python-sort-imports-on-save t
+                                     python-test-runner 'pytest)
+                             ruby
+                             (shell :variables
+                                    shell-default-height 30
+                                    shell-default-position 'bottom
+                                    shell-default-shell 'eshell
+                                    shell-enable-smart-eshell t)
+                             typescript
+                             yaml)
+
+      algernon/layers/apps '(chrome
+                             elfeed
+                             gnus
+                             (ranger :variables
+                                     ranger-show-preview t)
+                             restclient)
+
+      algernon/layers/misc '(docker
+                             nginx
+                             systemd))
+
+(setq algernon/additional-packages '(all-the-icons-dired
+                                     all-the-icons-ivy
+                                     doom-themes
+                                     dracula-theme
+                                     feature-mode
+                                     focus
+                                     highlight-leading-spaces
+                                     (prettify-utils
+                                      :location (recipe :fetcher github
+                                                        :repo "Ilazki/prettify-utils.el"))
+                                     pretty-mode
+                                     spaceline-all-the-icons
+                                     swiper-helm
+                                     virtualenvwrapper))
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -58,56 +124,13 @@ values."
   (setq-default
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layer-path '()
-   dotspacemacs-configuration-layers
-   '(
-     go
-     javascript
-     ruby
-     better-defaults
-     c-c++
-     chrome
-     (clojure :variables clojure-enable-fancify-symbols t)
-     (colors :variables colors-colorize-identifiers 'all
-             colors-enable-nyan-cat-progress-bar t)
-     docker
-     elfeed
-     emacs-lisp
-     fancy-narrower
-     git
-     github
-     gnus
-     html
-     (hy :variables hy-enable-fancify-symbols t)
-     (latex :variables latex-enable-auto-fill t)
-     markdown
-     nginx
-     (org :variables org-enable-github-support t)
-     python
-     (ranger :variables
-             ranger-show-preview t)
-     restclient
-     search-engine
-     semantic
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom
-            shell-default-shell 'eshell
-            shell-enable-smart-eshell t)
-     smex
-     spell-checking
-     ;;syntax-checking
-     systemd
-     themes-megapack
-     typography
-     (version-control :variables
-                      version-control-global-margin t
-                      version-control-diff-tool 'git-gutter+)
-     writeroom
-     yaml)
-   dotspacemacs-additional-packages '(highlight-leading-spaces swiper-helm feature-mode focus)
+   dotspacemacs-configuration-layers (append algernon/layers/core
+                                             algernon/layers/lang
+                                             algernon/layers/apps
+                                             algernon/layers/misc)
+   dotspacemacs-additional-packages algernon/additional-packages
    dotspacemacs-excluded-packages '(anaconda-mode)
-   dotspacemacs-download-packages 'used-but-keep-unused
-   ))
+   dotspacemacs-download-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -116,16 +139,34 @@ before layers configuration.
 You should not put any user code in there besides modifying the variable
 values."
   (setq-default
-   dotspacemacs-override-evil-folding 'origami
-   dotspacemacs-editing-style 'vim
-   dotspacemacs-leader-key "SPC"
-   dotspacemacs-emacs-leader-key "M-m"
-   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-command-key ":"
+   dotspacemacs-default-font '("Hack"
+                               :size 24
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.7)
+   dotspacemacs-editing-style 'vim
+   dotspacemacs-elpa-https t
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-enable-paste-transient-state nil
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-helm-position 'top
+   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-maximized-at-startup t
+   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-override-evil-folding 'origami
+   dotspacemacs-persistent-server t
+   dotspacemacs-scratch-mode 'lisp-interaction-mode
+   dotspacemacs-show-transient-state-title t
+   dotspacemacs-show-transient-state-color-guide t
+   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smooth-scrolling t
    dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-buffer-responsive t
    dotspacemacs-startup-lists '((recents . 5) (projects . 10) (agenda . 5) (todos . 5) bookmarks)
-   dotspacemacs-themes '(
-                         solarized-dark
+   dotspacemacs-themes '(solarized-dark
                          misterioso
                          subatomic
                          material
@@ -133,19 +174,11 @@ values."
                          spacemacs-light
                          spacemacs-dark
                          solarized-light
-                         leuven)
-   dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("mononoki"
-                               :size 24
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.7)
-   dotspacemacs-helm-position 'top
-   dotspacemacs-enable-paste-micro-state t
-   dotspacemacs-maximized-at-startup t
-   dotspacemacs-scratch-mode 'lisp-interaction-mode
-   dotspacemacs-smartparens-strict-mode nil
-   dotspacemacs-persistent-server t))
+                         leuven
+                         dracula
+                         doom-one
+                         doom-molokai)
+   dotspacemacs-whitespace-cleanup 'trailing))
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
