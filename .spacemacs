@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 08:42:21 algernon@madhouse-project.org>
+;; Last updated: <2017/06/18 10:20:48 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -50,6 +50,8 @@
 ;; From that point onward, see the git log.
 
 ;;; Code:
+
+;;;; Spacemacs settings
 
 (setq algernon/layers/core '(better-defaults
                              (colors :variables colors-colorize-identifiers 'all
@@ -144,9 +146,7 @@ values."
    dotspacemacs-command-key ":"
    dotspacemacs-default-font '("Hack"
                                :size 24
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.7)
+                               :powerline-scale 1.5)
    dotspacemacs-editing-style 'vim
    dotspacemacs-elpa-https t
    dotspacemacs-emacs-leader-key "M-m"
@@ -181,12 +181,429 @@ values."
                          doom-molokai)
    dotspacemacs-whitespace-cleanup 'trailing))
 
+;;;; Spacemacs user-init & user-config
+
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   (setq custom-file (concat user-emacs-directory "private/etc/custom.el")
         user-mail-address "algernon@madhouse-project.org"))
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+ This function is called at the very end of Spacemacs initialization after
+layers configuration. You are free to put any user code."
+
+  (algernon/config/display)
+
+  (setq popwin:close-popup-window-timer-interval 0.1)
+
+  (require 'zoom-frm)
+
+  (algernon/config-magit)
+  (algernon/config-display-time)
+  (algernon/config-time-stamp-on-save)
+  (algernon/config-global-search-and-replace)
+  (algernon/config-evil)
+  (algernon/config-elfeed)
+  (algernon/config-lispy-modes)
+  (algernon/config-gnus)
+  ;;(algernon/focus-mode)
+  ;;(algernon/set-frame-zoom)
+
+  (algernon/config-SPC-$)
+  (algernon/config-org)
+
+  (evil-leader/set-key "q#" #'server-edit)
+  (define-key evil-normal-state-map (kbd "M-/") #'swiper-helm)
+
+  (setq paradox-github-token t))
+
+;;;; User config
+
+(defun algernon/config/display ()
+  (add-hook 'after-make-frame-functions
+            (lambda (buffer)
+              (run-with-timer 2 nil
+                              (lambda ()
+                                ;;(algernon/set-frame-zoom)
+                                (spacemacs/toggle-maximize-frame)
+                                (shell-command "wmctrl -r 'Edit with Emacs FRAME' -e 0,0,0,1920,1080; wmctrl -a 'Edit with Emacs FRAME'")))))
+
+  (global-vi-tilde-fringe-mode 0)
+  (spacemacs/toggle-nyan-cat-progress-bar-off)
+  (setq scroll-margin 3)
+
+
+  (algernon/config/display/fontsets)
+  (algernon/config/display/font-locks)
+  (algernon/config/display/all-the-icons)
+  (algernon/config/display/extra-syntax-highlighting)
+  (algernon/config/display/modeline)
+  (algernon/config/display/theme-updates))
+
+;;;; Modeline
+
+(defun algernon/config/display/modeline ()
+  "Minimalistic spaceline-all-the-icons configuration."
+
+  (use-package spaceline-all-the-icons
+    :after spaceline  ; eval-after-load doesn't work for this setup
+    :config (progn
+              ;; Initialization
+              (spaceline-all-the-icons--setup-neotree)
+              (spaceline-all-the-icons-theme)
+
+              ;; Configuration
+              (setq spaceline-highlight-face-func 'spaceline-highlight-face-default
+                    powerline-text-scale-factor 1.1
+                    powerline-default-separator 'bar
+                    spaceline-all-the-icons-icon-set-modified 'chain
+                    spaceline-all-the-icons-icon-set-window-numbering 'circle
+                    spaceline-all-the-icons-separator-type 'cup
+                    spaceline-all-the-icons-separators-type 'cup
+                    spaceline-all-the-icons-primary-separator "")
+
+              ;; Toggles
+              (spaceline-toggle-all-the-icons-buffer-size-off)
+              (spaceline-toggle-all-the-icons-buffer-position-off)
+              (spaceline-toggle-all-the-icons-vc-icon-off)
+              (spaceline-toggle-all-the-icons-vc-status-on)
+              (spaceline-toggle-all-the-icons-git-status-on)
+              (spaceline-toggle-all-the-icons-flycheck-status-off)
+              (spaceline-toggle-all-the-icons-time-on)
+              (spaceline-toggle-all-the-icons-battery-status-off)
+              (spaceline-toggle-hud-off))))
+
+(defun algernon/config/display/fontsets ()
+  "Set right fonts for missing and all-the-icons unicode points."
+
+  ;; Fira code ligatures. Fira Code Symbol is a different font than Fira Code!
+  ;; You can use any font you wish with just the ligatures, I use Hack.
+  (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
+
+  (defun set-icon-fonts (CODE-FONT-ALIST)
+    "Utility to associate unicode points with a chosen font.
+
+CODE-FONT-ALIST is an alist of a font and unicode points to force to use it."
+    (mapc (lambda (x)
+            (let ((font (car x))
+                  (codes (cdr x)))
+              (mapc (lambda (code)
+                      (set-fontset-font t `(,code . ,code) font))
+                    codes)))
+          CODE-FONT-ALIST))
+
+  ;; NOTE The icons you see are not the correct icons until this is evaluated
+  (set-icon-fonts
+   '(("fontawesome"
+      ;;              
+      #xf07c #xf0c9 #xf0c4 #xf0cb)
+
+     ("all-the-icons"
+      ;;    
+      #xe907 #xe928)
+
+     ("github-octicons"
+      ;;                          
+      #xf091 #xf059 #xf076 #xf075 #xe192  #xf016)
+
+     ("Symbola"
+      ;; 𝕊    ⨂      ∅      ⟻    ⟼     ⊙      𝕋       𝔽
+      #x1d54a #x2a02 #x2205 #x27fb #x27fc #x2299 #x1d54b #x1d53d
+      ;; 𝔹    𝔇       𝔗
+      #x1d539 #x1d507 #x1d517))))
+
+(defun algernon/config/display/font-locks ()
+  "Enable following font-locks for appropriate modes."
+
+  (defun -add-font-lock-kwds (FONT-LOCK-ALIST)
+    "Add unicode font lock replacements.
+
+FONT-LOCK-ALIST is an alist of a regexp and the unicode point to replace with.
+Used as: (add-hook 'a-mode-hook (-partial '-add-font-lock-kwds the-alist))"
+    (defun -build-font-lock-alist (REGEX-CHAR-PAIR)
+      "Compose region for each REGEX-CHAR-PAIR in FONT-LOCK-ALIST."
+      `(,(car REGEX-CHAR-PAIR)
+        (0 (prog1 ()
+             (compose-region
+              (match-beginning 1)
+              (match-end 1)
+              ,(concat "	"
+                       (list (cadr REGEX-CHAR-PAIR))))))))
+    (font-lock-add-keywords nil (mapcar '-build-font-lock-alist FONT-LOCK-ALIST)))
+
+  (defun add-font-locks (FONT-LOCK-HOOKS-ALIST)
+    "Utility to add font lock alist to many hooks.
+
+FONT-LOCK-HOOKS-ALIST is an alist of a font-lock-alist and its desired hooks."
+    (mapc (lambda (x)
+            (lexical-let ((font-lock-alist (car x))
+                          (mode-hooks (cdr x)))
+              (mapc (lambda (mode-hook)
+                      (add-hook mode-hook
+                                (-partial '-add-font-lock-kwds font-lock-alist)))
+                    mode-hooks)))
+          FONT-LOCK-HOOKS-ALIST))
+
+  (add-font-locks
+   `((,fira-font-lock-alist        prog-mode-hook  org-mode-hook)
+     (,python-font-lock-alist      python-mode-hook)
+     (,emacs-lisp-font-lock-alist  emacs-lisp-mode-hook)
+     (,hy-font-lock-alist          hy-mode-hook))))
+
+;;;;; Fira-font-locks
+
+(defconst fira-font-lock-alist
+  '(;;;; OPERATORS
+    ;;;;; Pipes
+    ("\\(<|\\)" #Xe14d) ("\\(<>\\)" #Xe15b) ("\\(<|>\\)" #Xe14e) ("\\(|>\\)" #Xe135)
+
+    ;;;;; Brackets
+    ("\\(<\\*\\)" #Xe14b) ("\\(<\\*>\\)" #Xe14c) ("\\(\\*>\\)" #Xe104)
+    ("\\(<\\$\\)" #Xe14f) ("\\(<\\$>\\)" #Xe150) ("\\(\\$>\\)" #Xe137)
+    ("\\(<\\+\\)" #Xe155) ("\\(<\\+>\\)" #Xe156) ("\\(\\+>\\)" #Xe13a)
+
+    ;;;;; Equality
+    ("\\(!=\\)" #Xe10e) ("\\(!==\\)"         #Xe10f) ("\\(=/=\\)" #Xe143)
+    ("\\(/=\\)" #Xe12c) ("\\(/==\\)"         #Xe12d)
+    ("\\(===\\)"#Xe13d) ("[^!/]\\(==\\)[^>]" #Xe13c)
+
+    ;;;;; Equality Special
+    ("\\(||=\\)"  #Xe133) ("[^|]\\(|=\\)" #Xe134)
+    ("\\(~=\\)"   #Xe166)
+    ("\\(\\^=\\)" #Xe136)
+    ("\\(=:=\\)"  #Xe13b)
+
+    ;;;;; Comparisons
+    ("\\(<=\\)" #Xe141) ("\\(>=\\)" #Xe145)
+    ("\\(</\\)" #Xe162) ("\\(</>\\)" #Xe163)
+
+    ;;;;; Shifts
+    ("[^-=]\\(>>\\)" #Xe147) ("\\(>>>\\)" #Xe14a)
+    ("[^-=]\\(<<\\)" #Xe15c) ("\\(<<<\\)" #Xe15f)
+
+    ;;;;; Dots
+    ("\\(\\.-\\)"    #Xe122) ("\\(\\.=\\)" #Xe123)
+    ("\\(\\.\\.<\\)" #Xe125)
+
+    ;;;;; Hashes
+    ("\\(#{\\)"  #Xe119) ("\\(#(\\)"   #Xe11e) ("\\(#_\\)"   #Xe120)
+    ("\\(#_(\\)" #Xe121) ("\\(#\\?\\)" #Xe11f) ("\\(#\\[\\)" #Xe11a)
+
+    ;;;; REPEATED CHARACTERS
+    ;;;;; 2-Repeats
+    ("\\(||\\)" #Xe132)
+    ("\\(!!\\)" #Xe10d)
+    ("\\(%%\\)" #Xe16a)
+    ("\\(&&\\)" #Xe131)
+
+    ;;;;; 2+3-Repeats
+    ("\\(##\\)"       #Xe11b) ("\\(###\\)"         #Xe11c) ("\\(####\\)" #Xe11d)
+    ("\\(--\\)"       #Xe111) ("\\(---\\)"         #Xe112)
+    ("\\({-\\)"       #Xe108) ("\\(-}\\)"          #Xe110)
+    ("\\(\\\\\\\\\\)" #Xe106) ("\\(\\\\\\\\\\\\\\)" #Xe107)
+    ("\\(\\.\\.\\)"   #Xe124) ("\\(\\.\\.\\.\\)"   #Xe126)
+    ("\\(\\+\\+\\)"   #Xe138) ("\\(\\+\\+\\+\\)"   #Xe139)
+    ("\\(//\\)"       #Xe12f) ("\\(///\\)"         #Xe130)
+    ("\\(::\\)"       #Xe10a) ("\\(:::\\)"         #Xe10b)
+
+    ;;;; ARROWS
+    ;;;;; Direct
+    ("[^-]\\(->\\)" #Xe114) ("[^=]\\(=>\\)" #Xe13f)
+    ("\\(<-\\)"     #Xe152)
+    ("\\(-->\\)"    #Xe113) ("\\(->>\\)"    #Xe115)
+    ("\\(==>\\)"    #Xe13e) ("\\(=>>\\)"    #Xe140)
+    ("\\(<--\\)"    #Xe153) ("\\(<<-\\)"    #Xe15d)
+    ("\\(<==\\)"    #Xe158) ("\\(<<=\\)"    #Xe15e)
+    ("\\(<->\\)"    #Xe154) ("\\(<=>\\)"    #Xe159)
+
+    ;;;;; Branches
+    ("\\(-<\\)"  #Xe116) ("\\(-<<\\)" #Xe117)
+    ("\\(>-\\)"  #Xe144) ("\\(>>-\\)" #Xe148)
+    ("\\(=<<\\)" #Xe142) ("\\(>>=\\)" #Xe149)
+    ("\\(>=>\\)" #Xe146) ("\\(<=<\\)" #Xe15a)
+
+    ;;;;; Squiggly
+    ("\\(<~\\)" #Xe160) ("\\(<~~\\)" #Xe161)
+    ("\\(~>\\)" #Xe167) ("\\(~~>\\)" #Xe169)
+    ("\\(-~\\)" #Xe118) ("\\(~-\\)"  #Xe165)
+
+    ;;;; MISC
+    ("\\(www\\)"                   #Xe100)
+    ("\\(<!--\\)"                  #Xe151)
+    ("\\(~@\\)"                    #Xe164)
+    ("[^<]\\(~~\\)"                #Xe168)
+    ("\\(\\?=\\)"                  #Xe127)
+    ("[^=]\\(:=\\)"                #Xe10c)
+    ("\\(/>\\)"                    #Xe12e)
+    ("[^\\+<>]\\(\\+\\)[^\\+<>]"   #Xe16d)
+    ("[^:=]\\(:\\)[^:=]"           #Xe16c)
+    ("\\(<=\\)"                    #Xe157)))
+
+;;;;; Language-font-locks
+
+(defconst emacs-lisp-font-lock-alist
+  ;; Outlines not using * so better overlap with in-the-wild packages.
+  ;; Intentionally not requiring BOL for eg. fira config modularization
+  '(("\\(^;;;\\)"                   ?■)
+    ("\\(^;;;;\\)"                  ?○)
+    ("\\(^;;;;;\\)"                 ?✸)
+    ("\\(^;;;;;;\\)"                ?✿)))
+
+(defconst python-font-lock-alist
+  ;; Outlines
+  '(("\\(^# \\*\\)[ \t\n]"          ?■)
+    ("\\(^# \\*\\*\\)[ \t\n]"       ?○)
+    ("\\(^# \\*\\*\\*\\)[ \t\n]"    ?✸)
+    ("\\(^# \\*\\*\\*\\*\\)[^\\*]"  ?✿)))
+
+(defconst hy-font-lock-alist
+  ;; Outlines
+  '(("\\(^;; \\*\\)[ \t\n]"          ?■)
+    ("\\(^;; \\*\\*\\)[ \t\n]"       ?○)
+    ("\\(^;; \\*\\*\\*\\)[ \t\n]"    ?✸)
+    ("\\(^;; \\*\\*\\*\\*\\)[^\\*]"  ?✿)
+
+    ;; self does not work as a prettify symbol for hy, unlike python
+    ("\\(self\\)"   ?⊙)))
+
+;;;; All-the-icons
+
+(defun algernon/config/display/all-the-icons ()
+  "Add hylang icon to all-the-icons for neotree and modeline integration."
+
+  ;; Both all-the-icons-icon-alist and all-the-icons-mode-icon-alist
+  ;; need to be updated for either modification to take effect.
+  (with-eval-after-load 'all-the-icons
+    (add-to-list
+     'all-the-icons-icon-alist
+     '("\\.hy$" all-the-icons-fileicon "lisp" :face all-the-icons-orange))
+    (add-to-list
+     'all-the-icons-mode-icon-alist
+     '(hy-mode all-the-icons-fileicon "lisp" :face all-the-icons-orange))))
+
+;;;; Extra-syntax-highlighting
+
+(defun algernon/config/display/extra-syntax-highlighting ()
+  "Extra syntax highlighting for desired keywords."
+
+  (defun hy-extra-syntax ()
+    (font-lock-add-keywords
+     nil '(;; self is not defined by hy-mode as a keyword
+         ("\\<\\(self\\)" . 'font-lock-constant-face)
+
+         ;; Highlight entire line for decorators
+         ("\\(#@.*$\\)" . 'font-lock-function-name-face)
+
+         ;; Syntax highlighting for reader-macros
+         ("\\(#.\\)" . 'font-lock-function-name-face)
+
+         ;; Highlight with macros
+         ("\\(with[^ ]*\\)" . 'font-lock-keyword-face)
+
+         ;; Highlight functions after specific macros
+         ("\-fixture \\([^ ]*\\)" 1 'font-lock-function-name-face)
+         ("\-fixtures \\([^ ]*\\)" 1 'font-lock-function-name-face)
+
+         ;; Fixture macros
+         ("\\(deffixture\\)" . 'font-lock-keyword-face)
+         ("deffixture \\([^ ]*\\)" 1 'font-lock-function-name-face)
+
+         ;; Asserts
+         ("(\\(assert[^ ]*\\)" 1 font-lock-keyword-face))))
+
+  (add-hook 'hy-mode-hook 'hy-extra-syntax))
+
+(defun algernon/config/display/theme-updates ()
+  "Face configuration for themes, atm solarized-light."
+
+  (defun update-solarize-dark ()
+    (custom-theme-set-faces
+     'solarized-dark
+
+     ;; Makes matching parens obvious
+     `(sp-show-pair-match-face ((t (:inherit sp-show-pair-match-face
+                                             :background "#586e75"))))
+
+     ;; active modeline has no colors
+     ;;`(mode-line ((t (:inherit mode-line :background "#002b36"))))
+     ;;`(mode-line-inactive ((t (:inherit mode-line :background "#002b36"))))
+     ;;`(spaceline-highlight-face ((t (:inherit mode-line :background "#002b36"))))
+     ;;`(powerline-active1 ((t (:inherit mode-line :background "#002b36"))))
+     ;;`(powerline-active2 ((t (:inherit mode-line :background "#002b36"))))
+
+
+     `(mode-line ((t (:inherit mode-line :height 1.0))))
+     ;;`(spaceline-highlight-face ((t (:inherit mode-line :background "#ff2b36"
+     ;;                                         :height 1.0))))
+
+     ;; Inactive modeline has tint
+     `(powerline-inactive2 ((t (:inherit powerline-inactive1))))
+
+     ;; Org and outline header updates
+     `(org-level-1 ((t (:height 1.25 :foreground ,my-black
+                                :background "#268bd2"
+                                :weight bold))))
+     `(org-level-2 ((t (:height 1.15 :foreground ,my-black
+                                :background "#2aa198"
+                                :weight bold))))
+     `(org-level-3 ((t (:height 1.05 :foreground ,my-black
+                                :background "#b58900"
+                                :weight bold))))
+
+     '(outline-1 ((t (:inherit org-level-1))))
+     '(outline-2 ((t (:inherit org-level-2))))
+     '(outline-3 ((t (:inherit org-level-3))))
+     '(outline-4 ((t (:inherit org-level-4))))
+     ))
+
+  (setq my-black "#1b1b1e")
+
+  (defun update-solarize-light ()
+    (custom-theme-set-faces
+     'solarized-light
+
+     ;; Makes matching parens obvious
+     `(sp-show-pair-match-face ((t (:inherit sp-show-pair-match-face
+                                             :background "light gray"))))
+
+     ;; active modeline has no colors
+     `(mode-line ((t (:inherit mode-line :background "#fdf6e3"))))
+     `(mode-line-inactive ((t (:inherit mode-line :background "#fdf6e3"))))
+     `(spaceline-highlight-face ((t (:inherit mode-line :background "#fdf6e3"))))
+     `(powerline-active1 ((t (:inherit mode-line :background "#fdf6e3"))))
+     `(powerline-active2 ((t (:inherit mode-line :background "#fdf6e3"))))
+
+     ;; Inactive modeline has tint
+     `(powerline-inactive2 ((t (:inherit powerline-inactive1))))
+
+     ;; Org and outline header updates
+     `(org-level-1 ((t (:height 1.25 :foreground ,my-black
+                                :background "#C9DAEA"
+                                :weight bold))))
+     `(org-level-2 ((t (:height 1.15 :foreground ,my-black
+                                :background "#7CDF64"
+                                :weight bold))))
+     `(org-level-3 ((t (:height 1.05 :foreground ,my-black
+                                :background "#F8DE7E"
+                                :weight bold))))
+
+     '(outline-1 ((t (:inherit org-level-1))))
+     '(outline-2 ((t (:inherit org-level-2))))
+     '(outline-3 ((t (:inherit org-level-3))))
+     '(outline-4 ((t (:inherit org-level-4))))
+
+     `(org-todo ((t (:foreground ,my-black :weight extra-bold
+                                 :background "light gray"))))
+     `(org-priority ((t (:foreground ,my-black :weight bold
+                                     :background "light gray"))))
+     ))
+
+  (if (string= 'solarized-dark (car custom-enabled-themes))
+      (update-solarize-dark)
+    (update-solarize-light)))
 
 (defun algernon/config-magit ()
   (setq magit-push-always-verify nil
@@ -349,42 +766,3 @@ user code."
 
 (defun algernon/focus-mode ()
   (add-hook 'prog-mode-hook #'focus-mode))
-
-(defun dotspacemacs/user-config ()
-  "Configuration function for user code.
- This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
-
-  (setq popwin:close-popup-window-timer-interval 0.1)
-
-  (require 'zoom-frm)
-
-  (algernon/config-magit)
-  (algernon/config-display-time)
-  (algernon/config-time-stamp-on-save)
-  (algernon/config-global-search-and-replace)
-  (algernon/config-evil)
-  (algernon/config-elfeed)
-  (algernon/config-lispy-modes)
-  (algernon/config-gnus)
-  ;;(algernon/focus-mode)
-  ;;(algernon/set-frame-zoom)
-  (add-hook 'after-make-frame-functions (lambda (buffer)
-                                          (run-with-timer 2 nil
-                                                          (lambda ()
-                                                            ;(algernon/set-frame-zoom)
-                                                            (spacemacs/toggle-maximize-frame)
-                                                            (shell-command "wmctrl -r 'Edit with Emacs FRAME' -e 0,0,0,1920,1080; wmctrl -a 'Edit with Emacs FRAME'")))))
-  (algernon/config-SPC-$)
-  (algernon/config-org)
-
-  (with-current-buffer "*scratch*"
-    (lisp-interaction-mode))
-
-  (evil-leader/set-key "q#" #'server-edit)
-  (define-key evil-normal-state-map (kbd "M-/") #'swiper-helm)
-
-  (global-vi-tilde-fringe-mode 0)
-  (spacemacs/toggle-nyan-cat-progress-bar-off)
-  (setq paradox-github-token t
-        scroll-margin 3))
