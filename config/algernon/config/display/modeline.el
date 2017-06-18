@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 13:12:08 algernon@madhouse-project.org>
+;; Last updated: <2017/06/18 13:46:35 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -39,6 +39,9 @@
               (setq spaceline-highlight-face-func 'spaceline-highlight-face-default
                     powerline-text-scale-factor 1.0
                     powerline-default-separator 'bar
+                    spaceline-all-the-icons-highlight-file-name t
+                    spaceline-all-the-icons-file-name-highlight "#f3ea98"
+                    spaceline-all-the-icons-hide-long-buffer-path t
                     spaceline-all-the-icons-icon-set-modified 'chain
                     spaceline-all-the-icons-icon-set-window-numbering 'circle
                     spaceline-all-the-icons-separator-type 'cup
@@ -54,6 +57,9 @@
               (spaceline-toggle-all-the-icons-flycheck-status-off)
               (spaceline-toggle-all-the-icons-time-on)
               (spaceline-toggle-all-the-icons-battery-status-off)
+              (spaceline-toggle-all-the-icons-projectile-off)
+              (spaceline-toggle-all-the-icons-neotree-index-on)
+              (spaceline-toggle-all-the-icons-neotree-context-on)
               (spaceline-toggle-all-the-icons-hud-off))))
 
 (provide 'algernon/config/display/modeline)
