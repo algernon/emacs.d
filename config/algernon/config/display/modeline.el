@@ -47,7 +47,7 @@
 
               ;; Toggles
               (spaceline-toggle-all-the-icons-buffer-size-off)
-              (spaceline-toggle-all-the-icons-buffer-position-off)
+              (spaceline-toggle-all-the-icons-buffer-position-on)
               (spaceline-toggle-all-the-icons-vc-icon-off)
               (spaceline-toggle-all-the-icons-vc-status-on)
               (spaceline-toggle-all-the-icons-git-status-on)
