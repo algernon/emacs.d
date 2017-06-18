@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 11:28:31 algernon@madhouse-project.org>
+;; Last updated: <2017/06/18 13:03:39 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -37,7 +37,7 @@
 
               ;; Configuration
               (setq spaceline-highlight-face-func 'spaceline-highlight-face-default
-                    powerline-text-scale-factor 1.1
+                    powerline-text-scale-factor 1.0
                     powerline-default-separator 'bar
                     spaceline-all-the-icons-icon-set-modified 'chain
                     spaceline-all-the-icons-icon-set-window-numbering 'circle
