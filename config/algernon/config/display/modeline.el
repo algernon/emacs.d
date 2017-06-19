@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 13:46:35 algernon@madhouse-project.org>
+;; Last updated: <2017/06/19 15:22:46 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -44,8 +44,8 @@
                     spaceline-all-the-icons-hide-long-buffer-path t
                     spaceline-all-the-icons-icon-set-modified 'chain
                     spaceline-all-the-icons-icon-set-window-numbering 'circle
-                    spaceline-all-the-icons-separator-type 'cup
-                    spaceline-all-the-icons-separators-type 'cup
+                    spaceline-all-the-icons-separator-type 'none
+                    spaceline-all-the-icons-separators-type 'none
                     spaceline-all-the-icons-primary-separator "")
 
               ;; Toggles
