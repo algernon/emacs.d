@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 12:11:38 algernon@madhouse-project.org>
+;; Last updated: <2017/06/19 23:38:20 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -101,16 +101,12 @@ values."
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-startup-lists '((recents . 5) (projects . 10) (agenda . 5) (todos . 5) bookmarks)
-   dotspacemacs-themes '(solarized-dark
-                         misterioso
-                         subatomic
-                         material
-                         material-light
+   dotspacemacs-themes '(material
+                         solarized-dark
+                         solarized-light
                          spacemacs-light
                          spacemacs-dark
-                         solarized-light
                          leuven
-                         dracula
                          doom-one
                          doom-molokai)
    dotspacemacs-whitespace-cleanup 'trailing))
