@@ -81,7 +81,6 @@
                                      all-the-icons-ivy
                                      doom-themes
                                      dracula-theme
-                                     evil-goggles
                                      feature-mode
                                      focus
                                      highlight-leading-spaces
