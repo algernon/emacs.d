@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 12:07:10 algernon@madhouse-project.org>
+;; Last updated: <2017/06/22 15:43:58 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -29,6 +29,10 @@
 (require 'algernon/config/lang/python)
 
 (defun algernon/config/lang ()
+  (with-eval-after-load 'semantic
+    (setq semantic-default-submodes
+          (remove 'global-semantic-stickyfunc-mode semantic-default-submodes)))
+
   (algernon/config/lang/org)
   (algernon/config/lang/python))
 
