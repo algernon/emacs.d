@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 11:32:51 algernon@madhouse-project.org>
+;; Last updated: <2017/06/23 13:02:00 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -29,7 +29,8 @@
   "Neotree configuration."
 
   (setq neo-theme 'icons
-        neo-window-width 28)
+        neo-window-width 28
+        neo-banner-message nil)
 
   (setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"
                                  ;; Pycache and init rarely want to see
