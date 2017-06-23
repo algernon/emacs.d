@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/23 13:02:59 algernon@madhouse-project.org>
+;; Last updated: <2017/06/23 13:03:40 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,17 +25,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(require 'algernon/config/lang/clojurescript)
-(require 'algernon/config/lang/org)
-(require 'algernon/config/lang/python)
+(defun algernon/config/lang/clojurescript ()
+  (setq cider-cljs-lein-repl
+        "(do (require 'figwheel-sidecar.repl-api)
+            (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))"))
 
-(defun algernon/config/lang ()
-  (with-eval-after-load 'semantic
-    (setq semantic-default-submodes
-          (remove 'global-semantic-stickyfunc-mode semantic-default-submodes)))
-
-  (algernon/config/lang/clojurescript)
-  (algernon/config/lang/org)
-  (algernon/config/lang/python))
-
-(provide 'algernon/config/lang)
+(provide 'algernon/config/lang/clojurescript)
