@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 11:31:05 algernon@madhouse-project.org>
+;; Last updated: <2017/06/23 12:03:45 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -221,14 +221,15 @@ FONT-LOCK-HOOKS-ALIST is an alist of a font-lock-alist and its desired hooks."
 ;;;; All-the-icons
 
 (defun algernon/config/display/all-the-icons ()
-  "Add hylang icon to all-the-icons for neotree and modeline integration."
-
   ;; Both all-the-icons-icon-alist and all-the-icons-mode-icon-alist
   ;; need to be updated for either modification to take effect.
   (with-eval-after-load 'all-the-icons
     (add-to-list
      'all-the-icons-icon-alist
      '("\\.hy$" all-the-icons-fileicon "lisp" :face all-the-icons-orange))
+    (add-to-list
+     'all-the-icons-icon-alist
+     '("\\.ino$" all-the-icons-fileicon "arduino" :face all-the-icons-blue))
     (add-to-list
      'all-the-icons-mode-icon-alist
      '(hy-mode all-the-icons-fileicon "lisp" :face all-the-icons-orange))))
