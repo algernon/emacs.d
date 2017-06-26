@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/26 09:01:56 algernon@madhouse-project.org>
+;; Last updated: <2017/06/26 09:19:13 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -27,8 +27,25 @@
 
 (defun algernon/config/apps/magit ()
   (setq-default git-magit-status-fullscreen t)
-  (setq magit-push-always-verify nil
-        magit-commit-arguments '("--signoff")
+  (setq magit-commit-arguments '("--signoff")
+        magit-display-buffer-function (lambda (buffer)
+                                        (display-buffer
+                                         buffer
+                                         (cond ((and (derived-mode-p 'magit-mode)
+                                                     (eq (with-current-buffer buffer major-mode)
+                                                         'magit-status-mode))
+                                                nil)
+                                               ((memq (with-current-buffer buffer major-mode)
+                                                      '(magit-process-mode
+                                                        magit-revision-mode
+                                                        magit-stash-mode))
+                                                nil)
+                                               ((memq (with-current-buffer buffer major-mode)
+                                                      '(magit-diff-mode))
+                                                '(display-buffer-at-bottom))
+                                               (t
+                                                '(display-buffer-same-window)))))
+        magit-push-always-verify nil
         magit-post-display-buffer-hook #'(lambda ()
                                            (when (derived-mode-p 'magit-status-mode)
                                              (delete-other-windows)))))
