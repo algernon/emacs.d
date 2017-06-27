@@ -11,7 +11,7 @@
 
 (setq evil-goggles-packages '(evil-goggles))
 
-(defun evil-goggles/init-evil-goggles-mode ()
+(defun evil-goggles/init-evil-goggles ()
   "Initialize evil-goggles-mode"
 
   (use-package evil-goggles
