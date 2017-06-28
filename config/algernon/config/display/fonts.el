@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/23 12:03:45 algernon@madhouse-project.org>
+;; Last updated: <2017/06/28 14:32:20 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -47,8 +47,8 @@ CODE-FONT-ALIST is an alist of a font and unicode points to force to use it."
   ;; NOTE The icons you see are not the correct icons until this is evaluated
   (set-icon-fonts
    '(("fontawesome"
-      ;;              
-      #xf07c #xf0c9 #xf0c4 #xf0cb)
+      ;;                         
+      #xf07c #xf0c9 #xf0c4 #xf0cb #xf017 #xf101)
 
      ("all-the-icons"
       ;;    
