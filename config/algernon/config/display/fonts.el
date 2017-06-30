@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/28 14:32:20 algernon@madhouse-project.org>
+;; Last updated: <2017/07/01 00:05:09 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -230,6 +230,9 @@ FONT-LOCK-HOOKS-ALIST is an alist of a font-lock-alist and its desired hooks."
     (add-to-list
      'all-the-icons-icon-alist
      '("\\.ino$" all-the-icons-fileicon "arduino" :face all-the-icons-blue))
+    (add-to-list
+     'all-the-icons-icon-alist
+     '("\\.markdown$" all-the-icons-octicon "markdown" :v-adjust 0.0 :face all-the-icons-lblue))
     (add-to-list
      'all-the-icons-mode-icon-alist
      '(hy-mode all-the-icons-fileicon "lisp" :face all-the-icons-orange))))
