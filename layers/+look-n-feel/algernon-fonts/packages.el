@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/01 00:05:09 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 15:09:57 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -24,6 +24,15 @@
 
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+(defconst algernon-fonts-packages
+  '(
+    all-the-icons
+    all-the-icons-dired
+    ))
+
+(defun algernon-fonts/init-all-the-icons-dired ()
+  (use-package all-the-icons-dired))
 
 (defun algernon/config/display/fontsets ()
   "Set right fonts for missing and all-the-icons unicode points."
@@ -269,10 +278,7 @@ FONT-LOCK-HOOKS-ALIST is an alist of a font-lock-alist and its desired hooks."
 
   (add-hook 'hy-mode-hook 'hy-extra-syntax))
 
-(defun algernon/config/display/fonts ()
+(defun algernon-modeline/post-init-all-the-icons ()
   (algernon/config/display/fontsets)
   (algernon/config/display/font-locks)
-  (algernon/config/display/all-the-icons)
   (algernon/config/display/extra-syntax-highlighting))
-
-(provide 'algernon/config/display/fonts)

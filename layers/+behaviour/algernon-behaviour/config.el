@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/23 13:02:00 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 15:01:17 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,18 +25,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defun algernon/config/apps/neotree ()
-  "Neotree configuration."
+(setq paradox-github-token t)
 
-  (setq neo-theme 'icons
-        neo-window-width 28
-        neo-banner-message nil)
-
-  (setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"
-                                 ;; Pycache and init rarely want to see
-                                 "__pycache__" "__init__\\.py"))
-
-  (evil-global-set-key 'normal (kbd "M-f") 'winum-select-window-0)
-  (evil-global-set-key 'normal (kbd "M-p") 'neotree-find-project-root))
-
-(provide 'algernon/config/apps/neotree)
+(algernon/behaviour/timestamp-on-save)

@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/22 12:46:58 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 15:13:59 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -51,8 +51,89 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (concat user-emacs-directory "private/config"))
-(require 'algernon/spacemacs-config)
+(setq algernon/layers/core '(better-defaults
+                             (colors :variables colors-colorize-identifiers 'all
+                                     colors-enable-nyan-cat-progress-bar t)
+                             evil-goggles
+                             fancy-narrower
+                             git
+                             github
+                             search-engine
+                             semantic
+                             smex
+                             spell-checking
+                             ;;syntax-checking
+                             themes-megapack
+                             typography
+                             (version-control :variables
+                                              version-control-global-margin t
+                                              version-control-diff-tool 'git-gutter+)
+                             writeroom)
+
+      algernon/layers/lang '(c-c++
+                             (clojure :variables clojure-enable-fancify-symbols t)
+                             emacs-lisp
+                             go
+                             html
+                             ;;(hy :variables hy-enable-fancify-symbols t)
+                             javascript
+                             (latex :variables latex-enable-auto-fill t)
+                             markdown
+                             (org :variables org-enable-github-support t)
+                             (python :variables
+                                     python-sort-imports-on-save t
+                                     python-test-runner 'pytest)
+                             ruby
+                             (shell :variables
+                                    shell-default-height 30
+                                    shell-default-position 'bottom
+                                    shell-default-shell 'eshell
+                                    shell-enable-smart-eshell t)
+                             typescript
+                             yaml)
+
+      algernon/layers/apps '(chrome
+                             elfeed
+                             gnus
+                             (ranger :variables
+                                     ranger-show-preview t)
+                             restclient)
+
+      algernon/layers/misc '(docker
+                             nginx
+                             systemd)
+
+      algernon/layers/personal '(;; +behaviour
+                                 algernon-behaviour
+
+                                 ;; +lang
+                                 algernon-clojurescript
+                                 algernon-org
+                                 algernon-python
+                                 algernon-semantic
+
+                                 ;; +apps
+                                 algernon-elfeed
+                                 algernon-gnus
+                                 algernon-magit
+                                 algernon-neotree
+
+                                 ;; +look-n-feel
+                                 algernon-fonts
+                                 algernon-look-n-feel
+                                 algernon-modeline))
+
+(setq algernon/additional-packages '(doom-themes
+                                     flatui-theme
+                                     (github-modern-theme
+                                      :location (recipe :fetcher github
+                                                        :repo "philiparvidsson/GitHub-Modern-Theme-for-Emacs"))
+                                     feature-mode
+                                     highlight-leading-spaces
+                                     (prettify-utils
+                                      :location (recipe :fetcher github
+                                                        :repo "Ilazki/prettify-utils.el"))
+                                     pretty-mode))
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -64,7 +145,9 @@ values."
    dotspacemacs-configuration-layers (append algernon/layers/core
                                              algernon/layers/lang
                                              algernon/layers/apps
-                                             algernon/layers/misc)
+                                             algernon/layers/misc
+
+                                             algernon/layers/personal)
    dotspacemacs-additional-packages algernon/additional-packages
    dotspacemacs-excluded-packages '(anaconda-mode)
    dotspacemacs-download-packages 'used-but-keep-unused))
@@ -118,10 +201,3 @@ It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   (setq custom-file (concat user-emacs-directory "private/etc/custom.el")
         user-mail-address "algernon@madhouse-project.org"))
-
-(defun dotspacemacs/user-config ()
-  "Configuration function for user code.
- This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
-
-  (algernon/config))

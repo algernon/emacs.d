@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/19 14:42:13 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 15:02:01 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,45 +25,43 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defun algernon/forward-sentence-or-sexp (&optional count)
-  (interactive)
-  (if (member major-mode '(hy-mode clojure-mode emacs-lisp-mode))
-      (sp-forward-sexp count)
-    (evil-forward-sentence-begin count)))
+(defconst algernon-behaviour-packages
+  '(
+    evil
+    focus
+    swiper-helm
+    ))
 
-(defun algernon/backward-sentence-or-sexp (&optional count)
-  (interactive)
-  (if (member major-mode '(hy-mode clojure-mode emacs-lisp-mode))
-      (sp-backward-sexp count)
-    (evil-backward-sentence-begin count)))
+(defun algernon-behaviour/init-focus ()
+  (use-package focus
+    :config (progn
+              ;;(add-hook 'prog-mode-hook #'focus-mode)
+              )))
 
-(defun algernon/config/behaviour/timestamp-on-save ()
-  (setq time-stamp-active t
-        time-stamp-start "[lL]ast [uU]pdated:[    ]+\\\\?[\"<]+"
-        time-stamp-line-limit 20
-        time-stamp-format (concat "%:y/%02m/%02d %02H:%02M:%02S "
-                                  user-mail-address))
-  (add-hook 'write-file-hooks #'time-stamp))
+(defun algernon-behaviour/init-swiper-helm ()
+  (use-package swiper-helm))
 
-(defun algernon/config/behaviour/global-search-and-replace ()
+(defun algernon-behaviour/post-init-evil ()
+  (defun algernon/forward-sentence-or-sexp (&optional count)
+    (interactive)
+    (if (member major-mode '(hy-mode clojure-mode emacs-lisp-mode))
+        (sp-forward-sexp count)
+      (evil-forward-sentence-begin count)))
+
+  (defun algernon/backward-sentence-or-sexp (&optional count)
+    (interactive)
+    (if (member major-mode '(hy-mode clojure-mode emacs-lisp-mode))
+        (sp-backward-sexp count)
+      (evil-backward-sentence-begin count)))
+
   (defun algernon/global-ex-search-and-replace ()
     (interactive)
     (let ((evil-ex-substitute-global t))
       (evil-ex "%s/")))
-  (define-key evil-normal-state-map "S" #'algernon/global-ex-search-and-replace))
 
-(defun algernon/config/behaviour/evil ()
+  (define-key evil-normal-state-map (kbd "M-/") #'swiper-helm)
   (define-key evil-normal-state-map ")" #'algernon/forward-sentence-or-sexp)
   (define-key evil-normal-state-map "(" #'algernon/backward-sentence-or-sexp)
+  (define-key evil-normal-state-map "S" #'algernon/global-ex-search-and-replace)
+  (evil-leader/set-key "q#" #'server-edit)
   (setq evil-move-cursor-back nil))
-
-(defun algernon/config/behaviour/focus ()
-  (add-hook 'prog-mode-hook #'focus-mode))
-
-(defun algernon/config/behaviour ()
-  (algernon/config/behaviour/evil)
-  ;;(algernon/config/behaviour/focus)
-  (algernon/config/behaviour/global-search-and-replace)
-  (algernon/config/behaviour/timestamp-on-save))
-
-(provide 'algernon/config/behaviour)

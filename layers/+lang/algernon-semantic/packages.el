@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 11:27:54 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 13:38:21 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,7 +25,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(require 'algernon/layers)
-(require 'algernon/user-config)
+(defconst algernon-semantic-packages '(semantic))
 
-(provide 'algernon/spacemacs-config)
+(defun algernon-semantic/post-init-semantic ()
+  (with-eval-after-load 'semantic
+    (setq semantic-default-submodes
+          (remove 'global-semantic-stickyfunc-mode semantic-default-submodes))))

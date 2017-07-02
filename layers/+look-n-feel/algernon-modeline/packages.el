@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/25 08:13:11 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 15:08:34 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,9 +25,12 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defun algernon/config/display/modeline ()
-  "Minimalistic spaceline-all-the-icons configuration."
+(defconst algernon-modeline-packages
+    '(
+      spaceline-all-the-icons
+      ))
 
+(defun algernon-modeline/init-spaceline-all-the-icons ()
   (use-package spaceline-all-the-icons
     :after spaceline
     :config (progn
@@ -60,5 +63,3 @@
               (spaceline-toggle-all-the-icons-neotree-index-on)
               (spaceline-toggle-all-the-icons-neotree-context-on)
               (spaceline-toggle-all-the-icons-hud-off))))
-
-(provide 'algernon/config/display/modeline)

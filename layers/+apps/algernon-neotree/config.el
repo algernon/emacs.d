@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 12:06:53 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 14:51:54 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,14 +25,11 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defun algernon/config/lang/python ()
-  (require 'virtualenvwrapper)
-  (pyvenv-mode 1)
-
-  ;; Fixes hy-mode environment when pyvenv is activated
-  (add-hook 'pyvenv-post-activate-hooks 'python/init-hy-mode)
-
-  (venv-initialize-interactive-shells)
-  (venv-initialize-eshell))
-
-(provide 'algernon/config/lang/python)
+(spacemacs|use-package-add-hook neotree
+  :post-config
+  (setq neo-theme 'icons
+        neo-window-width 28
+        neo-banner-message nil
+        neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"
+                                 ;; Pycache and init rarely want to see
+                                 "__pycache__" "__init__\\.py")))

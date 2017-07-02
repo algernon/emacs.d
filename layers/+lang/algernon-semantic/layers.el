@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 12:10:25 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 13:28:15 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,26 +25,4 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defun work/notes ()
-  "Open the notes project"
-  (interactive)
-  (find-file "~/Documents/UStream/notes"))
-
-(defun work/wip ()
-  "Open the WIP"
-  (interactive)
-  (find-file "~/Documents/UStream/notes/wip.org"))
-
-(defun work/sources ()
-  "Open work-related sources"
-  (interactive)
-  (eshell-z "~/src/ustream"))
-
-(defun algernon/config/work ()
-  (spacemacs/declare-prefix "$" "work")
-  (spacemacs/set-leader-keys
-    "$n" #'work/notes
-    "$w" #'work/wip
-    "$s" #'work/sources))
-
-(provide 'algernon/config/work)
+(configuration-layer/declare-layer 'semantic)

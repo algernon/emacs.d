@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 12:05:38 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 14:53:44 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,9 +25,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defun algernon/config/lang/org ()
-  (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
-                            (sequence "⚑ WAITING(w)" "|")
-                            (sequence "|" "✘ CANCELED(c)"))))
-
-(provide 'algernon/config/lang/org)
+(defun algernon-gnus/gnus-post-init ()
+  (let ((feed-file (concat user-emacs-directory "private/etc/gnus.el")))
+    (if (file-exists-p feed-file)
+        (load feed-file))))

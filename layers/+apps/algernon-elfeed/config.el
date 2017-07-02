@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 11:58:53 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 14:52:38 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,7 +25,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defun algernon/config/apps/elfeed ()
+(defun algernon-elfeed/post-init-elfeed ()
   (let ((feed-file (concat user-emacs-directory "private/etc/feeds.el")))
     (if (file-exists-p feed-file)
         (load feed-file)))
@@ -80,11 +80,6 @@
                      "q" 'quit-window
                      "n" 'elfeed-show-next
                      "p" 'elfeed-show-prev)
-                   )
-
-    )
-
+                   ))
 
   (setf url-queue-timeout 30))
-
-(provide 'algernon/config/apps/elfeed)

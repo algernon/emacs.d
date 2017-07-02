@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/06/18 12:08:20 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 14:54:12 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,15 +25,4 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(require 'algernon/config/apps/elfeed)
-(require 'algernon/config/apps/gnus)
-(require 'algernon/config/apps/neotree)
-(require 'algernon/config/apps/magit)
-
-(defun algernon/config/apps ()
-  (algernon/config/apps/elfeed)
-  (algernon/config/apps/gnus)
-  (algernon/config/apps/magit)
-  (algernon/config/apps/neotree))
-
-(provide 'algernon/config/apps)
+(configuration-layer/declare-layer 'gnus)
