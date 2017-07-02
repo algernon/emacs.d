@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/02 14:54:31 algernon@madhouse-project.org>
+;; Last updated: <2017/07/02 15:27:06 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,7 +25,8 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defconst algernon-gnus-packages
-  '(
-    gnus
-    ))
+(spacemacs|use-package-add-hook all-the-icons
+  :post-init (progn
+               (algernon/config/display/fontsets)
+               (algernon/config/display/font-locks)
+               (algernon/config/display/extra-syntax-highlighting)))
