@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/04 14:46:44 algernon@madhouse-project.org>
+;; Last updated: <2017/07/04 15:13:50 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,6 +25,8 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+;;; Aliases & commands
+
 (defun eshell/up (dir)
   (eshell-up dir))
 
@@ -39,3 +41,58 @@
 
 (defun eshell/e (file)
   (find-file file))
+
+;;; Theme
+
+(defun epe-theme-algernon ()
+  "A eshell-prompt dakrone theme, slightly customised."
+  (setq eshell-prompt-regexp "^[^#\n❯]* ❯[#]* ")
+  (let* ((pwd-repl-home (lambda (pwd)
+                          (let* ((home (expand-file-name (getenv "HOME")))
+                                 (home-len (length home)))
+                            (if (and
+                                 (>= (length pwd) home-len)
+                                 (equal home (substring pwd 0 home-len)))
+                                (concat "~" (substring pwd home-len))
+                              pwd))))
+         (shrink-paths (lambda (p-lst)
+                         (if (> (length p-lst) 3) ;; shrink paths deeper than 3 dirs
+                             (concat
+                              (mapconcat (lambda (elm)
+                                           (if (zerop (length elm)) ""
+                                             (substring elm 0 1)))
+                                         (butlast p-lst 3)
+                                         "/")
+                              "/"
+                              (mapconcat (lambda (elm) elm)
+                                         (last p-lst 3)
+                                         "/"))
+                           (mapconcat (lambda (elm) elm)
+                                      p-lst
+                                      "/")))))
+    (concat "\n"
+     (when (epe-remote-p)
+       (epe-colorize-with-face
+        (concat (epe-remote-user) "@" (epe-remote-host) " ")
+        'epe-remote-face))
+     (when epe-show-python-info
+       (when (fboundp 'epe-venv-p)
+         (when (and (epe-venv-p) venv-current-name)
+           (epe-colorize-with-face (concat "(" venv-current-name ") ") 'epe-venv-face))))
+     (epe-colorize-with-face (funcall
+                              shrink-paths
+                              (split-string
+                               (funcall pwd-repl-home (eshell/pwd)) "/"))
+                             'epe-dir-face)
+     (when (epe-git-p)
+       (concat
+        (epe-colorize-with-face ":" 'epe-dir-face)
+        (epe-colorize-with-face
+         (concat (epe-git-branch)
+                 (epe-git-dirty)
+                 (epe-git-untracked)
+                 (unless (= (epe-git-unpushed-number) 0)
+                   (concat ":" (number-to-string (epe-git-unpushed-number)))))
+         'epe-git-face)))
+     (epe-colorize-with-face "\n❯" 'epe-symbol-face)
+     " ")))
