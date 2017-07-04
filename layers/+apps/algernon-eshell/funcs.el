@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/04 14:46:35 algernon@madhouse-project.org>
+;; Last updated: <2017/07/04 14:46:44 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -25,10 +25,17 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(defconst algernon-eshell-packages
-  '(
-    eshell-up
-    ))
+(defun eshell/up (dir)
+  (eshell-up dir))
 
-(defun algernon-eshell/init-eshell-up ()
-  (use-package eshell-up))
+(defun eshell/pk (dir)
+  (eshell-up-peek dir))
+
+(defun eshell/l (&rest args)
+  (eshell/ls "-l" args))
+
+(defun eshell/la (&rest args)
+  (eshell/ls "-la" args))
+
+(defun eshell/e (file)
+  (find-file file))
