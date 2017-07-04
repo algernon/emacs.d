@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/04 15:13:50 algernon@madhouse-project.org>
+;; Last updated: <2017/07/04 15:31:34 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -86,13 +86,17 @@
                              'epe-dir-face)
      (when (epe-git-p)
        (concat
-        (epe-colorize-with-face ":" 'epe-dir-face)
+        " "
         (epe-colorize-with-face
          (concat (epe-git-branch)
-                 (epe-git-dirty)
-                 (epe-git-untracked)
-                 (unless (= (epe-git-unpushed-number) 0)
-                   (concat ":" (number-to-string (epe-git-unpushed-number)))))
-         'epe-git-face)))
+                 (epe-git-dirty))
+         'epe-remote-face)
+        (when (or (epe-git-behind-p)
+                  (not (= (epe-git-unpushed-number) 0)))
+          " ")
+        (when (epe-git-behind-p)
+          (epe-colorize-with-face "⇣" 'epe-git-face))
+        (unless (= (epe-git-unpushed-number) 0)
+          (epe-colorize-with-face "⇡" 'epe-git-face))))
      (epe-colorize-with-face "\n❯" 'epe-symbol-face)
      " ")))
