@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/04 13:18:27 algernon@madhouse-project.org>
+;; Last updated: <2017/07/04 13:24:45 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -30,7 +30,8 @@
 (defun beacon/init-beacon ()
   (use-package beacon
     :init (progn
-            (setq beacon-blink-when-focused t
+            (setq beacon-color "DarkGoldenrod2"
+                  beacon-blink-when-focused t
                   beacon-blink-when-point-moves-horizontally 20
                   beacon-blink-when-point-moves-vertically 10)
             (beacon-mode 1))))
