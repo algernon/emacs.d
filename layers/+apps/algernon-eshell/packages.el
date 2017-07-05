@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/05 08:43:35 algernon@madhouse-project.org>
+;; Last updated: <2017/07/05 18:09:27 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -36,4 +36,5 @@
 
 (defun algernon-eshell/post-init-eshell-prompt-extras ()
   (use-package eshell-prompt-extras
-    :config (setq eshell-prompt-function #'epe-theme-algernon)))
+    :config (setq eshell-prompt-function #'epe-theme-algernon
+                  eshell-banner-message "")))
