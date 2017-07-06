@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/04 13:15:55 algernon@madhouse-project.org>
+;; Last updated: <2017/07/06 12:58:01 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -137,7 +137,7 @@ values."
 
                                              algernon/layers/personal)
    dotspacemacs-additional-packages algernon/additional-packages
-   dotspacemacs-excluded-packages '(anaconda-mode)
+   dotspacemacs-excluded-packages '(anaconda-mode clj-refactor)
    dotspacemacs-download-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
