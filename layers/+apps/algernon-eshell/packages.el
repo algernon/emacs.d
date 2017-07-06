@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/05 18:09:27 algernon@madhouse-project.org>
+;; Last updated: <2017/07/06 08:57:23 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -27,6 +27,7 @@
 
 (defconst algernon-eshell-packages
   '(
+    eshell
     eshell-prompt-extras
     eshell-up
     ))
@@ -38,3 +39,28 @@
   (use-package eshell-prompt-extras
     :config (setq eshell-prompt-function #'epe-theme-algernon
                   eshell-banner-message "")))
+
+(defun algernon-eshell/post-init-eshell ()
+  (use-package eshell
+    :config (progn
+              ;; Aliases & commands
+
+              (defun eshell/up (dir)
+                (eshell-up dir))
+
+              (defun eshell/pk (dir)
+                (eshell-up-peek dir))
+
+              (defun eshell/l (&rest args)
+                (eshell/ls "-l" args))
+
+              (defun eshell/la (&rest args)
+                (eshell/ls "-la" args))
+
+              (defun eshell/e (file)
+                (find-file file))
+
+              (defun eshell/d (&rest args)
+                (if (null args)
+                    (neotree)
+                  (neotree-dir (pop args)))))))
