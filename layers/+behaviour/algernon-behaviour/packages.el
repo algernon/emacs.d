@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/02 15:02:01 algernon@madhouse-project.org>
+;; Last updated: <2017/07/13 13:30:06 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -35,8 +35,10 @@
 (defun algernon-behaviour/init-focus ()
   (use-package focus
     :config (progn
-              ;;(add-hook 'prog-mode-hook #'focus-mode)
-              )))
+              (add-hook 'hy-mode-hook #'focus-mode)
+              (add-hook 'clojure-mode-hook #'focus-mode)
+              (add-hook 'emacs-lisp-mode-hook #'focus-mode)
+              (evil-leader/set-key "to" #'focus-mode))))
 
 (defun algernon-behaviour/init-swiper-helm ()
   (use-package swiper-helm))
