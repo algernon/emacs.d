@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/02 13:15:33 algernon@madhouse-project.org>
+;; Last updated: <2017/07/13 14:36:13 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -32,3 +32,13 @@
         time-stamp-format (concat "%:y/%02m/%02d %02H:%02M:%02S "
                                   user-mail-address))
   (add-hook 'write-file-hooks #'time-stamp))
+
+(defun focus/toggle-sexp-defun ()
+  "Toggle focus-mode at-thing between sexp and defun"
+  (interactive)
+
+  (when (alist-get major-mode focus-mode-to-thing)
+    (if (eq (alist-get major-mode focus-mode-to-thing) 'sexp)
+       (setf (alist-get major-mode focus-mode-to-thing) 'defun)
+     (when (eq (alist-get major-mode focus-mode-to-thing) 'defun)
+       (setf (alist-get major-mode focus-mode-to-thing) 'sexp)))))
