@@ -9,12 +9,12 @@
 ;;
 ;;; License: GPLv3
 
-(setq writeroom-packages
+(setq distraction-free-packages
       '(
         writeroom-mode
         ))
 
-(defun writeroom/init-writeroom-mode ()
+(defun distraction-free/init-writeroom-mode ()
   "Initialize writeroom-mode"
 
   (use-package writeroom-mode
