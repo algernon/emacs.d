@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/02 15:07:31 algernon@madhouse-project.org>
+;; Last updated: <2017/07/21 17:43:18 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -29,5 +29,5 @@
       scroll-margin 3
       writeroom-width 0.75)
 
-;;(global-vi-tilde-fringe-mode 0)
-;;(spacemacs/toggle-nyan-cat-progress-bar-off)
+(global-vi-tilde-fringe-mode 0)
+(spacemacs/toggle-nyan-cat-progress-bar-off)
