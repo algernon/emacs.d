@@ -28,6 +28,3 @@
 (setq popwin:close-popup-window-timer-interval 0.1
       scroll-margin 3
       writeroom-width 0.75)
-
-(global-vi-tilde-fringe-mode 0)
-(spacemacs/toggle-nyan-cat-progress-bar-off)
