@@ -24,13 +24,12 @@
       (olivetti-mode 1)))
 
   (use-package olivetti
-    :init (progn
-            (spacemacs/set-leader-keys
-              "wo" 'olivetti
-              "wOs" 'olivetti-shrink
-              "wOe" 'olivetti-expand
-              "wOm" 'olivetti-toggle-hide-mode-line)
-            (setq olivetti-body-width 0.75
-                  olivetti-hide-mode-line t))
-    :config (advice-add 'spacemacs/toggle-maximize-buffer
-                        :after (lambda (&rest args) (olivetti-mode 0)))))
+    :config (progn
+              (spacemacs/set-leader-keys
+                "wo" 'olivetti
+                "wOs" 'olivetti-shrink
+                "wOe" 'olivetti-expand
+                "wOm" 'olivetti-toggle-hide-mode-line)
+              (setq olivetti-body-width 0.75
+                    olivetti-hide-mode-line t)
+              (advice-add 'spacemacs/toggle-maximize-buffer :after 'olivetti-end))))
