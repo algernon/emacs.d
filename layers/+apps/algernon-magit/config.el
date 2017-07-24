@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/02 14:55:04 algernon@madhouse-project.org>
+;; Last updated: <2017/07/24 09:48:44 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -29,6 +29,8 @@
     :post-config
     (progn
       (setq-default git-magit-status-fullscreen t)
+      (set-face-attribute 'magit-hash nil
+                          :foreground "#3390ff")
       (setq magit-commit-arguments '("--signoff")
             magit-display-buffer-function (lambda (buffer)
                                             (display-buffer
