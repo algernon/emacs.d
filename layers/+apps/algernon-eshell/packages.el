@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/20 16:36:29 algernon@madhouse-project.org>
+;; Last updated: <2017/07/24 08:42:28 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -44,6 +44,9 @@
   (use-package eshell
     :config (progn
               ;; Aliases & commands
+
+              (defun eshell/x ()
+                (eshell/exit))
 
               (defun eshell/up (dir)
                 (eshell-up dir))
