@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/24 17:19:49 algernon@madhouse-project.org>
+;; Last updated: <2017/07/24 17:53:10 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -83,11 +83,12 @@
                 (let* ((command (format "git grep -n %s" (s-join " " args)))
                        (buffer (generate-new-buffer "*git-grep*"))
                        (buffer-name (format "#<buffer %s>" buffer)))
+                  (with-current-buffer buffer
+                    (insert (format "-*- mode: grep; default-directory: \"%s\" -*-\n\n%s\n"
+                                    (eshell/pwd) command)))
+                  (eshell-printn buffer-name)
                   (eshell-do-eval
-                   (eshell-parse-command (format "format '-*- mode: grep; default-directory: \"%s\" -*-\n\n%s\n' >%s"
-                                                 (eshell/pwd) command buffer-name)))
-                  (eshell-do-eval
-                   (eshell-parse-command (format "*%s >>%s" command buffer-name) nil t)
+                   (eshell-parse-command (format "*%s >>%s" command buffer-name))
                    t)
                   (with-current-buffer buffer
                     (funcall 'grep-mode)
