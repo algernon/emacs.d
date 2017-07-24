@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/24 10:13:34 algernon@madhouse-project.org>
+;; Last updated: <2017/07/24 14:15:03 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -77,6 +77,24 @@
                     (neotree)
                   (neotree-dir (pop args))))
 
+              (defun algernon/git-grep (&rest args)
+                (interactive)
+
+                (let* ((command (format "git grep -n %s" (s-join " " args)))
+                       (buffer (generate-new-buffer "*git-grep*"))
+                       (buffer-name (format "#<buffer %s>" buffer))
+                       (eshell-buffer (current-buffer)))
+                  (eshell-do-eval
+                   (eshell-parse-command (format "format '-*- mode: grep; default-directory: \"%s\" -*-\n\n%s\n' >%s"
+                                                 (eshell/pwd) command buffer-name)))
+                  (eshell-do-eval
+                   (eshell-parse-command (format "*%s >>%s" command buffer-name) nil t)
+                   t)
+                  (with-current-buffer buffer
+                    (funcall 'grep-mode)
+                    (goto-char (point-min))
+                    (switch-to-buffer buffer))))
+
               (defun eshell/git (command &rest args)
                 (pcase command
                   ("log" (progn
@@ -85,6 +103,7 @@
                   ("status" (progn
                               (magit-status)
                               (eshell/echo)))
+                  ("grep" (apply #'algernon/git-grep args))
                   (_ (let ((command (s-join " " (append (list "git" command) args))))
                        (message command)
                        (shell-command-to-string command)))))
