@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/24 08:42:28 algernon@madhouse-project.org>
+;; Last updated: <2017/07/24 09:21:02 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -43,6 +43,11 @@
 (defun algernon-eshell/post-init-eshell ()
   (use-package eshell
     :config (progn
+              ;; Hooks
+              (add-hook 'eshell-mode-hook (lambda ()
+                                            (define-key evil-insert-state-map (kbd "C-d")
+                                              #'eshell-life-is-too-much)))
+
               ;; Aliases & commands
 
               (defun eshell/x ()
