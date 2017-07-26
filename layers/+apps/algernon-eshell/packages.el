@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/26 11:58:57 algernon@madhouse-project.org>
+;; Last updated: <2017/07/26 11:59:35 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -76,38 +76,6 @@
                 (if (null args)
                     (neotree)
                   (neotree-dir (pop args))))
-
-              (defun algernon/git-grep (&rest args)
-                (interactive)
-
-                (let* ((command (format "git grep -n %s" (s-join " " args)))
-                       (buffer (generate-new-buffer "*git-grep*"))
-                       (buffer-name (format "#<buffer %s>" buffer)))
-                  (with-current-buffer buffer
-                    (insert (format "-*- mode: grep; default-directory: \"%s\" -*-\n\n%s\n"
-                                    (eshell/pwd) command)))
-                  (eshell-printn buffer-name)
-                  (eshell-do-eval
-                   (eshell-parse-command (format "*%s >>%s" command buffer-name))
-                   t)
-                  (with-current-buffer buffer
-                    (funcall 'grep-mode)
-                    (goto-char (point-min))
-                    (switch-to-buffer buffer))))
-
-              (defun algernon/git-log (&rest args)
-                (let ((branch-or-file (car args)))
-                  (message branch-or-file)
-                  (if branch-or-file
-                      (if (f-file-p branch-or-file)
-                          (magit-log (list "HEAD") '()
-                                     (mapcar (lambda (f) (concat (eshell/pwd) "/" f))
-                                             args))
-                        (magit-log (list branch-or-file) '()
-                                   (mapcar (lambda (f) (concat (eshell/pwd) "/" f))
-                                           (cdr args))))
-                    (magit-log-head)))
-                (eshell/echo))
 
               (defun eshell/git (command &rest args)
                 (pcase command
