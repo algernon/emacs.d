@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/26 11:59:35 algernon@madhouse-project.org>
+;; Last updated: <2017/07/26 12:20:01 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -72,10 +72,13 @@
                 (eshell/mkdir dir)
                 (eshell/cd dir))
 
-              (defun eshell/d (&rest args)
+              (defun eshell/t (&rest args)
                 (if (null args)
                     (neotree)
                   (neotree-dir (pop args))))
+
+              (defun eshell/d (&rest args)
+                (dired (pop args)))
 
               (defun eshell/git (command &rest args)
                 (pcase command
