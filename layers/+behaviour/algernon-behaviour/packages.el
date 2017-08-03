@@ -82,5 +82,7 @@
   (define-key evil-normal-state-map ")" #'algernon/forward-sentence-or-sexp)
   (define-key evil-normal-state-map "(" #'algernon/backward-sentence-or-sexp)
   (define-key evil-normal-state-map "S" #'algernon/global-ex-search-and-replace)
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   (evil-leader/set-key "q#" #'server-edit)
   (setq evil-move-cursor-back nil))
