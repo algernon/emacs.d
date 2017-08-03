@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/03 09:24:20 algernon@madhouse-project.org>
+;; Last updated: <2017/08/03 09:26:33 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -37,7 +37,8 @@
 ;;; Code:
 
 (setq algernon/layers/core '(better-defaults
-                             (colors :variables colors-colorize-identifiers 'all
+                             (colors :variables
+                                     colors-colorize-identifiers 'variables
                                      colors-enable-nyan-cat-progress-bar t)
                              distraction-free
                              evil-goggles
