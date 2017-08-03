@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/13 14:43:38 algernon@madhouse-project.org>
+;; Last updated: <2017/08/03 09:50:07 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -85,4 +85,5 @@
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   (evil-leader/set-key "q#" #'server-edit)
-  (setq evil-move-cursor-back nil))
+  (setq evil-move-cursor-back nil
+        evil-escape-key-sequence "sd"))
