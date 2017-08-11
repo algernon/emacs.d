@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/26 12:08:40 algernon@madhouse-project.org>
+;; Last updated: <2017/08/08 13:53:06 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -117,3 +117,7 @@
                            file-list))
       (magit-log-head)))
   (eshell/echo))
+
+(defun algernon/git-pr (pr branch)
+  (eshell-do-eval
+   (eshell-parse-command (format "git fetch origin pull/%s/head:%s" pr branch)) t))
