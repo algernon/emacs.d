@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/12 12:08:25 algernon@madhouse-project.org>
+;; Last updated: <2017/08/12 12:13:04 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -34,8 +34,7 @@
 (defun algernon-notmuch/init-helm-notmuch ()
   (use-package helm-notmuch
     :init (spacemacs/set-leader-keys
-            "ans" 'helm-notmuch))
-  )
+            "ans" 'helm-notmuch)))
 
 (defun algernon-notmuch/init-notmuch ()
   (use-package notmuch
@@ -88,4 +87,4 @@
               "ann" 'notmuch
               "anj" 'notmuch-jump-search
               "anm" 'notmuch-mua-new-mail
-              "ans" 'notmuch/exec-offlineimap))))
+              "anS" 'notmuch/exec-offlineimap))))
