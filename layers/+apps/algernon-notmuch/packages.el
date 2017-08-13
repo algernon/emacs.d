@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/12 12:13:04 algernon@madhouse-project.org>
+;; Last updated: <2017/08/13 22:01:30 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -87,4 +87,5 @@
               "ann" 'notmuch
               "anj" 'notmuch-jump-search
               "anm" 'notmuch-mua-new-mail
-              "anS" 'notmuch/exec-offlineimap))))
+              "anS" 'notmuch/exec-offlineimap
+              "ant" 'notmuch/tree-or-to-tree))))
