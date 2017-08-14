@@ -91,7 +91,8 @@
               (spacemacs/set-leader-keys-for-major-mode 'notmuch-show-mode
                 "n|" 'notmuch-show-pipe-message
                 "nw" 'notmuch-show-save-attachments
-                "nv" 'notmuch-show-view-raw-message))
+                "nv" 'notmuch-show-view-raw-message
+                "nu" 'browse-url))
     :init (progn
             (spacemacs/set-leader-keys
               "ann" 'notmuch
