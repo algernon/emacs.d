@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/14 12:43:29 algernon@madhouse-project.org>
+;; Last updated: <2017/08/14 13:06:37 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -118,6 +118,7 @@
                                      (github-modern-theme
                                       :location (recipe :fetcher github
                                                         :repo "philiparvidsson/GitHub-Modern-Theme-for-Emacs"))
+                                     google-c-style
                                      feature-mode
                                      highlight-leading-spaces
                                      package-lint
@@ -200,6 +201,9 @@ user code."
 (defun dotspacemacs/user-config ()
   (global-vi-tilde-fringe-mode 0)
   (spacemacs/toggle-nyan-cat-progress-bar-off)
+
+  (add-hook 'c++-mode-hook #'google-set-c-style)
+  (add-hook 'c++-mode-hook #'google-make-newline-indent)
 
   ;; FIXME: This should work in the layer, but it doesn't.
   (when (configuration-layer/package-usedp 'olivetti)
