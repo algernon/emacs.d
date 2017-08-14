@@ -70,7 +70,12 @@
                 :bindings
                 (kbd "N") 'notmuch-show-next-message
                 (kbd "n") 'notmuch-show-next-open-message)
-              (evilified-state-evilify-map 'notmuch-tree-mode-map :mode notmuch-tree-mode)
+              (evilified-state-evilify-map 'notmuch-tree-mode-map :mode notmuch-tree-mode
+                :bindings
+                (kbd "n") 'notmuch-tree-next-matching-message
+                (kbd "p") 'notmuch-tree-prev-matching-message
+                (kbd "N") 'notmuch-tree-next-message
+                (kbd "P") 'notmuch-tree-prev-message)
               (evilified-state-evilify-map 'notmuch-search-mode-map :mode notmuch-search-mode
                 :bindings
                 (kbd "f") 'notmuch-search-filter)
@@ -84,9 +89,7 @@
               (spacemacs/set-leader-keys-for-major-mode 'notmuch-show-mode
                 "n|" 'notmuch-show-pipe-message
                 "nw" 'notmuch-show-save-attachments
-                "nv" 'notmuch-show-view-raw-message)
-
-              )
+                "nv" 'notmuch-show-view-raw-message))
     :init (progn
             (spacemacs/set-leader-keys
               "ann" 'notmuch
