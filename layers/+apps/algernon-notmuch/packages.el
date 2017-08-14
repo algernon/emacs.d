@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/14 09:42:23 algernon@madhouse-project.org>
+;; Last updated: <2017/08/14 12:20:11 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -48,6 +48,7 @@
                                              (:name "drafts" :query "tag:draft" :key "d" :search-type tree)
                                              (:name "all mail" :query "*" :key "a" :search-type tree))
                     notmuch-tree-show-out t
+                    notmuch-mua-user-agent-function 'notmuch-mua-user-agent-full
 
                     user-mail-address "gergo@csillger.hu"
                     user-full-name "Gergely Nagy"
