@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/13 22:01:16 algernon@madhouse-project.org>
+;; Last updated: <2017/08/17 11:29:29 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -42,3 +42,11 @@
   (if (equal major-mode 'notmuch-search-mode)
       (notmuch-tree-from-search-current-query)
     (notmuch-tree)))
+
+(defun notmuch/tree-mark-read ()
+  (interactive)
+  (notmuch-tree-tag '("-unread")))
+
+(defun notmuch/tree-mark-unread ()
+  (interactive)
+  (notmuch-tree-tag '("+unread")))

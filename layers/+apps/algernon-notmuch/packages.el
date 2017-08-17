@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/14 12:20:11 algernon@madhouse-project.org>
+;; Last updated: <2017/08/17 11:29:46 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -77,7 +77,9 @@
                 (kbd "n") 'notmuch-tree-next-matching-message
                 (kbd "p") 'notmuch-tree-prev-matching-message
                 (kbd "N") 'notmuch-tree-next-message
-                (kbd "P") 'notmuch-tree-prev-message)
+                (kbd "P") 'notmuch-tree-prev-message
+                (kbd "d") 'notmuch/tree-mark-read
+                (kbd "u") 'notmuch/tree-mark-unread)
               (evilified-state-evilify-map 'notmuch-search-mode-map :mode notmuch-search-mode
                 :bindings
                 (kbd "f") 'notmuch-search-filter)
