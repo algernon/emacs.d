@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/18 15:35:59 algernon@madhouse-project.org>
+;; Last updated: <2017/08/18 16:23:24 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -76,6 +76,7 @@
                          elfeed-goodies/entry-pane-position 'top
                          elfeed-goodies/entry-pane-size 0.85
                          elfeed-goodies/show-mode-padding 10
+                         elfeed-goodies/powerline-default-separator 'bar
                          elfeed-goodies/html-decode-title-tags '(:all))
 
                    (evilified-state-evilify-map elfeed-show-mode-map
