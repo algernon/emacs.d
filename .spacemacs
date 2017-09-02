@@ -161,7 +161,7 @@ values."
    dotspacemacs-elpa-https t
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-enable-paste-transient-state nil
-   dotspacemacs-large-file-size 5
+   dotspacemacs-large-file-size 50
    dotspacemacs-leader-key "SPC"
    dotspacemacs-line-numbers '(:relative t
                                :enabled-for-modes nil)
