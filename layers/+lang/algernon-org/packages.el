@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/02 13:23:47 algernon@madhouse-project.org>
+;; Last updated: <2017/09/04 14:09:48 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -30,7 +30,14 @@
     org
     ))
 
+(defun algernon/org-mode-occur ()
+  (interactive)
+
+  (occur "^\*"))
+
 (defun algernon-org/post-init-org ()
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "b" 'algernon/org-mode-occur)
   (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
                             (sequence "⚑ WAITING(w)" "|")
                             (sequence "|" "✘ CANCELED(c)"))))
