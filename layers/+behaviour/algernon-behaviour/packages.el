@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/03 09:50:07 algernon@madhouse-project.org>
+;; Last updated: <2017/10/09 11:34:16 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -27,11 +27,17 @@
 
 (defconst algernon-behaviour-packages
   '(
+    dired-narrow
     evil
     focus
     swiper-helm
     thingatpt+
     ))
+
+(defun algernon-behaviour/init-dired-narrow ()
+  (use-package dired-narrow
+    :bind (:map dired-mode-map
+                ("/" . dired-narrow))))
 
 (defun algernon-behaviour/init-focus ()
   (use-package focus
