@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/09/04 09:37:03 algernon@madhouse-project.org>
+;; Last updated: <2017/10/12 11:51:54 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -113,7 +113,8 @@
                                  algernon-look-n-feel
                                  algernon-modeline))
 
-(setq algernon/additional-packages '(doom-themes
+(setq algernon/additional-packages '(apropospriate-theme
+                                     doom-themes
                                      feature-mode
                                      flatui-theme
                                      (github-modern-theme
