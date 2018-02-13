@@ -1,8 +1,8 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/09/02 06:58:07 algernon@madhouse-project.org>
+;; Last updated: <2018/02/13 13:21:57 algernon@balabit.com>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013, 2014, 2015, 2016, 2017
+;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
@@ -63,6 +63,11 @@
                     message-auto-save-directory "~/mail/sync/draft"
                     message-kill-buffer-on-exit t
                     message-directory "~/mail/sync")
+
+              (defadvice notmuch-mua-reply (around notmuch-fix-sender)
+                (let ((sender (concat "Gergely Nagy <" user-mail-address ">")))
+                  ad-do-it))
+              (ad-activate 'notmuch-mua-reply)
 
               (evilified-state-evilify-map 'notmuch-hello-mode-map :mode notmuch-hello-mode)
 
