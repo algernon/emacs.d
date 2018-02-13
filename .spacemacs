@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/10/12 11:51:54 algernon@madhouse-project.org>
+;; Last updated: <2018/02/13 13:07:08 algernon@balabit.com>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -122,9 +122,11 @@
                                                         :repo "philiparvidsson/GitHub-Modern-Theme-for-Emacs"))
                                      google-c-style
                                      highlight-leading-spaces
+                                     minimap
                                      (modern-dawn :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
                                      (modern-dark :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
                                      (modern-light :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
+                                     origami
                                      package-lint
                                      paredit
                                      (prettify-utils
@@ -211,4 +213,19 @@ user code."
 
   ;; FIXME: This should work in the layer, but it doesn't.
   (when (configuration-layer/package-usedp 'olivetti)
-    (spacemacs/set-leader-keys "wo" 'olivetti)))
+    (spacemacs/set-leader-keys "wo" 'olivetti))
+
+  ;; FIXME: Move these to a layer!
+  (spacemacs/set-leader-keys "t M" 'minimap-mode)
+
+  (eval-after-load 'origami
+    '(progn
+       (defun rb-show-only (buffer point)
+         (interactive (list (current-buffer) (point)))
+         (progn (origami-show-only-node buffer point)
+                (when (minimap-active-current-buffer-p)
+                  (minimap-new-minimap))))
+
+       (spacemacs/set-leader-keys "n TAB" 'origami-toggle-node)
+       (spacemacs/set-leader-keys "n o" 'rb-show-only)
+       (define-key evil-insert-state-map [(control tab)] 'origami-toggle-node))))
