@@ -1,8 +1,8 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/02/13 13:07:08 algernon@balabit.com>
+;; Last updated: <2018/05/24 15:19:11 algernon@balabit.com>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013, 2014, 2015, 2016, 2017
+;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
@@ -37,9 +37,6 @@
 ;;; Code:
 
 (setq algernon/layers/core '(better-defaults
-                             (colors :variables
-                                     colors-colorize-identifiers 'variables
-                                     colors-enable-nyan-cat-progress-bar t)
                              distraction-free
                              evil-goggles
                              fancy-narrower
@@ -115,6 +112,7 @@
 
 (setq algernon/additional-packages '(apropospriate-theme
                                      doom-themes
+                                     eink-theme
                                      feature-mode
                                      flatui-theme
                                      (github-modern-theme
@@ -132,7 +130,8 @@
                                      (prettify-utils
                                       :location (recipe :fetcher github
                                                         :repo "Ilazki/prettify-utils.el"))
-                                     pretty-mode))
+                                     pretty-mode
+                                     writeroom-mode))
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -186,16 +185,9 @@ values."
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-startup-lists '((recents . 5) (projects . 10) (agenda . 5) (todos . 5) bookmarks)
-   dotspacemacs-themes '(github-modern
-                         solarized-dark
-                         solarized-light
-                         spacemacs-light
-                         spacemacs-dark
-                         material
-                         leuven
-                         doom-one
-                         doom-molokai)
-   dotspacemacs-whitespace-cleanup 'trailing))
+   dotspacemacs-themes '(eink)
+   dotspacemacs-whitespace-cleanup 'trailing)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -206,7 +198,6 @@ user code."
 
 (defun dotspacemacs/user-config ()
   (global-vi-tilde-fringe-mode 0)
-  (spacemacs/toggle-nyan-cat-progress-bar-off)
 
   (add-hook 'c++-mode-hook #'google-set-c-style)
   (add-hook 'c++-mode-hook #'google-make-newline-indent)
@@ -228,4 +219,34 @@ user code."
 
        (spacemacs/set-leader-keys "n TAB" 'origami-toggle-node)
        (spacemacs/set-leader-keys "n o" 'rb-show-only)
-       (define-key evil-insert-state-map [(control tab)] 'origami-toggle-node))))
+       (define-key evil-insert-state-map [(control tab)] 'origami-toggle-node))
+    )
+
+  (defun -face-set (face spec)
+    "Tell Customize that FACE has been set to value SPEC.
+  SPEC is as for `defface'."
+    (put face 'customized-face spec)
+    (face-spec-set face spec))
+
+  (setq my-custom-faces
+        '(
+          (default ((t (:family "Monoid" :foundry "PfEd" :slant normal :weight light :height 146 :width semi-condensed))))
+          (evil-goggles-delete-face ((t (:inherit diff-removed))))
+          (evil-goggles-paste-face ((t (:inherit diff-added))))
+          (evil-goggles-undo-redo-add-face ((t (:inherit diff-added))))
+          (evil-goggles-undo-redo-change-face ((t (:inherit diff-changed))))
+          (evil-goggles-undo-redo-remove-face ((t (:inherit diff-removed))))
+          (evil-goggles-yank-face ((t (:inherit diff-changed))))
+          (font-lock-comment-face ((t (:foreground "dim gray" :weight normal))))
+          (font-lock-doc-face ((t (:foreground "dark green" :weight normal))))
+          (font-lock-function-name-face ((t (:foreground "#111111"))))
+          (font-lock-keyword-face ((t (:foreground "#111111" :weight bold))))
+          (font-lock-string-face ((t (:foreground "red"))))
+          (font-lock-type-face ((t (:foreground "#111111" :underline t))))
+          (git-commit-comment-branch ((t (:inherit link))))
+          (git-commit-known-pseudo-header ((t (:inherit font-lock-keyword-face :box (:line-width 1 :color "grey75") :weight normal))))
+          (git-commit-summary ((t (:inherit font-lock-type-face :underline nil :weight bold))))
+          (link ((t (:foreground "blue"))))))
+
+  (mapcar (lambda (s) (-face-set (car s) (cadr s))) my-custom-faces)
+  )
