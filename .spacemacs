@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/07/14 08:00:57 algernon@madhouse-project.org>
+;; Last updated: <2018/07/14 08:02:40 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -46,8 +46,6 @@
                              semantic
                              smex
                              spell-checking
-                             ;;syntax-checking
-                             themes-megapack
                              typography
                              (version-control :variables
                                               version-control-global-margin t
@@ -59,7 +57,6 @@
                              emacs-lisp
                              go
                              html
-                             ;;(hy :variables hy-enable-fancify-symbols t)
                              javascript
                              (latex :variables latex-enable-auto-fill t)
                              markdown
@@ -110,23 +107,14 @@
                                  algernon-look-n-feel
                                  algernon-modeline))
 
-(setq algernon/additional-packages '(apropospriate-theme
-                                     doom-themes
-                                     eink-theme
+(setq algernon/additional-packages '(eink-theme
                                      feature-mode
-                                     flatui-theme
-                                     (github-modern-theme
-                                      :location (recipe :fetcher github
-                                                        :repo "philiparvidsson/GitHub-Modern-Theme-for-Emacs"))
                                      (brutalist-theme
                                       :location (recipe :fetcher git
                                                         :url "https://git.madhouse-project.org/algernon/brutalist-theme.el.git"))
                                      google-c-style
                                      highlight-leading-spaces
                                      minimap
-                                     (modern-dawn :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
-                                     (modern-dark :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
-                                     (modern-light :location (recipe :fetcher github :repo "fuxialexander/modern-light-theme"))
                                      origami
                                      package-lint
                                      paredit
