@@ -199,6 +199,8 @@ user code."
 (defun dotspacemacs/user-config ()
   (global-vi-tilde-fringe-mode 0)
 
+  (setq helm-bookmark-map (make-keymap))
+
   (add-hook 'c++-mode-hook #'google-set-c-style)
   (add-hook 'c++-mode-hook #'google-make-newline-indent)
 
