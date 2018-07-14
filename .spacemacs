@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/07/14 07:35:02 algernon@madhouse-project.org>
+;; Last updated: <2018/07/14 08:00:57 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -118,6 +118,9 @@
                                      (github-modern-theme
                                       :location (recipe :fetcher github
                                                         :repo "philiparvidsson/GitHub-Modern-Theme-for-Emacs"))
+                                     (brutalist-theme
+                                      :location (recipe :fetcher git
+                                                        :url "https://git.madhouse-project.org/algernon/brutalist-theme.el.git"))
                                      google-c-style
                                      highlight-leading-spaces
                                      minimap
@@ -185,7 +188,7 @@ values."
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-startup-lists '((recents . 5) (projects . 10) (agenda . 5) (todos . 5) bookmarks)
-   dotspacemacs-themes '(eink)
+   dotspacemacs-themes '(brutalist)
    dotspacemacs-whitespace-cleanup 'trailing)
   )
 
@@ -221,34 +224,4 @@ user code."
 
        (spacemacs/set-leader-keys "n TAB" 'origami-toggle-node)
        (spacemacs/set-leader-keys "n o" 'rb-show-only)
-       (define-key evil-insert-state-map [(control tab)] 'origami-toggle-node))
-    )
-
-  (defun -face-set (face spec)
-    "Tell Customize that FACE has been set to value SPEC.
-  SPEC is as for `defface'."
-    (put face 'customized-face spec)
-    (face-spec-set face spec))
-
-  (setq my-custom-faces
-        '(
-          (default ((t (:family "Monoid" :foundry "PfEd" :slant normal :weight light :height 146 :width semi-condensed))))
-          (evil-goggles-delete-face ((t (:inherit diff-removed))))
-          (evil-goggles-paste-face ((t (:inherit diff-added))))
-          (evil-goggles-undo-redo-add-face ((t (:inherit diff-added))))
-          (evil-goggles-undo-redo-change-face ((t (:inherit diff-changed))))
-          (evil-goggles-undo-redo-remove-face ((t (:inherit diff-removed))))
-          (evil-goggles-yank-face ((t (:inherit diff-changed))))
-          (font-lock-comment-face ((t (:foreground "dim gray" :weight normal))))
-          (font-lock-doc-face ((t (:foreground "dark green" :weight normal))))
-          (font-lock-function-name-face ((t (:foreground "#111111"))))
-          (font-lock-keyword-face ((t (:foreground "#111111" :weight bold))))
-          (font-lock-string-face ((t (:foreground "red"))))
-          (font-lock-type-face ((t (:foreground "#111111" :underline t))))
-          (git-commit-comment-branch ((t (:inherit link))))
-          (git-commit-known-pseudo-header ((t (:inherit font-lock-keyword-face :box (:line-width 1 :color "grey75") :weight normal))))
-          (git-commit-summary ((t (:inherit font-lock-type-face :underline nil :weight bold))))
-          (link ((t (:foreground "blue"))))))
-
-  (mapcar (lambda (s) (-face-set (car s) (cadr s))) my-custom-faces)
-  )
+       (define-key evil-insert-state-map [(control tab)] 'origami-toggle-node))))
