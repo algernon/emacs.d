@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/05/24 15:19:11 algernon@balabit.com>
+;; Last updated: <2018/07/14 07:35:02 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -76,12 +76,12 @@
                              typescript
                              yaml)
 
-      algernon/layers/apps '(chrome
-                             elfeed
+      algernon/layers/apps '(elfeed
                              gnus
                              restclient)
 
-      algernon/layers/misc '(beacon
+      algernon/layers/misc '(ansible
+                             beacon
                              docker
                              emojify
                              nginx
