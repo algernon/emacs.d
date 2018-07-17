@@ -1,7 +1,7 @@
 algernon's Emacs configuration
 ==============================
 
-![My Emacs on 2017-06-22](https://github.com/algernon/emacs.d/raw/master/data/screenshot-2017-06-22.png)
+![My Emacs on 2018-07-17](data/screenshot-2018-07-17.png)
 
 License
 -------
