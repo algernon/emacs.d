@@ -1,8 +1,8 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/10/09 11:34:16 algernon@madhouse-project.org>
+;; Last updated: <2018/07/17 20:17:52 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013, 2014, 2015, 2016, 2017
+;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
 ;; Gergely Nagy <algernon@bonehunter.rulez.org>
 
 ;; Author: Gergely Nagy <algernon@bonehunter.rulez.org>
@@ -31,7 +31,6 @@
     evil
     focus
     swiper-helm
-    thingatpt+
     ))
 
 (defun algernon-behaviour/init-dired-narrow ()
@@ -58,10 +57,6 @@
 
               (evil-leader/set-key "to" #'focus-mode)
               (evil-leader/set-key "tO" #'focus/toggle-highlight))))
-
-(defun algernon-behaviour/init-thingatpt+ ()
-  (use-package thingatpt+
-    :config (tap-redefine-std-fns)))
 
 (defun algernon-behaviour/init-swiper-helm ()
   (use-package swiper-helm))
