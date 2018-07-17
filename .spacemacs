@@ -108,6 +108,7 @@
                                  algernon-modeline))
 
 (setq algernon/additional-packages '(eink-theme
+                                     bison-mode
                                      feature-mode
                                      (brutalist-theme
                                       :location (recipe :fetcher git
@@ -122,6 +123,7 @@
                                       :location (recipe :fetcher github
                                                         :repo "Ilazki/prettify-utils.el"))
                                      pretty-mode
+                                     rainbow-mode
                                      writeroom-mode))
 
 (defun dotspacemacs/layers ()
