@@ -1,6 +1,6 @@
 ;;; packages.el --- distraction-free packages File for Spacemacs
 ;;
-;; Copyright (c) 2015, 2017 Gergely Nagy
+;; Copyright (c) 2015, 2017, 2018 Gergely Nagy
 ;;
 ;; Author: Gergely Nagy <algernon@madhouse-project.org>
 ;; URL: https://github.com/algernon/spacemacs-config
@@ -30,6 +30,6 @@
                 "wOs" 'olivetti-shrink
                 "wOe" 'olivetti-expand
                 "wOm" 'olivetti-toggle-hide-mode-line)
-              (setq olivetti-body-width 0.75
-                    olivetti-hide-mode-line t)
+              (setq olivetti-hide-mode-line t)
+              (setq-default olivetti-body-width 0.75)
               (advice-add 'spacemacs/toggle-maximize-buffer :after 'olivetti-end))))
