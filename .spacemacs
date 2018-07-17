@@ -142,7 +142,8 @@ values."
    dotspacemacs-additional-packages algernon/additional-packages
    dotspacemacs-excluded-packages '(anaconda-mode
                                     clj-refactor
-                                    rainbow-delimiters)
+                                    rainbow-delimiters
+                                    tern)
    dotspacemacs-download-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
@@ -163,7 +164,7 @@ values."
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-large-file-size 50
    dotspacemacs-leader-key "SPC"
-   dotspacemacs-line-numbers '(:relative t
+   dotspacemacs-line-numbers '(:relative nil
                                :enabled-for-modes nil)
    dotspacemacs-helm-position 'top
    dotspacemacs-highlight-delimiters 'nil
