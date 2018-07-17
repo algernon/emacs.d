@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/07/02 15:08:34 algernon@madhouse-project.org>
+;; Last updated: <2017/09/18 09:52:18 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -51,6 +51,7 @@
                     spaceline-all-the-icons-primary-separator "")
 
               ;; Toggles
+              (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
               (spaceline-toggle-all-the-icons-buffer-size-off)
               (spaceline-toggle-all-the-icons-buffer-position-on)
               (spaceline-toggle-all-the-icons-vc-icon-off)
