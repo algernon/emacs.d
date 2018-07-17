@@ -140,7 +140,9 @@ values."
 
                                              algernon/layers/personal)
    dotspacemacs-additional-packages algernon/additional-packages
-   dotspacemacs-excluded-packages '(anaconda-mode clj-refactor)
+   dotspacemacs-excluded-packages '(anaconda-mode
+                                    clj-refactor
+                                    rainbow-delimiters)
    dotspacemacs-download-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
@@ -164,7 +166,7 @@ values."
    dotspacemacs-line-numbers '(:relative t
                                :enabled-for-modes nil)
    dotspacemacs-helm-position 'top
-   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-highlight-delimiters 'nil
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-maximized-at-startup t
    dotspacemacs-mode-line-unicode-symbols t
