@@ -32,4 +32,10 @@
                 "wOm" 'olivetti-toggle-hide-mode-line)
               (setq olivetti-hide-mode-line t)
               (setq-default olivetti-body-width 0.75)
+
+              (add-hook 'prog-mode-hook #'turn-on-olivetti-mode)
+              (add-hook 'magit-status-mode-hook #'turn-on-olivetti-mode)
+              (add-hook 'dired-mode-hook #'turn-on-olivetti-mode)
+              (add-hook 'text-mode-hook #'turn-on-olivetti-mode)
+
               (advice-add 'spacemacs/toggle-maximize-buffer :after 'olivetti-end))))
