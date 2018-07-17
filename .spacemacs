@@ -201,7 +201,7 @@ user code."
 
   ;; FIXME: This should work in the layer, but it doesn't.
   (when (configuration-layer/package-usedp 'olivetti)
-    (spacemacs/set-leader-keys "wo" 'olivetti))
+    (spacemacs/set-leader-keys "wo" 'olivetti-mode))
 
   ;; FIXME: Move these to a layer!
   (spacemacs/set-leader-keys "t M" 'minimap-mode)
