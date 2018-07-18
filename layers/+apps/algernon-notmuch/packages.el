@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/02/13 13:21:57 algernon@balabit.com>
+;; Last updated: <2018/07/18 13:44:36 algernon@balabit.com>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -69,16 +69,16 @@
                   ad-do-it))
               (ad-activate 'notmuch-mua-reply)
 
-              (evilified-state-evilify-map 'notmuch-hello-mode-map :mode notmuch-hello-mode)
+              (evilified-state-evilify-map notmuch-hello-mode-map :mode notmuch-hello-mode)
 
-              (evilified-state-evilify-map 'notmuch-show-stash-map :mode notmuch-show-mode)
-              (evilified-state-evilify-map 'notmuch-show-part-map :mode notmuch-show-mode)
-              (evilified-state-evilify-map 'notmuch-show-mode-map :mode notmuch-show-mode
+              (evilified-state-evilify-map notmuch-show-stash-map :mode notmuch-show-mode)
+              (evilified-state-evilify-map notmuch-show-part-map :mode notmuch-show-mode)
+              (evilified-state-evilify-map notmuch-show-mode-map :mode notmuch-show-mode
                 :bindings
                 (kbd "b") 'browse-url-at-point
                 (kbd "N") 'notmuch-show-next-message
                 (kbd "n") 'notmuch-show-next-open-message)
-              (evilified-state-evilify-map 'notmuch-tree-mode-map :mode notmuch-tree-mode
+              (evilified-state-evilify-map notmuch-tree-mode-map :mode notmuch-tree-mode
                 :bindings
                 (kbd "n") 'notmuch-tree-next-matching-message
                 (kbd "p") 'notmuch-tree-prev-matching-message
@@ -86,7 +86,7 @@
                 (kbd "P") 'notmuch-tree-prev-message
                 (kbd "d") 'notmuch/tree-mark-read
                 (kbd "u") 'notmuch/tree-mark-unread)
-              (evilified-state-evilify-map 'notmuch-search-mode-map :mode notmuch-search-mode
+              (evilified-state-evilify-map notmuch-search-mode-map :mode notmuch-search-mode
                 :bindings
                 (kbd "f") 'notmuch-search-filter)
 
