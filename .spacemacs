@@ -155,7 +155,7 @@ values."
   (setq-default
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-command-key ":"
-   dotspacemacs-default-font '("Hack"
+   dotspacemacs-default-font '("Input Mono Narrow"
                                :size 24
                                :powerline-scale 1.5)
    dotspacemacs-editing-style 'vim
