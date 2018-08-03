@@ -115,6 +115,7 @@
                                                         :url "https://git.madhouse-project.org/algernon/brutalist-theme.el.git"))
                                      google-c-style
                                      highlight-leading-spaces
+                                     magithub
                                      minimap
                                      origami
                                      package-lint
