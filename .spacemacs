@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/07/29 22:17:55 algernon@madhouse-project.org>
+;; Last updated: <2018/08/04 00:30:05 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -156,7 +156,7 @@ values."
   (setq-default
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-command-key ":"
-   dotspacemacs-default-font '("Input Mono Narrow"
+   dotspacemacs-default-font '("Input Mono Narrow light"
                                :size 24
                                :powerline-scale 1.5)
    dotspacemacs-editing-style 'vim
@@ -196,6 +196,10 @@ user code."
 (defun dotspacemacs/user-config ()
   (global-vi-tilde-fringe-mode 0)
   (spacemacs/toggle-centered-point-globally-on)
+
+  (put 'variable-pitch 'customized-face '((t (:inherit default))))
+  (face-spec-set 'variable-pitch '((t (:inherit default))))
+  (set-face-attribute 'variable-pitch nil :family 'unspecified)
 
   (setq helm-bookmark-map (make-keymap))
 
