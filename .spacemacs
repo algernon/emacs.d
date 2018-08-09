@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/08/07 07:42:11 algernon@madhouse-project.org>
+;; Last updated: <2018/08/09 21:17:19 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -124,8 +124,7 @@
                                       :location (recipe :fetcher github
                                                         :repo "Ilazki/prettify-utils.el"))
                                      pretty-mode
-                                     rainbow-mode
-                                     writeroom-mode))
+                                     rainbow-mode))
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -206,10 +205,6 @@ user code."
 
   (add-hook 'c++-mode-hook #'google-set-c-style)
   (add-hook 'c++-mode-hook #'google-make-newline-indent)
-
-  ;; FIXME: This should work in the layer, but it doesn't.
-  (when (configuration-layer/package-usedp 'olivetti)
-    (spacemacs/set-leader-keys "wo" 'olivetti-mode))
 
   ;; FIXME: Move these to a layer!
   (spacemacs/set-leader-keys "t M" 'minimap-mode)

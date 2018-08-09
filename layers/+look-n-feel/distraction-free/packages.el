@@ -11,31 +11,19 @@
 
 (setq distraction-free-packages
       '(
-        olivetti
+        writeroom-mode
         ))
 
-(defun distraction-free/init-olivetti ()
-  (defun olivetti ()
-    "Integrate `olivetti-mode' and `spacemacs/toggle-maximize-buffer'."
-    (interactive)
-    (if olivetti-mode
-        (spacemacs/toggle-maximize-buffer)
-      (spacemacs/toggle-maximize-buffer)
-      (olivetti-mode 1)))
-
-  (use-package olivetti
+(defun distraction-free/init-writeroom-mode ()
+  (use-package writeroom-mode
     :config (progn
               (spacemacs/set-leader-keys
-                "wo" 'olivetti
-                "wOs" 'olivetti-shrink
-                "wOe" 'olivetti-expand
-                "wOm" 'olivetti-toggle-hide-mode-line)
-              (setq olivetti-hide-mode-line t)
-              (setq-default olivetti-body-width 0.75)
+                "wOw" 'writeroom-mode
+                "wOs" 'writeroom-decrease-width
+                "wOe" 'writeroom-increase-width
+                "wOm" 'writeroom-toggle-mode-line)
 
-              (add-hook 'prog-mode-hook #'turn-on-olivetti-mode)
-              (add-hook 'magit-status-mode-hook #'turn-on-olivetti-mode)
-              (add-hook 'dired-mode-hook #'turn-on-olivetti-mode)
-              (add-hook 'text-mode-hook #'turn-on-olivetti-mode)
-
-              (advice-add 'spacemacs/toggle-maximize-buffer :after 'olivetti-end))))
+              (add-hook 'prog-mode-hook #'writeroom-mode)
+              (add-hook 'magit-status-mode-hook #'writeroom-mode)
+              (add-hook 'dired-mode-hook #'writeroom-mode)
+              (add-hook 'text-mode-hook #'writeroom-mode))))
