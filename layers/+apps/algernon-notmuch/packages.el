@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/07/18 13:44:36 algernon@balabit.com>
+;; Last updated: <2018/09/06 09:33:11 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -27,9 +27,17 @@
 
 (defconst algernon-notmuch-packages
   '(
+    gnus-alias
     notmuch
     helm-notmuch
     ))
+
+(defun algernon-notmuch/init-gnus-alias ()
+  (use-package gnus-alias
+    :config (progn
+              (autoload 'gnus-alias-determine-identity "gnus-alias" "" t)
+
+              (add-hook 'message-setup-hook 'gnus-alias-determine-identity))))
 
 (defun algernon-notmuch/init-helm-notmuch ()
   (use-package helm-notmuch
