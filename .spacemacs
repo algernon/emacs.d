@@ -109,12 +109,12 @@
                                  algernon-look-n-feel
                                  algernon-modeline))
 
-(setq algernon/additional-packages '(eink-theme
+(setq algernon/additional-packages '(boxquote
+                                     brutalist-theme
                                      bison-mode
+                                     dpkg-dev-el
+                                     eink-theme
                                      feature-mode
-                                     (brutalist-theme
-                                      :location (recipe :fetcher git
-                                                        :url "https://git.madhouse-project.org/algernon/brutalist-theme.el.git"))
                                      google-c-style
                                      highlight-leading-spaces
                                      magithub
