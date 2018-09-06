@@ -196,6 +196,7 @@ user code."
 
 (defun dotspacemacs/user-config ()
   (global-vi-tilde-fringe-mode 0)
+  (set-fringe-mode 32)
   (spacemacs/toggle-centered-point-globally-on)
   (setq-default truncate-lines t)
 
