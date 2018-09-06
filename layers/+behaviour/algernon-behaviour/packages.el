@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/07/17 20:17:52 algernon@madhouse-project.org>
+;; Last updated: <2018/09/06 09:38:33 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -28,6 +28,7 @@
 (defconst algernon-behaviour-packages
   '(
     dired-narrow
+    electric-operator
     evil
     focus
     swiper-helm
@@ -37,6 +38,12 @@
   (use-package dired-narrow
     :bind (:map dired-mode-map
                 ("/" . dired-narrow))))
+
+(defun algernon-behaviour/init-electric-operator ()
+  (use-package electric-operator
+    :config (progn
+              (add-hook 'c-mode-hook #'electric-operator-mode)
+              (add-hook 'c++-mode-hook #'electric-operator-mode))))
 
 (defun algernon-behaviour/init-focus ()
   (use-package focus
