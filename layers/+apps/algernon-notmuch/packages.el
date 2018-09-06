@@ -53,8 +53,8 @@
                     notmuch-saved-searches '((:name "inbox" :query "tag:inbox" :key "i" :search-type tree)
                                              (:name "unread" :query "tag:unread" :key "u" :search-type tree)
                                              (:name "flagged" :query "tag:flagged" :key "f" :search-type tree)
-                                             (:name "drafts" :query "tag:draft" :key "d" :search-type tree)
-                                             (:name "all mail" :query "*" :key "a" :search-type tree))
+                                             (:name "bestpractical" :query "tag:bestpractical" :key "B" :search-type tree)
+                                             (:name "bestpractical (unread)" :query "tag:bestpractical and tag:unread" :key "b" :search-type tree))
                     notmuch-tree-show-out t
                     notmuch-mua-user-agent-function 'notmuch-mua-user-agent-full
 
