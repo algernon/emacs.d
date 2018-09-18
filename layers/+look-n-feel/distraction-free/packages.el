@@ -11,19 +11,18 @@
 
 (setq distraction-free-packages
       '(
-        writeroom-mode
+        olivetti
         ))
 
-(defun distraction-free/init-writeroom-mode ()
-  (use-package writeroom-mode
+(defun distraction-free/init-olivetti ()
+  (use-package olivetti
     :config (progn
               (spacemacs/set-leader-keys
-                "wOw" 'writeroom-mode
-                "wOs" 'writeroom-decrease-width
-                "wOe" 'writeroom-increase-width
-                "wOm" 'writeroom-toggle-mode-line)
+                "wOw" 'olivetti-mode
+                "wOs" 'olivetti-shrink
+                "wOe" 'olivetti-expand
+                "wOm" 'hidden-mode-line-mode)
 
-              (add-hook 'prog-mode-hook #'writeroom-mode)
-              (add-hook 'magit-status-mode-hook #'writeroom-mode)
-              (add-hook 'dired-mode-hook #'writeroom-mode)
-              (add-hook 'text-mode-hook #'writeroom-mode))))
+              (add-hook 'magit-status-mode-hook #'algernon/olivetti-hook)
+              (add-hook 'text-mode-hook #'algernon/olivetti-hook
+              (add-hook 'prog-mode-hook #'algernon/olivetti-hook)))))

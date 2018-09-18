@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/09/15 00:41:30 algernon@madhouse-project.org>
+;; Last updated: <2018/09/18 14:31:17 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -201,9 +201,16 @@ user code."
   (spacemacs/toggle-centered-point-globally-on)
   (setq-default truncate-lines t)
 
-  (put 'variable-pitch 'customized-face '((t (:inherit default))))
-  (face-spec-set 'variable-pitch '((t (:inherit default))))
-  (set-face-attribute 'variable-pitch nil :family 'unspecified)
+  (set-face-attribute 'fixed-pitch nil :inherit 'default)
+  (set-face-attribute 'variable-pitch nil
+                      :family "ET Book Roman"
+                      :weight 'light
+                      :height 146)
+
+  (spacemacs/toggle-truncate-lines-on)
+  (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
+  (evil-define-minor-mode-key 'motion 'visual-line-mode (kbd "<down>") 'evil-next-visual-line)
+  (evil-define-minor-mode-key 'motion 'visual-line-mode (kbd "<up>") 'evil-previous-visual-line)
 
   (setq helm-bookmark-map (make-keymap))
 

@@ -10,14 +10,16 @@
 ;;; License: GPLv3
 
 (when (configuration-layer/package-usedp 'olivetti)
-  (defun olivetti ()
-    "Integrate `olivetti-mode' and `spacemacs/toggle-maximize-buffer'."
+  (defun algernon/olivetti-hook ()
     (interactive)
-    (if olivetti-mode
-        (spacemacs/toggle-maximize-buffer)
-      (spacemacs/toggle-maximize-buffer)
-      (olivetti-mode 1)))
 
-  (defun olivetti-end (&rest args)
-    "Advise `spacemacs/toggle-maximize-buffer' to disable olivetti."
-    (olivetti-mode 0)))
+    (message "Olivetti turned on")
+    ;;(olivetti-set-width 100)
+    (hidden-mode-line-mode)
+    (spacemacs/toggle-vi-tilde-fringe-off)
+    (olivetti-mode 1))
+
+  (defun turn-on-variable-pitch-mode ()
+    (interactive)
+
+    (variable-pitch-mode 1)))
