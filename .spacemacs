@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/09/06 09:35:18 algernon@madhouse-project.org>
+;; Last updated: <2018/09/15 00:41:30 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -109,7 +109,8 @@
                                  algernon-look-n-feel
                                  algernon-modeline))
 
-(setq algernon/additional-packages '(boxquote
+(setq algernon/additional-packages '(bats-mode
+                                     boxquote
                                      brutalist-theme
                                      bison-mode
                                      dpkg-dev-el
