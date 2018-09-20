@@ -123,6 +123,7 @@
                                      origami
                                      package-lint
                                      paredit
+                                     powerthesaurus
                                      (prettify-utils
                                       :location (recipe :fetcher github
                                                         :repo "Ilazki/prettify-utils.el"))
