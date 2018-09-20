@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/09/20 11:57:10 algernon@madhouse-project.org>
+;; Last updated: <2018/09/21 01:40:12 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -339,9 +339,12 @@ user code."
   (spacemacs/toggle-centered-point-globally-on)
   (setq-default truncate-lines t)
 
-  (set-face-attribute 'fixed-pitch nil :inherit 'default)
+  (set-face-attribute 'fixed-pitch nil
+                      :family "Fira Code"
+                      :weight 'normal
+                      :height 146)
   (set-face-attribute 'variable-pitch nil
-                      :family "ET Book Roman"
+                      :family "ETBembo"
                       :weight 'light
                       :height 146)
 
