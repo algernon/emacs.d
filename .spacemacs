@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/09/21 01:40:12 algernon@madhouse-project.org>
+;; Last updated: <2018/09/21 09:06:37 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -159,7 +159,7 @@ values."
   (setq-default
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-command-key ":"
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Input Mono Narrow Light"
                                :size 24
                                :powerline-scale 1.5)
    dotspacemacs-editing-style 'vim
@@ -330,8 +330,7 @@ user code."
 
   (add-hook 'helm-major-mode-hook
             (lambda ()
-              (setq auto-composition-mode nil)))
-  )
+              (setq auto-composition-mode nil))))
 
 (defun dotspacemacs/user-config ()
   (global-vi-tilde-fringe-mode 0)
@@ -340,11 +339,11 @@ user code."
   (setq-default truncate-lines t)
 
   (set-face-attribute 'fixed-pitch nil
-                      :family "Fira Code"
-                      :weight 'normal
+                      :family "Input Mono Narrow"
+                      :weight 'light
                       :height 146)
   (set-face-attribute 'variable-pitch nil
-                      :family "ETBembo"
+                      :family "Noto Sans"
                       :weight 'light
                       :height 146)
 
