@@ -22,4 +22,9 @@
   (defun turn-on-variable-pitch-mode ()
     (interactive)
 
-    (variable-pitch-mode 1)))
+    (variable-pitch-mode 1))
+
+  (defun turn-off-variable-pitch-mode ()
+    (interactive)
+
+    (variable-pitch-mode nil)))
