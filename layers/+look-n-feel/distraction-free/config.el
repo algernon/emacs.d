@@ -9,7 +9,7 @@
 ;;
 ;;; License: GPLv3
 
-(setq-default olivetti-body-width 100)
+(setq-default olivetti-body-width 90)
 
 (add-hook 'text-mode-hook #'turn-on-variable-pitch-mode)
 (add-hook 'yaml-mode-hook #'turn-off-variable-pitch-mode)
