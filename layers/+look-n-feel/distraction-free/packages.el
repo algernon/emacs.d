@@ -24,5 +24,5 @@
                 "wOm" 'hidden-mode-line-mode)
 
               (add-hook 'magit-status-mode-hook #'algernon/olivetti-hook)
-              (add-hook 'text-mode-hook #'algernon/olivetti-hook
-              (add-hook 'prog-mode-hook #'algernon/olivetti-hook)))))
+              (add-hook 'text-mode-hook #'algernon/olivetti-hook)
+              (add-hook 'prog-mode-hook #'algernon/olivetti-hook))))
