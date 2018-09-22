@@ -1,6 +1,6 @@
 ;;; packages.el --- distraction-free packages File for Spacemacs
 ;;
-;; Copyright (c) 2015, 2017 Gergely Nagy
+;; Copyright (c) 2015, 2017, 2018 Gergely Nagy
 ;;
 ;; Author: Gergely Nagy <algernon@madhouse-project.org>
 ;; URL: https://github.com/algernon/spacemacs-config
@@ -14,7 +14,6 @@
     (interactive)
 
     (message "Olivetti turned on")
-    ;;(olivetti-set-width 100)
     (hidden-mode-line-mode)
     (spacemacs/toggle-vi-tilde-fringe-off)
     (olivetti-mode 1))
