@@ -25,4 +25,5 @@
 
               (add-hook 'magit-status-mode-hook #'algernon/olivetti-hook)
               (add-hook 'text-mode-hook #'algernon/olivetti-hook)
+              (add-hook 'dired-mode-hook #'algernon/olivetti-hook)
               (add-hook 'prog-mode-hook #'algernon/olivetti-hook))))
