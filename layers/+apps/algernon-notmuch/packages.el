@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/09/06 09:33:11 algernon@madhouse-project.org>
+;; Last updated: <2018/09/25 00:00:20 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -51,7 +51,7 @@
               (setq notmuch-search-oldest-first nil
                     notmuch-message-headers-visible nil
                     notmuch-saved-searches '((:name "inbox" :query "tag:inbox" :key "i" :search-type tree)
-                                             (:name "unread" :query "tag:unread" :key "u" :search-type tree)
+                                             (:name "unread" :query "tag:unread and not tag:bestpractical" :key "u" :search-type tree)
                                              (:name "flagged" :query "tag:flagged" :key "f" :search-type tree)
                                              (:name "bestpractical" :query "tag:bestpractical" :key "B" :search-type tree)
                                              (:name "bestpractical (unread)" :query "tag:bestpractical and tag:unread" :key "b" :search-type tree))
