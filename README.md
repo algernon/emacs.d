@@ -1,7 +1,9 @@
 algernon's Emacs configuration
 ==============================
 
-![My Emacs on 2018-07-17](data/screenshot-2018-07-17.png)
+There are no screenshots, as there's nothing particularly interesting going on. It's just a [brutalist][theme:brutalist] theme with no toolbar, menu, or mode-line. The most interesting about the config is the things that aren't visisble.
+
+ [theme:brutalist]: https://git.madhouse-project.org/algernon/brutalist-theme.el
 
 License
 -------
