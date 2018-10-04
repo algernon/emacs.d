@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/09/30 08:37:39 algernon@madhouse-project.org>
+;; Last updated: <2018/10/04 23:59:53 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -115,6 +115,7 @@
                                      bison-mode
                                      dpkg-dev-el
                                      eink-theme
+                                     elcord
                                      feature-mode
                                      google-c-style
                                      highlight-leading-spaces
@@ -337,6 +338,8 @@ user code."
   (set-fringe-mode 32)
   (spacemacs/toggle-centered-point-globally-on)
   (setq-default truncate-lines t)
+
+  (elcord-mode)
 
   (set-face-attribute 'fixed-pitch nil
                       :family "Input Mono Narrow"
