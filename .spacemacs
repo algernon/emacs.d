@@ -347,7 +347,7 @@ user code."
                       :weight 'light
                       :height 146)
   (set-face-attribute 'variable-pitch nil
-                      :family "Noto Sans"
+                      :family "EtBembo"
                       :weight 'light
                       :height 146)
 
