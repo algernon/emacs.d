@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/10/04 23:59:53 algernon@madhouse-project.org>
+;; Last updated: <2018/10/23 11:56:00 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -66,6 +66,7 @@
                                      python-test-runner 'pytest)
                              react
                              ruby
+                             rust
                              (shell :variables
                                     shell-default-height 30
                                     shell-default-position 'bottom
