@@ -363,6 +363,7 @@ user code."
 
   (add-hook 'c++-mode-hook #'google-set-c-style)
   (add-hook 'c++-mode-hook #'google-make-newline-indent)
+  (add-hook 'conf-javaprop-mode #'turn-off-variable-pitch-mode)
 
   ;; FIXME: Move these to a layer!
   (spacemacs/set-leader-keys "t M" 'minimap-mode)
