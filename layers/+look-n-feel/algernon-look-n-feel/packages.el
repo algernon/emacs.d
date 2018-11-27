@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2017/08/10 10:55:44 algernon@madhouse-project.org>
+;; Last updated: <2018/10/23 13:10:28 algernon@madhouse-project.org>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017
@@ -33,5 +33,4 @@
 (defun algernon-look-n-feel/init-auto-dim-other-buffers ()
   (use-package auto-dim-other-buffers
     :config (progn
-              (auto-dim-other-buffers-mode)
-              (set-face-attribute 'auto-dim-other-buffers-face nil :background "white smoke"))))
+              (auto-dim-other-buffers-mode))))
