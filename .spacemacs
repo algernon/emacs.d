@@ -175,7 +175,7 @@ values."
    dotspacemacs-helm-position 'top
    dotspacemacs-highlight-delimiters 'nil
    dotspacemacs-major-mode-leader-key ","
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-override-evil-folding 'origami
    dotspacemacs-persistent-server t
