@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2018/11/27 15:10:29 algernon@madhouse-project.org>
+;; Last updated: <2019/03/13 09:29:20 gergo@csillger.hu>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -59,6 +59,7 @@
                              html
                              javascript
                              (latex :variables latex-enable-auto-fill t)
+                             lua
                              markdown
                              (org :variables org-enable-github-support t)
                              (python :variables
