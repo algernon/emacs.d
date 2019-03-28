@@ -207,8 +207,6 @@ user code."
   (setq-default truncate-lines t)
   (setq elcord-display-buffer-details nil)
 
-  (elcord-mode)
-
   (set-face-attribute 'fixed-pitch nil
                       :family "Input Mono Narrow"
                       :weight 'light
