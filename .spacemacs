@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2019/03/30 07:28:34 gergo@csillger.hu>
+;; Last updated: <2019/04/01 11:55:33 gergo@csillger.hu>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018
@@ -164,7 +164,7 @@ values."
   (setq-default
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-command-key ":"
-   dotspacemacs-default-font '("Input Mono Narrow Light"
+   dotspacemacs-default-font '("Courier Prime Code"
                                :size 24
                                :powerline-scale 1.5)
    dotspacemacs-editing-style 'vim
@@ -209,7 +209,7 @@ user code."
   (setq elcord-display-buffer-details nil)
 
   (set-face-attribute 'fixed-pitch nil
-                      :family "Input Mono Narrow"
+                      :family "Courier Prime Code"
                       :weight 'light
                       :height 146)
   (set-face-attribute 'variable-pitch nil
