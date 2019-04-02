@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2019/04/01 11:56:36 gergo@csillger.hu>
+;; Last updated: <2019/04/02 11:38:30 gergo@csillger.hu>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
@@ -117,6 +117,9 @@
                                      boxquote
                                      brutalist-theme
                                      bison-mode
+                                     (copyright-header-toggle
+                                      (:location (recipe :fetcher git
+                                                         :url "https://git.madhouse-project.org/paste/copyright-header-toggle.el.git")))
                                      dpkg-dev-el
                                      eink-theme
                                      elcord
@@ -233,6 +236,7 @@ user code."
 
   ;; FIXME: Move these to a layer!
   (spacemacs/set-leader-keys "t M" 'minimap-mode)
+  (spacemacs/set-leader-keys "t b" 'copyright-header-toggle)
 
   (eval-after-load 'origami
     '(progn
