@@ -55,7 +55,6 @@
       algernon/layers/lang '(c-c++
                              (clojure :variables clojure-enable-fancify-symbols t)
                              emacs-lisp
-                             go
                              html
                              javascript
                              (latex :variables latex-enable-auto-fill t)
@@ -113,15 +112,12 @@
                                  algernon-look-n-feel
                                  algernon-modeline))
 
-(setq algernon/additional-packages '(bats-mode
-                                     boxquote
+(setq algernon/additional-packages '(boxquote
                                      brutalist-theme
-                                     bison-mode
                                      (copyright-header-toggle
                                       (:location (recipe :fetcher git
                                                          :url "https://git.madhouse-project.org/paste/copyright-header-toggle.el.git")))
                                      dpkg-dev-el
-                                     eink-theme
                                      elcord
                                      feature-mode
                                      google-c-style
