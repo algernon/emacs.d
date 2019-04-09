@@ -120,6 +120,7 @@
                                      dpkg-dev-el
                                      elcord
                                      feature-mode
+                                     forge
                                      google-c-style
                                      highlight-leading-spaces
                                      magithub
