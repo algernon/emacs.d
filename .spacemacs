@@ -199,7 +199,7 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   (setq custom-file (concat user-emacs-directory "private/etc/custom.el")
-        user-mail-address "algernon@madhouse-project.org"))
+        user-mail-address "gergo@csillger.hu"))
 
 (defun dotspacemacs/user-config ()
   (global-vi-tilde-fringe-mode 0)
