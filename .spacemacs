@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2019/04/09 11:40:47 gergo@csillger.hu>
+;; Last updated: <2019/04/13 08:12:50 gergo@csillger.hu>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
@@ -206,6 +206,7 @@ user code."
   (set-fringe-mode 32)
   (spacemacs/toggle-centered-point-globally-on)
   (spacemacs/toggle-line-numbers-off)
+  (global-linum-mode -1)
   (setq-default truncate-lines t)
   (setq elcord-display-buffer-details nil)
 
