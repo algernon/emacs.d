@@ -235,6 +235,7 @@ user code."
 
   ;; FIXME: Move these to a layer!
   (spacemacs/set-leader-keys "t M" 'minimap-mode)
+  (require 'copyright-header-toggle)
   (spacemacs/set-leader-keys "t b" 'copyright-header-toggle)
 
   (eval-after-load 'origami
