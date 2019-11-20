@@ -1,5 +1,5 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2019/04/13 08:12:50 gergo@csillger.hu>
+;; Last updated: <2019/11/20 16:26:53 gergo@csillger.hu>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
 ;;               2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
@@ -232,6 +232,8 @@ user code."
   (add-hook 'c++-mode-hook #'google-set-c-style)
   (add-hook 'c++-mode-hook #'google-make-newline-indent)
   (add-hook 'conf-javaprop-mode #'turn-off-variable-pitch-mode)
+
+  (global-subword-mode 1)
 
   ;; FIXME: Move these to a layer!
   (spacemacs/set-leader-keys "t M" 'minimap-mode)
