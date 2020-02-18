@@ -1,8 +1,9 @@
 ;;;; ~/.emacs.d/ -- algernon's Emacs configuration     -*- no-byte-compile: t -*-
-;; Last updated: <2020/01/19 10:38:28 gergo@csillger.hu>
+;; Last updated: <2020/02/18 03:32:59 gergo@csillger.hu>
 ;;
 ;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2010, 2011,
-;;               2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
+;;               2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+;;               2020
 ;; Gergely Nagy
 
 ;; Author: Gergely Nagy
